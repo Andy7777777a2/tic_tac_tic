@@ -1,6 +1,7 @@
 # tool bundles (如果這些只是工具或備份)
 bin/
 Diff-Scripts/
+Lanuages/
 # windows / IDE
 .DS_Store
 Thumbs.db
