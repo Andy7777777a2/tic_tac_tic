@@ -1,13 +1,13 @@
 # tool bundles (如果這些只是工具或備份)
-bin/
-Diff-Scripts/
-Lanuages/
+#bin/
+#Diff-Scripts/
+#Lanuages/
 # windows / IDE
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-*.iml
+#.DS_Store
+#Thumbs.db
+#.vscode/
+#.idea/
+#*.iml
 # Local backup versions (keep main source file)
-tic_tac_toc*.java
-!tic_tac_toc.java
+#tic_tac_toc*.java
+#!tic_tac_toc.java
