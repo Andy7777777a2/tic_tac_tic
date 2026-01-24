@@ -1,0 +1,68 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 3. Using TortoiseGitMerge</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGitMerge"><link rel="up" href="index.html" title="TortoiseGitMerge"><link rel="prev" href="tmerge-basics-patch.html" title="Applying Patches"><link rel="next" href="tmerge-dug-toolbar.html" title="Buttons and Other Controls"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. Using TortoiseGitMerge</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tmerge-basics-patch.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tmerge-dug-toolbar.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 3. Using TortoiseGitMerge"><div class="titlepage"><div><div><h2 class="title"><a name="tmerge-dug"></a>Chapter 3. Using TortoiseGitMerge</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tmerge-dug.html#tmerge-dug-views">Viewing Modes</a></span></dt><dd><dl><dt><span class="sect2"><a href="tmerge-dug.html#tmerge-dug-view-merge">Viewing / Merging</a></span></dt><dt><span class="sect2"><a href="tmerge-dug.html#tmerge-dug-view-patch">Applying Patches</a></span></dt></dl></dd><dt><span class="sect1"><a href="tmerge-dug-toolbar.html">Buttons and Other Controls</a></span></dt><dt><span class="sect1"><a href="tmerge-dug-icons.html">Line Status Icons</a></span></dt><dt><span class="sect1"><a href="tmerge-dug-conflicts.html">Merging / Editing Conflicts</a></span></dt><dt><span class="sect1"><a href="tmerge-dug-open.html">Open Files</a></span></dt><dd><dl><dt><span class="sect2"><a href="tmerge-dug-open.html#tmerge-dug-open-view">Viewing / Merging</a></span></dt><dt><span class="sect2"><a href="tmerge-dug-open.html#tmerge-dug-open-patch">Applying Patches</a></span></dt></dl></dd><dt><span class="sect1"><a href="tmerge-dug-settings.html">Settings</a></span></dt><dd><dl><dt><span class="sect2"><a href="tmerge-dug-settings.html#tmerge-dug-settings-main">Main Settings Page</a></span></dt><dt><span class="sect2"><a href="tmerge-dug-settings.html#tmerge-dug-settings-color">color Settings Page</a></span></dt></dl></dd></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+		</p></div><div class="sect1" title="Viewing Modes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tmerge-dug-views"></a>Viewing Modes</h2></div></div></div><p>
+		TortoiseGitMerge has three main viewing modes: one-pane, two-pane
+		and three-pane view. One/two-pane view is used to view changes
+		and three-pane view is used to resolve conflicts.
+	</p><div class="sect2" title="Viewing / Merging"><div class="titlepage"><div><div><h3 class="title"><a name="tmerge-dug-view-merge"></a>Viewing / Merging</h3></div></div></div><div class="figure"><a name="tmerge-dug-dia-1pane"></a><p class="title"><b>Figure 3.1. One Pane View</b></p><div class="figure-contents"><div><img src="images/TMerge_OnePane.png" alt="One Pane View"></div></div></div><br class="figure-break"><div class="figure"><a name="tmerge-dug-dia-2pane"></a><p class="title"><b>Figure 3.2. Two Pane View</b></p><div class="figure-contents"><div><img src="images/TMerge_TwoPane.png" alt="Two Pane View"></div></div></div><br class="figure-break"><p>
+			The two pane view has some features which are not available
+			in the one pane view:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+						Changes inside the modified lines are shown in different
+						colors. Added string parts are shown with a lighter color,
+						but you can of course configure the colors used here.
+						Removed parts are indicated with a dark brown vertical
+						line in the string. Check out the screenshot above to
+						see how this works.
+					</p></li><li class="listitem"><p>
+						Code reorganization usually means a lot of changes in whitespaces
+						(space, tab, newlines) but no actual code change. For example,
+						you split up a very long line into several lines, or you sometimes
+						compact several lines together into one.
+					</p><p>
+						Such changes are marked with a white circle symbol on the left side
+						of the views. If you see such a white circle, you know immediately
+						that no real code change is there and you don't have to check the
+						changed block further.
+					</p></li><li class="listitem"><p>
+						Hand editing of the file in the right pane is possible in two-pane
+						view. Such changes are marked with a pencil symbol.
+						Hand editing of the file in the left pane is also possible, only
+						when <span class="guibutton">Enable Edit </span> is pressed when the left
+						pane is active.
+					</p></li></ul></div><p>
+		</p><p>
+			If you want to compare/merge three files, TortoiseGitMerge
+			will show you the differences in a three pane view. This view
+			is also used if you need to resolve conflicted files.
+		</p><div class="figure"><a name="tmerge-dug-dia-3pane"></a><p class="title"><b>Figure 3.3. Three Pane View</b></p><div class="figure-contents"><div><img src="images/TMerge_ThreePane.png" alt="Three Pane View"></div></div></div><br class="figure-break"><p>
+			The left pane shows you the differences between
+			<span class="emphasis"><em>Their</em></span> file and the <span class="emphasis"><em>Base</em></span>
+			file, while the right pane shows you the differences between
+			<span class="emphasis"><em>Mine</em></span> file and the <span class="emphasis"><em>Base</em></span>
+			file. The bottom pane shows you the result of merging
+			<span class="emphasis"><em>Base</em></span>, <span class="emphasis"><em>Mine</em></span> and
+			<span class="emphasis"><em>Theirs</em></span> with possible conflicts.
+		</p><p>
+			If you hover the mouse over the pane title, a tooltip will
+			show the filenames used for the diff in each pane.
+		</p><p>
+			Hand editing of the file in the left pane or right pane is also possible, only
+			when <span class="guibutton">Enable Edit </span> is pressed when that pane is active.
+		</p></div><div class="sect2" title="Applying Patches"><div class="titlepage"><div><div><h3 class="title"><a name="tmerge-dug-view-patch"></a>Applying Patches</h3></div></div></div><p>
+			After TortoiseGitMerge parses the patch file it will show
+			you a small window with all the files which have changes
+			according to the patch file.
+			</p><div class="figure"><a name="tmerge-dug-dia-patch"></a><p class="title"><b>Figure 3.4. Patch File List</b></p><div class="figure-contents"><div><img src="images/TMerge_PatchWindow.png" alt="Patch File List"></div></div></div><p><br class="figure-break">
+			If the filename is shown in black, then the patch can be applied
+			without any problems. That means the file is not outdated
+			according to the patch.
+			However, if the filename is shown in red, then the patch can't
+			get applied directly because you already changed that file.
+		</p><p>
+			The patch file window has a context menu which allows you to
+			preview the effect of the patch on the current file
+			(apply without saving), to apply and save the changes
+			for the selected file, or to apply and save changes to
+			<span class="emphasis"><em>all</em></span> files in the list.
+			The double click action is to preview.
+		</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tmerge-basics-patch.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tmerge-dug-toolbar.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Applying Patches </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Buttons and Other Controls</td></tr></table></div></body></html>

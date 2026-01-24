@@ -1,0 +1,128 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix E. Implementation Details</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-automation-idiff.html" title="TortoiseGitIDiff Commands"><link rel="next" href="tgit-ssh-howto.html" title="Appendix F. Tips and tricks for SSH/PuTTY"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix E. Implementation Details</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-automation-idiff.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-ssh-howto.html">Next</a></td></tr></table><hr></div><div class="appendix" title="Appendix E. Implementation Details"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-app-internals"></a>Appendix E. Implementation Details</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-app-internals.html#tgit-app-internals-overlays">Icon Overlays</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+			This appendix contains a more detailed discussion of the
+			implementation of some of TortoiseGit's features.
+		</p></div><div class="sect1" title="Icon Overlays"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-app-internals-overlays"></a>Icon Overlays</h2></div></div></div><a class="indexterm" name="id796161"></a><a class="indexterm" name="id796133"></a><p>
+			Every file has a Git status value as reported
+			by the Git library. In the command line client, these
+			are represented by single letter codes, but in TortoiseGit they
+			are shown graphically using the icon overlays. Because the number
+			of overlays is very limited, each overlay may represent one of
+			several status values.
+		</p><p>
+			</p><div><img src="images/ConflictIcon.png"></div><p>
+			The <span class="emphasis"><em>Conflicted</em></span> overlay is used to
+			represent the <code class="literal">conflicted</code> state, where
+			a merge resulted in conflicts between the
+			changes of the current and changes from another branch.
+		</p><p>
+			</p><div><img src="images/ModifiedIcon.png"></div><p>
+			The <span class="emphasis"><em>Modified</em></span> overlay represents the
+			<code class="literal">modified</code> state, where you have made
+			local modifications to your working tree.
+		</p><p>
+			</p><div><img src="images/DeletedIcon.png"></div><p>
+			The <span class="emphasis"><em>Deleted</em></span> overlay represents the
+			<code class="literal">deleted</code> state, where an item is scheduled for
+			deletion, or the <code class="literal">missing</code> state, where an
+			item is not present but still in the Git index. Naturally an item which is missing cannot have
+			an overlay itself, but the parent folder can be marked if one of its
+			child items is missing.
+		</p><p>
+			</p><div><img src="images/AddedIcon.png"></div><p>
+			The <span class="emphasis"><em>Added</em></span> overlay is simply used to
+			represent the <code class="literal">added</code> status when an item
+			has been added to version control.
+		</p><p>
+			</p><div><img src="images/InGitIcon.png"></div><p>
+			The <span class="emphasis"><em>In Git</em></span> overlay is used to
+			represent an item which is in the <code class="literal">normal</code>
+			state.
+			
+		</p><p>
+			</p><div><img src="images/ReadOnlyIcon.png"></div><p>
+			The <span class="emphasis"><em>assume-valid</em></span> (<span class="emphasis"><em>Needs Lock</em></span> in TortoiseSVN) overlay is used to
+			indicate if a file has the <code class="literal">assume-valid</code>
+			flag set.
+		</p><p>
+			</p><div><img src="images/LockedIcon.png"></div><p>
+			The <span class="emphasis"><em>skip-worktree</em></span> (<span class="emphasis"><em>Locked</em></span> in TortoiseSVN) overlay is used when to
+			indicate if a file has the <code class="literal">skip-worktree</code>
+			flag set.
+		</p><p>
+			</p><div><img src="images/IgnoredIcon.png"></div><p>
+			The <span class="emphasis"><em>Ignored</em></span> overlay is used to
+			represent an item which is in the <code class="literal">ignored</code>
+			state, either due to a global ignore pattern, or due to a
+			<code class="filename">.gitignore</code> file in one of the parent folders.
+			This overlay is optional.
+		</p><p>
+			</p><div><img src="images/UnversionedIcon.png"></div><p>
+			The <span class="emphasis"><em>Unversioned</em></span> overlay is used to
+			represent an item which is in the <code class="literal">unversioned</code>
+			state. This is an item in a versioned folder, but which is not
+			under version control itself.
+			This overlay is optional.
+		</p><p>
+			If an item has Git status <code class="literal">none</code> (the item
+			is not within a working tree) then no overlay is shown.
+			If you have chosen to disable the <span class="emphasis"><em>Ignored</em></span>
+			and <span class="emphasis"><em>Unversioned</em></span> overlays then no overlay
+			will be shown for those files either.
+		</p><p>
+			An item can only have one Git status value. For example
+			a file could be locally modified and it could be marked for
+			deletion at the same time. Git returns a single status
+			value - in this case <code class="literal">deleted</code>.
+			Those priorities are defined within Git and TortoiseGit itself.
+		</p><p>
+			When TortoiseGit displays the status recursively (the default
+			setting), each folder displays an overlay reflecting its own
+			status and the status of all its children. In order to display
+			a single <span class="emphasis"><em>summary</em></span> overlay, we use the
+			priority order shown above to determine which overlay to use,
+			with the <span class="emphasis"><em>Conflicted</em></span> overlay taking highest
+			priority.
+		</p><p>
+			In fact, you may find that not all of these icons are used on your
+			system. This is because the number of overlays allowed by Windows
+			is limited to 15. Windows uses 4 of those, and the remaining 11
+			can be used by other applications. If there are not enough overlay
+			slots available, TortoiseGit tries to be a
+			<span class="emphasis"><em>Good Citizen (TM)</em></span> and limits its use of overlays to
+			give other apps a chance.
+		</p><p>
+			If you have problems with overlays, please see the online
+			<a class="ulink" href="https://tortoisegit.org/support/faq/#ovlnotshowing" target="_blank"><em class="citetitle">FAQ</em></a>.
+		</p><p>
+			Since there are Tortoise clients available for other version control
+			systems, the TortoiseSVN developers created a shared component which is responsible for
+			showing the overlay icons. The technical details are not important
+			here, all you need to know is that this shared component allows
+			all Tortoise clients to use the same overlays and therefore the
+			limit of 11 available slots isn't used up by installing more than one
+			Tortoise client. Of course there's one small drawback: all Tortoise
+			clients use the same overlay icons, so you can't figure out by
+			the overlay icons what version control system a working copy is
+			using.
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+					<span class="emphasis"><em>Normal</em></span>,
+					<span class="emphasis"><em>Modified</em></span> and
+					<span class="emphasis"><em>Conflicted</em></span>
+					are always loaded and visible.
+				</p></li><li class="listitem"><p>
+					<span class="emphasis"><em>Deleted</em></span>
+					is loaded if possible, but falls back to
+					<span class="emphasis"><em>Modified</em></span> if there are not enough slots.
+				</p></li><li class="listitem"><p>
+					<span class="emphasis"><em>assume-valid</em></span>
+					is loaded if possible, but falls back to
+					<span class="emphasis"><em>Normal</em></span> if there are not enough slots.
+				</p></li><li class="listitem"><p>
+					<span class="emphasis"><em>skip-worktree</em></span>
+					is loaded if possible, but falls back to
+					<span class="emphasis"><em>Normal</em></span> if there are not enough slots.
+				</p></li><li class="listitem"><p>
+					<span class="emphasis"><em>Added</em></span>
+					is loaded if possible, but falls back to
+					<span class="emphasis"><em>Modified</em></span> if there are not enough slots.
+				</p></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-automation-idiff.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-ssh-howto.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">TortoiseGitIDiff Commands </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix F. Tips and tricks for SSH/PuTTY</td></tr></table></div></body></html>

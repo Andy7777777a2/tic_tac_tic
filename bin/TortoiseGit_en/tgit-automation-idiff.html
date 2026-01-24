@@ -1,0 +1,35 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>TortoiseGitIDiff Commands</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-automation.html" title="Appendix D. Automating TortoiseGit"><link rel="prev" href="tgit-automation.html" title="Appendix D. Automating TortoiseGit"><link rel="next" href="tgit-app-internals.html" title="Appendix E. Implementation Details"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">TortoiseGitIDiff Commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-automation.html">Prev</a> </td><th width="60%" align="center">Appendix D. Automating TortoiseGit</th><td width="20%" align="right"> <a accesskey="n" href="tgit-app-internals.html">Next</a></td></tr></table><hr></div><div class="sect1" title="TortoiseGitIDiff Commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-automation-idiff"></a>TortoiseGitIDiff Commands</h2></div></div></div><a class="indexterm" name="id759053"></a><a class="indexterm" name="id759032"></a><p>
+			The image diff tool has a few command line options which you
+			can use to control how the tool is started.
+			The program is called <code class="literal">TortoiseGitIDiff.exe</code>.
+		</p><p>
+			The table below lists all the options which can be passed
+			to the image diff tool on the command line.
+		</p><p>
+			</p><div class="table"><a name="tgit-automation-idiff-1-table"></a><p class="title"><b>Table D.2. List of available options</b></p><div class="table-contents"><table summary="List of available options" border="1"><colgroup><col><col></colgroup><thead><tr><th>Option</th><th>Description</th></tr></thead><tbody><tr><td>:left</td><td>
+								Path to the file shown on the left.
+							</td></tr><tr><td>:lefttitle</td><td>
+								A title string. This string is used in the image view
+								title instead of the full path to the image file.
+							</td></tr><tr><td>:right</td><td>
+								Path to the file shown on the right.
+							</td></tr><tr><td>:righttitle</td><td>
+								A title string. This string is used in the image view
+								title instead of the full path to the image file.
+							</td></tr><tr><td>:overlay</td><td>
+								If specified, the image diff tool switches
+								to the overlay mode (alpha blend).
+							</td></tr><tr><td>:fit</td><td>
+								If specified, the image diff tool fits both
+								images together.
+							</td></tr><tr><td>:showinfo</td><td>
+								Shows the image info box.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			Example (which should be entered on one line):
+</p><pre class="screen">
+TortoiseGitIDiff.exe /left:"c:\images\img1.jpg" /lefttitle:"image 1"
+                  /right:"c:\images\img2.jpg" /righttitle:"image 2"
+                  /fit /overlay
+</pre><p>
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-automation.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-automation.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-app-internals.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix D. Automating TortoiseGit </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix E. Implementation Details</td></tr></table></div></body></html>

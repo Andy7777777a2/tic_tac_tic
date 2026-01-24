@@ -1,0 +1,53 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Undo Changes</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-delete-copy-move.html" title="Deleting, Copying, Moving and Renaming Files and Folders"><link rel="next" href="tgit-dug-cleanup.html" title="Cleanup"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Undo Changes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-delete-copy-move.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-cleanup.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Undo Changes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-revert"></a>Undo Changes</h2></div></div></div><a class="indexterm" name="id818427"></a><a class="indexterm" name="id818442"></a><p>
+		If you want to undo all changes you made in a file since
+		your last commit you need to select the file,
+		<span class="action">right click</span> to pop up the context menu and then select
+		the command
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Revert</span>
+		A dialog will pop up showing you the files that you've changed and
+		can revert. Select those you want to revert and click on
+		<span class="guibutton">OK</span>.
+		</p><div class="figure"><a name="tgit-dug-revert-dia-1"></a><p class="title"><b>Figure 2.49. Revert dialog</b></p><div class="figure-contents"><div><img src="images/Revert.png" alt="Revert dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		If you want to undo a deletion or a rename, you need to use
+		Revert on the parent folder (or commit or repository status dialog) as the deleted item does not
+		exist for you to right-click on.
+	</p><p>
+		If you want to undo the addition of an item, this appears in
+		the context menu as
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Delete (keep local)</span>.
+		This is really a revert as well, but the name has been changed
+		to make it more obvious.
+	</p><p>
+		The columns in this dialog can be customized in the same way as the
+		columns in the <span class="guilabel">Check for modifications</span> dialog.
+		Read <a class="xref" href="tgit-dug-wcstatus.html#tgit-dug-wcstatus-2" title="Status">the section called “Status”</a> for further details.
+	</p><div class="tip" title="Undoing Changes which have been committed" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Undoing Changes which have been committed</h3><p>
+			<span class="guimenuitem">Revert</span>
+			will only undo your local changes. It does <span class="emphasis"><em>not</em></span>
+			undo any changes which have already been committed. If you want to
+			undo all the changes which were committed in a particular revision,
+			read <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a> and <a class="xref" href="tgit-dug-repobrowser.html" title="The Repository Browser">the section called “The Repository Browser”</a> for further information.
+		</p></div><div class="tip" title="Reverting a whole commit" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Reverting a whole commit</h3><p>
+			If you want to undo a whole commit, then you should use the log dialog and select
+			<span class="guimenuitem">Revert change by this commit</span>
+			on a revision/commit (cf. <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a>). Then all changes of this commit are undone and a revert commit is created which need to be committed manually (cf. <a class="xref" href="git-command.html#git-revert(1)" title="git-revert(1)">the section called “git-revert(1)”</a>).
+			It is also possible to (hard) reset to a previous commit, then all commits after that are forgotten (cf. <a class="xref" href="tgit-dug-reset.html" title="Reset">the section called “Reset”</a>) - this might not be recommended if the changes are already pushed (also see <a class="ulink" href="https://stackoverflow.com/q/27032850/3906760" target="_blank">https://stackoverflow.com/q/27032850/3906760</a>).
+		</p></div><div class="tip" title="Reverting to an old version of a file" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Reverting to an old version of a file</h3><p>
+			If you want to revert a file to an older version open the Log Dialog (cf. <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a>) on the file (or the folder if the file was deleted). Then select the specific commit you want to revert to. Now you have two options: 1) Select the specific file entry in the file list in the bottom and select <span class="guilabel">Revert to this revision</span> resp. <span class="guilabel">Revert to parent revision</span> in the context menu of the file entry. 2) Select <span class="guilabel">Browse Repository</span> (cf. <a class="xref" href="tgit-dug-repobrowser.html" title="The Repository Browser">the section called “The Repository Browser”</a>) in the context menu of the revision. Then navigate to the file and either select <span class="guilabel">Save revision to...</span> or drag the file to the location where you want to use it.
+		</p></div><div class="tip" title="Revert is Slow" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Revert is Slow</h3><p>
+			When you revert changes you may find that the operation takes a lot
+			longer than you expect. This is because the modified version of the
+			file is sent to the recycle bin, so you can retrieve your changes
+			if you reverted by mistake. However, if your recycle bin is full,
+			Windows takes a long time to find a place to put the file. The
+			solution is simple: either empty the recycle bin or deactivate
+			the <span class="guilabel">Use recycle bin when reverting</span> box
+			in TortoiseGit's settings.
+		</p></div><div class="caution" title='Revert != "git revert" for files' style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Revert != "git revert" for files</h3><p>
+			In the TortoiseGit naming a "revert" on a file is comparable to
+			<code class="literal">git checkout HEAD -- filename</code> (or <code class="literal">git checkout REVISION -- filename</code>)
+			for resetting a file to it's last (or a specific) committed state. This has nothing to do with <a class="xref" href="git-command.html#git-revert(1)" title="git-revert(1)">the section called “git-revert(1)”</a>!
+		</p><p>
+			<a class="xref" href="git-command.html#git-revert(1)" title="git-revert(1)">the section called “git-revert(1)”</a> is only referred to by <span class="guilabel">Revert change by this commit</span> in log dialog (cf. <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a>).
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-delete-copy-move.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-cleanup.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Deleting, Copying, Moving and Renaming Files and Folders </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Cleanup</td></tr></table></div></body></html>

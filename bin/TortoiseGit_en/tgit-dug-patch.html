@@ -1,0 +1,133 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating and Applying Patches and Pull Requests</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-conflicts.html" title="Resolving Conflicts"><link rel="next" href="tgit-dug-blame.html" title="Who Changed Which Line?"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating and Applying Patches and Pull Requests</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-conflicts.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-blame.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Creating and Applying Patches and Pull Requests"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-patch"></a>Creating and Applying Patches and Pull Requests</h2></div></div></div><a class="indexterm" name="id795467"></a><a class="indexterm" name="id795436"></a><a class="indexterm" name="id795456"></a><a class="indexterm" name="id795441"></a><a class="indexterm" name="id795461"></a><p>
+		For open source projects (like this one) everyone has read
+		access to the (main/public) repository, and anyone can make a contribution
+		to the project. So how are those contributions controlled?
+		If just anyone could commit changes to this central repository, the project would be permanently
+		unstable and probably permanently broken. In this situation the
+		change is managed by submitting a <em class="firstterm">patch</em> file or a <em class="firstterm">pull request</em>
+		to the development team, who do have write access.
+		They can review the changes first, and then either submit it to the
+		main repository or reject it back to the author.
+	</p><p>
+		Patch files are simply Unified-Diff files showing the differences
+		between your working tree and the base revision.
+	</p><p>
+		A pull request is an request to another repository owner to <a class="link" href="tgit-dug-pull.html" title="Pull and Fetch change">pull</a>
+		changes from your repository. I.e. you must have access to a public repository where you can
+		<a class="link" href="tgit-dug-push.html" title="Push">push</a> your changes (normally a special branch).
+	</p><div class="sect2" title="Creating a Patch Serial"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-patch-createpatchserial"></a>Creating a Patch Serial</h3></div></div></div><p>
+			First you need to make <span class="emphasis"><em>and test</em></span> your changes.
+			Then you commit your changes via
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Commit...</span>
+			on the parent folder, enter a good commit message. After that select
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Create Patch Serial...</span>
+			and choose the correct options to include your changes/commits.
+		</p><div class="figure"><a name="tgit-dug-patch-dia-1"></a><p class="title"><b>Figure 2.65. The Create Patch dialog</b></p><div class="figure-contents"><div><img src="images/CreatePatch.png" alt="The Create Patch dialog"></div></div></div><br class="figure-break"><p>
+			<span class="guilabel">Directory</span> is output directory of patch.
+			Patch file name will be created by commit subject.
+		</p><p>
+			<span class="guilabel">Since</span> create patch from point. You can click
+			<span class="guibutton">...</span> to launch reference browser dialog to choose branch or tag (cf. <a class="xref" href="tgit-dug-browse-ref.html" title="Browse All Refs">the section called “Browse All Refs”</a>).
+		</p><p>
+			<span class="guilabel">Number Commits</span> is limited how much patch will created.
+		</p><p>
+			<span class="guilabel">Range</span> is choose range of <span class="guilabel">from</span> commit
+			to <span class="guilabel">to</span>. You can click <span class="guibutton">...</span> to launch
+			log dialog to choose commit.
+		</p><p>
+			<span class="guilabel">Send Mail after create</span> launch send mail dialog after patches created (see <a class="xref" href="tgit-dug-patch.html#tgit-dug-patch-sendpatches" title="Sending patches by mail">the section called “Sending patches by mail”</a>).
+		</p><p>
+			You can find more information at <a class="xref" href="git-command.html#git-format-patch(1)" title="git-format-patch(1)">the section called “git-format-patch(1)”</a>.
+		</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+				Here Git is different to TortoiseSVN: In TortoiseSVN you directly create a patch instead of committing
+				your changes and create a patch of the commits afterwards (in git you have a full local copy/fork of the project you cloned - commits are just local).
+				To generate a patch containing the uncommitted,
+				but staged, changes click on <span class="guibutton">Save unified diff since HEAD</span>.
+			</p><p>
+			</p><p>
+				For hints where to find more information about doing version control with Git see <a class="xref" href="tgit-preface-readingguide.html" title="Reading Guide">the section called “Reading Guide”</a>.
+			</p></div></div><div class="sect2" title="Sending patches by mail"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-patch-sendpatches"></a>Sending patches by mail</h3></div></div></div><p>
+			In order to send patches to the upstream authors, select the patch files and then right click on them and select
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Send Mail...</span>
+		</p><p>
+			</p><div class="figure"><a name="tgit-dug-patch-dia-sendpatches"></a><p class="title"><b>Figure 2.66. The Send Patches Dialog</b></p><div class="figure-contents"><div><img src="images/SendPatch.png" alt="The Send Patches Dialog"></div></div></div><p><br class="figure-break">
+		</p><p>
+			First you need to enter the recipient(s) (<span class="guilabel">To</span> and/or <span class="guilabel">CC</span>).
+		</p><p>
+			Depending on the mail type (<span class="guilabel">Patch as attachment</span> or <span class="guilabel">Combine One Mail</span>)
+			you have to enter a <span class="guilabel">Subject</span> for the mail.
+		</p><p>
+			<span class="guilabel">Patch as attachment</span> adds the patch(es) as attachment(s) to the mail(s) instead of inlining them.
+		</p><p>
+			<span class="guilabel">Combine One Mail</span> adds all patches to one mail. You have to enter a <span class="guilabel">Subject</span>
+			for the mail in this case.
+		</p></div><div class="sect2" title="Applying a single Patch File"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-patch-applysinglepatch"></a>Applying a single Patch File</h3></div></div></div><p>
+			Patch files are applied to your working tree. This should be done
+			from the same folder level as was used to create the patch.
+			If you are not sure what this is, just look at the first line of
+			the patch file. For example, if the first file being worked on was
+			<code class="filename">doc/source/english/chapter1.xml</code>
+			and the first line in the patch file is
+			<code class="filename">Index: english/chapter1.xml</code>
+			then you need to apply the patch to the
+			<code class="filename">doc/source/</code> folder.
+			However, provided you are in the correct working tree, if you
+			pick the wrong folder level, TortoiseGit will notice and suggest the
+			correct level.
+		</p><p>
+			From the context menu for a patch file (<code class="filename">.patch</code>
+			or <code class="filename">.diff</code> extension), click on
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Review/apply single patch...</span>
+			You might be prompted to enter a working tree location:
+			</p><div class="figure"><a name="tgit-dug-choose-repository"></a><p class="title"><b>Figure 2.67. The Choose Repository Dialog</b></p><div class="figure-contents"><div><img src="images/ChooseRepository.png" alt="The Choose Repository Dialog"></div></div></div><p><br class="figure-break">
+			If the working tree is found, TortoiseGitMerge is launched to show and apply differences.
+		</p></div><div class="sect2" title="Applying a Patch Serial"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-patch-applaypatchserial"></a>Applying a Patch Serial</h3></div></div></div><p>
+			Patch files are applied to your working tree. For this copy the patch (or mbox)
+			files to the root of your working tree.
+		</p><p>
+			From the context menu for that folder (or all marked patch files), click on
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Apply Patch Serial...</span>
+			</p><div class="figure"><a name="tgit-dug-apply-patch"></a><p class="title"><b>Figure 2.68. The Apply Patch Dialog</b></p><div class="figure-contents"><div><img src="images/ApplyPatch.png" alt="The Apply Patch Dialog"></div></div></div><p><br class="figure-break">
+		</p><p>
+			<span class="guibutton">Add</span> Insert patch
+		</p><p>
+			<span class="guibutton">Up</span> Move chosen patch up.
+		</p><p>
+			<span class="guibutton">Down</span> Move chosen patch down.
+		</p><p>
+			<span class="guibutton">Remove</span> Remove the chosen patch.
+		</p><p>
+			<span class="guibutton">Apply</span> Start applying the patches one by one.
+		</p><p>
+			You can find more information at <a class="xref" href="git-command.html#git-am(1)" title="git-am(1)">the section called “git-am(1)”</a>.
+		</p></div><div class="sect2" title="Creating a pull request"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-patch-pullrequest"></a>Creating a pull request</h3></div></div></div><p>
+			Apart from sending patches (or patch serials) to other developers,
+			there are two ways to ask other people to integrate your changes
+			into their repositories.
+		</p><p>
+			<span class="emphasis"><em>First:</em></span> After pushing your changes to a (public)
+			repository, you just provide other people the URL of your repository
+			and the name of the branch or the revision id.
+			E.g.: <code class="literal">git://example.com/repo.git BRANCHNAME</code>
+		</p><p>
+			<span class="emphasis"><em>Second:</em></span> After pushing your changes to a (public)
+			repository, you can create a standardized (quite formal) request for other
+			people to pull your changes and integrate them into their repository.
+			The format pull request consists of a list of all commits and provides
+			some statistics about changed files, so that other people can get a quick overview.
+		</p><p>
+			Select <span class="guibutton">Request pull</span> on the progress dialog after pushing your changes.
+			</p><div class="figure"><a name="tgit-dug-request-pull"></a><p class="title"><b>Figure 2.69. The Request Pull Dialog</b></p><div class="figure-contents"><div><img src="images/RequestPull.png" alt="The Request Pull Dialog"></div></div></div><p><br class="figure-break">
+		</p><div class="variablelist"><dl><dt><span class="term"><span class="guilabel">Start</span></span></dt><dd><p>
+						This should be the revision on which your changes are based on.
+					</p></dd><dt><span class="term"><span class="guilabel">URL</span></span></dt><dd><p>
+						The public URL to your repository, which can be access
+						by the people who shall pull your changes.
+					</p></dd><dt><span class="term"><span class="guilabel">End</span></span></dt><dd><p>
+						This should be the branch name or revision id of the end of your commits.
+					</p></dd></dl></div><p>
+			After clicking on <span class="guibutton">OK</span> the pull request is created. Just copy it
+			and pass it to other people who you want to pull your changes.
+		</p><p>
+			You can find more information at <a class="xref" href="git-command.html#git-request-pull(1)" title="git-request-pull(1)">the section called “git-request-pull(1)”</a>.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-conflicts.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-blame.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Resolving Conflicts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Who Changed Which Line?</td></tr></table></div></body></html>

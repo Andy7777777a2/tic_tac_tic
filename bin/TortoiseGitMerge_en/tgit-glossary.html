@@ -1,0 +1,131 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Glossary</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGitMerge"><link rel="up" href="index.html" title="TortoiseGitMerge"><link rel="prev" href="tme-automation.html" title="Appendix B. Automating TortoiseGitMerge"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Glossary</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tme-automation.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> </td></tr></table><hr></div><div class="glossary" title="Glossary"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-glossary"></a>Glossary</h2></div></div></div><dl><dt>Add</dt><dd><p>
+				A Git command that is used to add a
+				file to your working tree.
+				The new items are added to the repository when you commit.
+			</p></dd><dt>BASE revision</dt><dd><p>
+				This is the common ancestor's version of a conflicted file.
+			</p></dd><dt>Blame</dt><dd><p>
+				This command is for text files only, and it annotates every line to
+				show the repository revision in which it was last changed, and the
+				author who made that change. Our GUI implementation is called
+				TortoiseGitBlame and it also shows the commit date/time and the
+				log message when you hover the mouse of the revision number.
+			</p></dd><dt>Branch</dt><dd><p>
+				A term frequently used in revision control systems to describe
+				what happens when development forks at a particular point and
+				follows 2 separate paths. You can create a branch off the main
+				development line so as to develop a new feature without rendering
+				the main line unstable. Or you can branch a stable release to which
+				you make only bug fixes, while new developments take place on the
+				unstable trunk. In Git a branch is implemented as a
+				<span class="quote">“<span class="quote">pointer to a revision</span>”</span>.
+			</p></dd><dt>Clone</dt><dd><p>
+				A Git command which creates a local working tree in an empty
+				directory by downloading a remote repository.
+			</p></dd><dt>Cleanup</dt><dd><p>
+				Remove untracked files from the working tree.
+			</p><p>
+				<span class="emphasis"><em>This is different to TortoiseSVN cleanup</em></span>
+			</p></dd><dt>Commit</dt><dd><p>
+				This Git command is used to pass the changes in your local
+				working tree back into the repository, creating a new repository
+				revision.
+			</p></dd><dt>Conflict</dt><dd><p>
+				When changes from the repository are merged with local changes,
+				sometimes those changes occur on the same lines. In this case
+				Git cannot automatically decide which version to use and
+				the file is said to be in conflict. You have to edit the file manually
+				and resolve the conflict before you can commit any further changes.
+			</p></dd><dt>Copy</dt><dd><p>
+				In a Git repository you can manually create a copy of a single file
+				or an entire tree w/o problems.
+			</p></dd><dt>Delete</dt><dd><p>
+				When you delete a versioned item (and commit the change) the item
+				no longer exists in the repository after the committed revision.
+				But of course it still exists in earlier repository revisions,
+				so you can still access it. If necessary, you can copy a deleted
+				item and <span class="quote">“<span class="quote">resurrect</span>”</span> it complete with history.
+			</p></dd><dt>Diff</dt><dd><p>
+				Shorthand for <span class="quote">“<span class="quote">Show Differences</span>”</span>. Very useful when
+				you want to see exactly what changes have been made.
+			</p></dd><dt>Export</dt><dd><p>
+				This command produces an compressed archive of all versioned files (of a specific revision).
+			</p></dd><dt>GPO</dt><dd><p>
+				Group policy object
+			</p></dd><dt>HEAD</dt><dd><p>
+				HEAD is a synonym for the currently active branch (to be more precise in Git HEAD can also be so-called "detached" and directly pointing to a commit instead of a branch).
+			</p></dd><dt>History</dt><dd><p>
+				Show the revision history of a file or folder.
+				Also known as <span class="quote">“<span class="quote">Log</span>”</span>.
+			</p></dd><dt>Log</dt><dd><p>
+				Show the revision history of a file or folder.
+				Also known as <span class="quote">“<span class="quote">History</span>”</span>.
+			</p></dd><dt>Merge</dt><dd><p>
+				The process by which changes from the repository are added to your
+				working tree without disrupting any changes you have already made
+				locally. Sometimes these changes cannot be reconciled automatically
+				and the working tree is said to be in conflict.
+			</p><p>
+				Merging happens automatically when you pull changes, cherry-pick, or rebase.
+				You can also merge specific changes from another branch using
+				TortoiseGit's Merge command.
+			</p></dd><dt>Patch</dt><dd><p>
+				If a working tree has changes to text files only, it is possible
+				to use Git's Diff command to generate a single file summary
+				of those changes in Unified Diff format. A file of this type is often
+				referred to as a <span class="quote">“<span class="quote">Patch</span>”</span>, and it can be emailed to someone
+				else (or to a mailing list) and applied to another working tree.
+				Someone without commit access can make changes and submit a patch
+				file for an authorized committer to apply. Or if you are unsure about
+				a change you can submit a patch for others to review.
+			</p></dd><dt>Pull</dt><dd><p>
+				This Git command pulls down the latest changes from the
+				repository into your working tree, merging any changes made by
+				others with local changes in the working tree.
+			</p></dd><dt>Repository</dt><dd><p>
+				A repository is a place where data is stored and maintained.
+				A repository can be a place where multiple databases or files are located for
+				distribution over a network, or a repository can be a location that is
+				directly accessible to the user without having to travel across a network.
+				Git is a distributed version control system - each working tree contains its own repository (in the <code class="filename">.git</code> folder).
+				A Git repository does not require network to work with most operations.
+				Network is required only when you need to synchronize changes with remote repositories.
+			</p></dd><dt>Resolve</dt><dd><p>
+				When files in a working tree are left in a conflicted state following
+				a merge, those conflicts must be sorted out by a human using an editor
+				(or perhaps TortoiseGitMerge). This process is referred to as
+				<span class="quote">“<span class="quote">Resolving Conflicts</span>”</span>. When this is complete you can mark
+				the conflicted files as being resolved, which allows them to be committed.
+			</p></dd><dt>Revert</dt><dd><p>
+				If you have made changes
+				and decide you want to undo them, you can use the <span class="quote">“<span class="quote">revert</span>”</span>
+				command to go back to the version from HEAD.
+			</p></dd><dt>Revision</dt><dd><p>
+				Every time you commit a set of changes, you create one new
+				<span class="quote">“<span class="quote">revision</span>”</span> in the repository. Each revision represents
+				the state of the repository tree at a certain point in its history.
+				If you want to go back in time you can examine the repository as
+				it was at a specific revision.
+			</p><p>
+				In another sense, a revision can refer to the set of changes that
+				were made when that revision was created.
+			</p></dd><dt>SVN</dt><dd><p>
+				A frequently-used abbreviation for Subversion.
+			</p><p>
+				TortoiseGit provides git-svn interoperability.
+				You can fetch partial or whole history from an SVN remote and store as a local git repository.
+				This allows you to browse the history and create commits locally.
+				You can finally commit your changes to an SVN remote.
+			</p></dd><dt>Switch/Checkout</dt><dd><p>
+				Updates all files in the working tree to a specific version. This is normally used for switching/checking out branches.
+			</p></dd><dt>Update</dt><dd><p>
+				The corresponding command for the SVN update command is <span class="emphasis"><em>Pull</em></span>.
+			</p></dd><dt>Working Copy</dt><dd><p>
+				See <span class="quote">“<span class="quote">Working Tree</span>”</span>.
+			</p></dd><dt>Working Tree</dt><dd><p>
+				This is your local <span class="quote">“<span class="quote">sandbox</span>”</span>, the area where you
+				work on the versioned files, and it normally resides on your
+				local hard disk. You create a working tree by doing a
+				<span class="quote">“<span class="quote">Clone</span>”</span> of a repository, and you feed your
+				changes back into the repository using <span class="quote">“<span class="quote">Commit</span>”</span>.
+			</p></dd></dl></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tme-automation.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">Appendix B. Automating TortoiseGitMerge </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

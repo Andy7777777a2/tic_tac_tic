@@ -1,0 +1,16 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>git svn dcommit</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-worktrees.html" title="Working with worktrees"><link rel="next" href="tgit-dug-lfslocking.html" title="Git LFS Locking"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">git svn dcommit</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-worktrees.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-lfslocking.html">Next</a></td></tr></table><hr></div><div class="sect1" title="git svn dcommit"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-svn-dcommit"></a>git svn dcommit</h2></div></div></div><a class="indexterm" name="id774706"></a><a class="indexterm" name="id774693"></a><a class="indexterm" name="id774729"></a><p>
+		Commit each diff from a specified HEAD directly to the SVN repository,
+		and then rebase or reset (depending on whether or not there is a diff between SVN and HEAD).
+		This will create a revision in SVN for each commit in git. It is recommended that you run
+		git-svn fetch and rebase (not pull or merge) your commits against the latest changes in
+		the SVN repository.
+	</p><p>
+		If you need/want to use <code class="literal">--use-log-author</code> or <code class="literal">--add-author-from</code>, please set those in git config (cf. <a class="xref" href="git-command.html#git-config(1)" title="git-config(1)">the section called “git-config(1)”</a>), also see <a class="ulink" href="https://tortoisegit.org/issue/2824" target="_blank">issue #2824</a>.
+	</p><p>
+		<span class="guilabel">Git Style Commit (--rmdir)</span>: Remove directories from the SVN tree
+		if there are no files left behind. SVN can version empty directories, and they are
+		not removed by default if there are no files left in them. git cannot version empty
+		directories. Enabling this flag will make the commit to SVN act like git.
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-svn(1)" title="git-svn(1)">the section called “git-svn(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-worktrees.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-lfslocking.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Working with worktrees </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Git LFS Locking</td></tr></table></div></body></html>

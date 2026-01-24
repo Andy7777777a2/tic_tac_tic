@@ -1,0 +1,480 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Log Dialog</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-changelists.html" title="Change Lists"><link rel="next" href="tgit-dug-revgraph.html" title="Revision Graphs"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Log Dialog</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-changelists.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-revgraph.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Log Dialog"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-showlog"></a>Log Dialog</h2></div></div></div><a class="indexterm" name="id753108"></a><a class="indexterm" name="id753124"></a><a class="indexterm" name="id753167"></a><a class="indexterm" name="id753168"></a><a class="indexterm" name="id753163"></a><p>
+		For every change you make and commit, you should provide
+		a log message for that change. That way you can later find out
+		what changes you made and why, and you have a detailed log for
+		your development process.
+	</p><p>
+		The Log Dialog retrieves all those log messages and shows them
+		to you.
+		The display is divided into 3 panes.
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+					The top pane shows a list of revisions where changes to the
+					file/folder have been committed. This summary includes the
+					date and time, the person who committed the revision and the
+					start of the log message.
+				</p><p>
+					The line shown in bold indicates the HEAD commit and the entry "Working tree changes" is a virtual entry representing the current (uncommitted) state of your working tree.
+				</p></li><li class="listitem"><p>
+					The middle pane shows the full log message for the selected
+					revision.
+				</p></li><li class="listitem"><p>
+					The bottom pane shows a list of all files and folders that
+					were changed as part of the selected revision.
+				</p></li></ul></div><p>
+		But it does much more than that - it provides context menu
+		commands which you can use to get even more information about the
+		project history.
+	</p><div class="sect2" title="Invoking the Revision Log Dialog"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-1"></a>Invoking the Revision Log Dialog</h3></div></div></div><p>
+			</p><div class="figure"><a name="tgit-dug-showlog-1-dia-1"></a><p class="title"><b>Figure 2.27. The Revision Log Dialog</b></p><div class="figure-contents"><div><img src="images/LogMessages.png" alt="The Revision Log Dialog"></div></div></div><p><br class="figure-break">
+			There are several places from where you can show the Log dialog:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+						From the explorer context menu using
+						<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Show log...</span>.
+					</p></li><li class="listitem"><p>
+						From various TortoiseGit dialogs where you can select a commit (oftentimes using a <span class="guibutton">...</span> button).
+					</p></li><li class="listitem"><p>
+						From various TortoiseGit dialogs where commit entries or files are shown using the context menu.
+					</p></li></ul></div><p>
+		</p></div><div class="sect2" title="Revision Log Actions"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-actions"></a>Revision Log Actions</h3></div></div></div><p>
+			The top pane has an <span class="guilabel">Actions</span> column containing
+			icons that summarize what has been done in that revision.
+			There are four different icons, each shown in its own column.
+		</p><p>
+			</p><div><img src="images/ActionModifiedIcon.png"></div><p>
+			If a revision modified a file or directory, the
+			<span class="emphasis"><em>modified</em></span> icon is shown in the first column.
+		</p><p>
+			</p><div><img src="images/ActionAddedIcon.png"></div><p>
+			If a revision added a file or directory, the
+			<span class="emphasis"><em>added</em></span> icon is shown in the second column.
+		</p><p>
+			</p><div><img src="images/ActionDeletedIcon.png"></div><p>
+			If a revision deleted a file or directory, the
+			<span class="emphasis"><em>deleted</em></span> icon is shown in the third column.
+		</p><p>
+			</p><div><img src="images/ActionReplacedIcon.png"></div><p>
+			If a revision replaced(rename) a file, the
+			<span class="emphasis"><em>replaced</em></span> icon is shown in the fourth column.
+		</p></div><div class="sect2" title="The revision graph"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-graph"></a>The revision graph</h3></div></div></div><p>
+			The top pane has a <span class="guilabel">Graph</span> column with a line showing
+			the commits, merges and branches. There are two types of shapes.
+		</p><p>
+			The circles indicate normal commits w/o any branching.
+		</p><p>
+			The squares indicate merges and branchings. In the first case these are merge commits
+			(i.e., a commit with more than one parent) and in the latter case these are also normal commits.
+			A square was chosen here to indicate that a branch goes off.
+		</p><p>
+			The colors of the lines (and of the shapes) are there to make the graph better readable (i.e., to see to which branch they belong).
+			The colors are configurable (cf. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-colours3" title="TortoiseGit color Settings 3">the section called “TortoiseGit color Settings 3”</a>).
+		</p></div><div class="sect2" title="Commit messages and branch/tag indicators"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-messages"></a>Commit messages and branch/tag indicators</h3></div></div></div><p>
+			The top pane also has a <span class="guilabel">message</span> column.
+			In this column the subjects of the commits are shown.
+			Commits which have an associated reference are decorated with a label.
+		</p><p>
+			Tags are by default displayed as yellow rectangles. In Git there are two tag types: normal tags and annotated tags. The annotated ones have an apex at the right side.
+		</p><p>
+			Normally branches are displayed as normal rectangles. The active branch is displayed as a dark red rectangle (by default), the green ones are local branches and the peach ones are remote branches.
+		</p><p>
+			The boxes with rounded corners for local branches indicate that it has an associated remote tracking. The boxes with rounded corners for remote tracking branches are used to indicate which of (possible several remote branches) is the corresponding remote tracking branch (e.g., master and origin/master).
+		</p><p>
+			The stash has a dark gray rectangle.
+		</p><p>
+			There are also rectangles to indicate the bad versions (light red) on bisecting, blue for known good and gray for skip.
+		</p><p>
+			Depending on what branch/tag label you open the context menu, it is optimized for that ref it was opened on (e.g., a local branch offers directly to switch to it and to push it whereas a remote branch has no push option).
+		</p><p>
+			The colors are configurable (cf. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-colours2" title="TortoiseGit color Settings 2">the section called “TortoiseGit color Settings 2”</a>). Also, the labels can be configured to be a the right side of the commit message or the displayed text to contain the whole of the commit message (cf. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-dialogs" title="TortoiseGit Dialog Settings">the section called “TortoiseGit Dialog Settings”</a>).
+		</p></div><div class="sect2" title="Getting Additional Information"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-2"></a>Getting Additional Information</h3></div></div></div><p>
+			</p><div class="figure"><a name="tgit-dug-showlog-2-dia-1"></a><p class="title"><b>Figure 2.28. The Revision Log Dialog Top Pane with Context Menu</b></p><div class="figure-contents"><div><img src="images/LogContextMenu.png" alt="The Revision Log Dialog Top Pane with Context Menu"></div></div></div><p><br class="figure-break">
+			The top pane of the Log dialog has a context menu that allows you to
+			access much more information.  You can press the <span class="keycap"><strong>Shift</strong></span> key to see the extended menu with some more options (e.g., pushing and opening the log from every commit).
+			</p><div class="variablelist"><dl><dt><span class="term">Compare with working tree</span></dt><dd><p>
+							Compare the selected revision with your working tree.
+							The default Diff-Tool is TortoiseGitMerge which
+							is supplied with TortoiseGit.
+							If the log dialog is for a folder, this will show you a list
+							of changed files, and allow you to review the changes made
+							to each file individually.
+						</p></dd><dt><span class="term">Show changes as unified diff</span></dt><dd><p>
+							View the changes made in the selected revision as a
+							Unified-Diff file (GNU patch format). This shows
+							only the differences with a few lines of context. It
+							is harder to read than a visual file compare, but will
+							show all file changes together in a compact format.
+						</p></dd><dt><span class="term">Compare with previous revision</span></dt><dd><p>
+							Compare the selected revision with the previous revision.
+							This works in a similar manner to comparing with your
+							working tree.
+							For folders this option will first show the changed files
+							dialog allowing you to select files to compare.
+						</p></dd><dt><span class="term">Browse repository</span></dt><dd><p>
+							Open the repository browser to examine the selected file or
+							folder in the repository as it was at the selected revision (cf. <a class="xref" href="tgit-dug-repobrowser.html" title="The Repository Browser">the section called “The Repository Browser”</a>).
+						</p></dd><dt><span class="term">Reset (current branch) to this</span></dt><dd><p>
+							Resets the HEAD to the selected commit (cf. <a class="xref" href="tgit-dug-reset.html" title="Reset">the section called “Reset”</a>).
+						</p></dd><dt><span class="term">Switch / Checkout to revision</span></dt><dd><p>
+							Update your working tree to the selected revision.
+							Useful if you want to have your working tree reflect
+							a time in the past, or if there have been further commits to
+							the repository and you want to update your working tree one
+							step at a time.
+						</p></dd><dt><span class="term">Create branch from revision</span></dt><dd><p>
+							Create a branch based on the selected revision (cf. <a class="xref" href="tgit-dug-branchtag.html" title="Branching/Tagging">the section called “Branching/Tagging”</a>).
+						</p></dd><dt><span class="term">Create tag from revision</span></dt><dd><p>
+							Create a tag on a selected revision (cf. <a class="xref" href="tgit-dug-branchtag.html" title="Branching/Tagging">the section called “Branching/Tagging”</a>).
+						</p></dd><dt><span class="term">Rebase (current branch) to this</span></dt><dd><p>
+							Rebase current branch on top of the selected commit (cf. <a class="xref" href="tgit-dug-rebase.html" title="Rebase">the section called “Rebase”</a>).
+						</p></dd><dt><span class="term">Export this version...</span></dt><dd><p>
+							Export the selected revision to an archive file such as zip. This brings up a dialog for you to confirm the
+							revision, and select a location for the export (cf. <a class="xref" href="tgit-dug-export.html" title="Exporting a Git Working Tree">the section called “Exporting a Git Working Tree”</a>).
+						</p></dd><dt><span class="term">Revert change by this commit</span></dt><dd><p>
+							Revert changes from which were made in the selected
+							revision. All changes are integrated into your working tree.
+							You may choose to commit immediately or edit and commit later.
+							To abandon the reverted changes, perform a hard reset.
+						</p></dd><dt><span class="term">Edit notes</span></dt><dd><p>
+							Edit notes of the selected commit.
+						</p></dd><dt><span class="term">Collapse revisions</span></dt><dd><p>
+							Do not show parent commits up to a merge or branch point or a commit
+							marked with a branch or tag. This is similar to
+							<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">Compressed Graph</span>,
+							but only for selected revisions.
+						</p><p>
+							Collapsed items are displayed in the graph with hollow circles and squares.
+							In the following screenshot the commits of the merged branch in which issue 3764 was fixed and also all commits starting from the libgit2 update commit until the next merge commit were collapsed.
+							</p><div class="figure"><a name="tgit-dug-showlog-collapsed-dia-1"></a><p class="title"><b>Figure 2.29. Collapsed revisions</b></p><div class="figure-contents"><div><img src="images/LogCollapsedRevs.png" alt="Collapsed revisions"></div></div></div><p><br class="figure-break">
+						</p></dd><dt><span class="term">Expand hidden revisions</span></dt><dd><p>
+							This is shown for collapsed items instead of <span class="guilabel">Collapse revisions</span>
+							and reverts the action.
+						</p></dd><dt><span class="term">Cherry Pick this commit</span></dt><dd><p>
+							Cherry Pick this commit on top of HEAD (cf. <a class="xref" href="tgit-dug-cherrypick.html" title="Cherry picking">the section called “Cherry picking”</a>).
+						</p></dd><dt><span class="term">Bisect start</span></dt><dd><p>
+							Start bisection. Find by binary search the change that introduced a bug (cf. <a class="xref" href="tgit-dug-bisect.html" title="Bisect">the section called “Bisect”</a>).
+						</p></dd><dt><span class="term">Format Patch...</span></dt><dd><p>
+							Create Patches from this commit.
+						</p></dd><dt><span class="term">Copy SHA-1 to clipboard</span></dt><dd><p>
+							Copy the commit hash of the selected revision to the clipboard.
+						</p></dd><dt><span class="term">Copy to clipboard</span></dt><dd><p>
+							Copy the log details of the selected revisions to the clipboard.
+							This will copy the revision number, author, date, log message
+							and the list of changed items for each revision.
+						</p></dd><dt><span class="term">Copy log message to clipboard</span></dt><dd><p>
+							Copy the log message of the selected revision to the clipboard.
+						</p></dd><dt><span class="term">Search log messages...</span></dt><dd><div class="figure"><a name="tgit-dug-showlog-1-dia-2"></a><p class="title"><b>Figure 2.30. The Search Log Messages Dialog</b></p><div class="figure-contents"><div><img src="images/LogSearch.png" alt="The Search Log Messages Dialog"></div></div></div><br class="figure-break"><p>
+							Search log messages for the text you enter. This searches
+							the log messages that you entered and also the action summaries
+							created by Git (shown in the bottom pane).
+						</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+								This allows you to easily search for refs (tags and branches).
+							</p><p>
+								If you press <span class="keycap"><strong>SHIFT</strong></span> while clicking on a ref or on <span class="guibutton">Find</span> you can navigate to the commit w/o selecting it.
+							</p><p>
+								The Search Log Messages dialog is complementary to the Log Filter which is implemented using the controls at the top of the Log dialog (cf. <a class="xref" href="tgit-dug-showlog.html#tgit-dug-showlog-filter" title="Filtering Log Messages">the section called “Filtering Log Messages”</a>).
+							</p></div></dd><dt><span class="term">Shows branches this commit is on</span></dt><dd><p>
+							Shows the branches that the select commit belongs to.
+							It shows both local and remote branches.
+						</p></dd></dl></div><p>
+		</p><p>
+			</p><div class="figure"><a name="tgit-dug-showlog-2-dia-1a"></a><p class="title"><b>Figure 2.31. Top Pane Context Menu for 2 Selected Revisions</b></p><div class="figure-contents"><div><img src="images/LogContextMenu1.png" alt="Top Pane Context Menu for 2 Selected Revisions"></div></div></div><p><br class="figure-break">
+			If you select two revisions at once (using the usual
+			<span class="keycap"><strong>Ctrl</strong></span>-modifier), the context menu changes and
+			gives you fewer options:
+			</p><div class="variablelist"><dl><dt><span class="term">Compare revisions</span></dt><dd><p>
+							Compare the two selected revisions using a visual
+							difference tool. The default Diff-Tool is TortoiseGitMerge
+							which is supplied with TortoiseGit.
+						</p></dd><dt><span class="term">Show differences as unified diff</span></dt><dd><p>
+							View the differences between the two selected revisions
+							as a Unified-Diff file. This works for files and folders.
+						</p></dd><dt><span class="term">Revert changes by these commits</span></dt><dd><p>
+							Revert changes from which were made in the selected
+							revisions. All changes are integrated into your working tree.
+							You may choose to commit immediately or edit and commit later.
+							To abandon the reverted changes, perform a hard reset.
+						</p></dd><dt><span class="term">Combine to one commit</span></dt><dd><p>
+							Combine continuous commits to one commit.
+						</p></dd><dt><span class="term">Cherry Pick selected commits</span></dt><dd><p>
+							Cherry Pick chosen Commits on top of current HEAD (cf. <a class="xref" href="tgit-dug-cherrypick.html" title="Cherry picking">the section called “Cherry picking”</a>).
+						</p></dd><dt><span class="term">Format Patch...</span></dt><dd><p>
+							Create patches between two chosen commits.
+						</p></dd><dt><span class="term">Copy SHA-1 to clipboard</span></dt><dd><p>
+							Copy the commit hashes of the selected revisions to the clipboard, delimited by CRLF.
+						</p></dd><dt><span class="term">Copy to clipboard</span></dt><dd><p>
+							Copy log messages to clipboard as described above.
+						</p></dd><dt><span class="term">Copy log messages to clipboard</span></dt><dd><p>
+							Copy the log messages of the selected revisions to the clipboard.
+							This will copy the log message for each revision.
+							This facilitates the preparation of release notes.
+						</p></dd><dt><span class="term">Search log messages...</span></dt><dd><p>
+							Search log messages as described above.
+						</p></dd></dl></div><p>
+		</p><p>
+			If you select two or more revisions (using the usual
+			<span class="keycap"><strong>Ctrl</strong></span> or <span class="keycap"><strong>Shift</strong></span> modifiers),
+			You can combine select commits to one commit. And cherry pick
+			these commits to current branch.
+		</p><p>
+			</p><div class="figure"><a name="tgit-dug-showlog-2-dia-2"></a><p class="title"><b>Figure 2.32. The Log Dialog Bottom Pane with Context Menu</b></p><div class="figure-contents"><div><img src="images/LogContextMenu2.png" alt="The Log Dialog Bottom Pane with Context Menu"></div></div></div><p><br class="figure-break">
+			The bottom pane of the Log dialog also has a context menu that allows you to
+			</p><div class="variablelist"><dl><dt><span class="term">Compare with base</span></dt><dd><p>
+							Compare chosen file with base version.
+						</p></dd><dt><span class="term">Show as unified diff</span></dt><dd><p>
+							Show file changes in unified diff format.
+							This context menu is only available for
+							files shown as <span class="emphasis"><em>modified</em></span>.
+						</p></dd><dt><span class="term">Compare with working tree</span></dt><dd><p>
+							Compare chosen file with working tree.
+						</p></dd><dt><span class="term">Revert changes to this revision</span></dt><dd><p>
+							Revert chosen files to the state of this revision.
+						</p></dd><dt><span class="term">Revert changes to parent revision</span></dt><dd><p>
+							Revert chosen files to the state before this revision.
+						</p></dd><dt><span class="term">Show log</span></dt><dd><p>
+							Show the revision log for the selected single file.
+						</p></dd><dt><span class="term">Blame...</span></dt><dd><p>
+							Opens the Blame dialog, allowing you to blame up to the
+							selected revision (cf. <a class="xref" href="tgit-dug-blame.html" title="Who Changed Which Line?">the section called “Who Changed Which Line?”</a>).
+						</p></dd><dt><span class="term">Save revision to...</span></dt><dd><p>
+							Save the selected revision to a file so you
+							have an older version of that file.
+						</p></dd><dt><span class="term">Export selection to...</span></dt><dd><p>
+							Saves the selected files to a target directory. Compared to "Save revision to..." this preserves the directory structure.
+						</p></dd><dt><span class="term">View revision in alternative editor</span></dt><dd><p>
+							Show chosen file with an alternative editor such as notepad2 with chosen commit.
+						</p></dd><dt><span class="term">Open/Open with...</span></dt><dd><p>
+							Open the selected file, either with the default viewer for
+							that file type, or with a program you choose.
+						</p></dd><dt><span class="term">Explore to</span></dt><dd><p>
+							Open directory of file with Explore.
+						</p></dd><dt><span class="term">Copy paths to clipboard</span></dt><dd><p>
+							Copy paths to clipboard
+						</p></dd><dt><span class="term">Copy all information to clipboard</span></dt><dd><p>
+							Copy all information to clipboard, include version info.
+						</p></dd></dl></div><p>
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				You may notice that sometimes we refer to changes and other times
+				to differences. What's the difference?
+			</p></div></div><div class="sect2" title="Filtering Log Messages"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-filter"></a>Filtering Log Messages</h3></div></div></div><a class="indexterm" name="id719508"></a><p>
+			If you want to restrict the log messages to show only those
+			you are interested in rather than scrolling through a list
+			of hundreds, you can use the filter controls at the top of
+			the Log Dialog.
+		</p><p>
+			The first element is the branch/revision filter.
+			Clicking on it opens the Reference Browser (see <a class="xref" href="tgit-dug-browse-ref.html" title="Browse All Refs">the section called “Browse All Refs”</a>).
+			There you can select single or multiple references. If you select exactly two references,
+			you can choose how to combine them (showing especially both A and B "A B"; showing
+			differences "A...B" or all commits between A and B "A..B").
+			This filter element also contains a special context menu. Here shortcuts for "HEAD",
+			"FETCH_HEAD", "All" and "All local branches" are available. Also, the last manual selected
+			filters are included there.
+		</p><p>
+			The start and end date controls allow you
+			to restrict the output to a known date range. The search
+			box allows you to show only messages which contain a
+			particular phrase. A default limitation for <span class="guilabel">From</span> or the number of log entries displayed can be configured in the settings dialog on the <span class="guilabel">Dialogs 1</span> page (cf. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-dialogs" title="TortoiseGit Dialog Settings">the section called “TortoiseGit Dialog Settings”</a>). When a default limitation is active, the <span class="guilabel">From</span> has a blueish background. By opening the context menu on the date picker, you can configure the default limit or disable the default limit for the current dialogue.
+		</p><p>
+			Click on the search icon (the magnifier glass) to select which information you want
+			to search in, to choose <span class="emphasis"><em>regex</em></span> mode, and to toggle case sensitivity.
+			Deselecting "Paths" can significantly speed up the filter.
+
+			</p><div class="figure"><a name="tgit-dug-showlog-filter-dia-1"></a><p class="title"><b>Figure 2.33. Option Menu for the Log Filter</b></p><div class="figure-contents"><div><img src="images/LogFilterOptions.png" alt="Option Menu for the Log Filter"></div></div></div><p><br class="figure-break">
+
+			Normally you will only need a simple sub-string search, but if you
+			need to more flexible search terms, you can use regular expressions.
+			If you hover the mouse over the box, a tooltip will give hints
+			on how to use the regex functions.
+			To invert the results for the entire search expression, start the string with an exclamation mark ('!').
+			You can also find online documentation and a tutorial at
+			<a class="ulink" href="https://www.regular-expressions.info/" target="_blank">
+				<em class="citetitle">https://www.regular-expressions.info/</em>
+			</a>.
+			The filter works by checking whether your filter string matches
+			the log entries, and then only those entries which <span class="emphasis"><em>match</em></span>
+			the filter string are shown.
+		</p><p>
+			Simple sub-string search works in a manner similar to a search engine.
+			Strings to search for are separated by spaces, and all strings must
+			match. You can use a leading <code class="literal">-</code> to specify that a
+			particular sub-string is not found (invert matching for that term),
+			and you can use <code class="literal">!</code> at the start of the expression
+			to invert matching for the entire expression.
+			You can use a leading <code class="literal">+</code> to specify that a sub-string
+			should be included, even if previously excluded with a <code class="literal">-</code>.
+			Note that the order of inclusion/exclusion is significant here.
+			You can use quotation marks to surround a string which must contain spaces,
+			and if you want to search for a literal quotation mark you can use two
+			quotation marks together as a self-escaping sequence.
+			Note that the backslash character is <span class="emphasis"><em>not</em></span> used as
+			an escape character and has no special significance in simple sub-string
+			searches. Examples will make this easier:
+			</p><pre class="screen">
+Alice Bob -Eve
+			</pre><p>
+			searches for strings containing both Alice and Bob but not Eve
+			</p><pre class="screen">
+Alice -Bob +Eve
+			</pre><p>
+			searches for strings containing both Alice but not Bob, or strings
+			which contain Eve.
+			</p><pre class="screen">
+-Case +SpecialCase
+			</pre><p>
+			searches for strings which do not contain Case, but still include
+			strings which contain SpecialCase.
+			</p><pre class="screen">
+!Alice Bob
+			</pre><p>
+			searches for strings which do not contain both Alice and Bob
+			</p><pre class="screen">
+!-Alice -Bob
+			</pre><p>
+			do you remember De Morgan's theorem? NOT(NOT Alice AND NOT Bob)
+			reduces to (Alice OR Bob).
+			</p><pre class="screen">
+"Alice and Bob"
+			</pre><p>
+			searches for the literal expression <span class="quote">“<span class="quote">Alice and Bob</span>”</span>
+			</p><pre class="screen">
+""
+			</pre><p>
+			searches for a double-quote anywhere in the text
+			</p><pre class="screen">
+"Alice says ""hi"" to Bob"
+			</pre><p>
+			searches for the literal expression <span class="quote">“<span class="quote">Alice says "hi" to Bob</span>”</span>.
+		</p><p>
+			You can also filter the path names in the bottom pane using the
+			<span class="guimenu">View</span> → <span class="guimenuitem">Hide unrelated changed paths</span>
+			Related paths are those which contain the path used to display
+			the log. If you fetch the log for a folder, that means anything
+			in that folder or below it. For a file it means just that one file.
+			If you want to gray out the unrelated ones, check
+			<span class="guimenu">View</span> → <span class="guimenuitem">Gray unrelated changed paths</span>
+			Uncheck both menu items to hide the unrelated paths completely.
+		</p><p>
+			In the lower left there are the checkboxes <span class="guilabel">All branches</span> and <span class="guilabel">Show whole project</span>. Use these to override the branch resp. a file/folder filter and show the log for the whole repository. Please note that these settings are remembered for a repository - even if you started the log dialog on a single file.
+		</p><p>
+			You can show whole project history, no choose directory or file by click
+			<span class="guilabel">Show Whole Project</span>
+		</p><p>
+			<span class="guimenu">View</span>+<span class="guimenu">Labels</span> → <span class="guimenuitem">Tags</span>
+			<span class="guimenu">View</span>+<span class="guimenu">Labels</span> → <span class="guimenuitem">Local branches</span>
+			<span class="guimenu">View</span>+<span class="guimenu">Labels</span> → <span class="guimenuitem">Remote branches</span>
+			You can disable showing some reference types in the log graph.
+		</p><p>
+			<span class="guimenu">View</span> → <span class="guimenuitem">Gravatar</span>
+			You can enable/disable Gravatar for a specific repository.
+		</p><p>
+			<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">First Parent</span>
+			just follow up first parent commit. This will help understand the overall history.
+		</p><p>
+			<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">No merges</span>
+			Skips all merge points.
+		</p><p>
+			<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">Follow renames</span>
+			This is available to a single file only, which tracks renames.
+			Otherwise, the log list stops at the commit that the current filename introduced.
+		</p><p>
+			<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">Compressed Graph</span>
+			The log graph is simplified to include merge points, commits with references, and possibly other commits.
+		</p><p>
+			<span class="guimenu">Walk Behavior</span> → <span class="guimenuitem">Show labeled commits only</span>
+			The log graph is simplified to include commits with references only.
+		</p></div><div class="sect2" title="Navigation"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-navigation"></a>Navigation</h3></div></div></div><a class="indexterm" name="id720046"></a><p>
+			You can use the drop-down control on the upper right to select a navigation type
+			(e.g. Author Email, Parent 1, Selection history),
+			then use the <span class="guibutton">Up</span>
+			and <span class="guibutton">Down</span> green buttons
+			to navigate through the commits which match the navigation type
+			relative to the current selected one.
+		</p><p>
+			Alternatively to the <span class="guibutton">Up</span>
+			and <span class="guibutton">Down</span> green buttons,
+			hotkeys <span class="keycap"><strong>ALT</strong></span>+<span class="keycap"><strong>UP</strong></span>
+			and <span class="keycap"><strong>ALT</strong></span>+<span class="keycap"><strong>DOWN</strong></span>
+			are also available.
+		</p><p>
+			Regarding the navigation type "Selection History",
+			TortoiseGit memorizes the history of selected commits,
+			so that you can navigate through those commits
+			you selected in the past easily.
+			You can also navigate them by pressing
+			<span class="keycap"><strong>ALT</strong></span>+<span class="keycap"><strong>LEFT</strong></span>,
+			<span class="keycap"><strong>ALT</strong></span>+<span class="keycap"><strong>RIGHT</strong></span>,
+			<span class="keycap"><strong>Browse Back</strong></span>,
+			and <span class="keycap"><strong>Browse Forward</strong></span>.
+			<span class="keycap"><strong>Back</strong></span> and <span class="keycap"><strong>Forward</strong></span> buttons
+			on mouse are also available.
+		</p><p>
+			If you also press <span class="keycap"><strong>SHIFT</strong></span>
+			you can navigate through the selection history
+			without selecting the last commits
+			(i.e., just scrolling to and highlighting them).
+			This helps you to navigate through commits
+			and then select the commit(s) you really want to select
+			(e.g. you can compare the current selected commit
+			with the one you selected before).
+		</p><p>
+			If you want to jump to a commit with a particular hash, you may
+			do so by pressing <span class="keycap"><strong>Ctrl+V</strong></span> or <span class="keycap"><strong>Shift+Insert</strong></span>
+			(into any log dialog element other than the search box) to paste the hash
+			from the clipboard. If it has the form of a valid commit hash, the log
+			dialog will attempt to jump to it.
+		</p></div><div class="sect2" title="Statistical Information"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-5"></a>Statistical Information</h3></div></div></div><a class="indexterm" name="id720158"></a><p>
+			The <span class="guibutton">Statistics</span> button brings up a box
+			showing some interesting information about the revisions
+			shown in the Log dialog. This shows how many authors have
+			been at work, how many commits they have made, progress
+			by week, and much more. Now you can see at a glance who
+			has been working hardest and who is slacking ;-)
+		</p><div class="sect3" title="Statistics Page"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-showlog-stats-1"></a>Statistics Page</h4></div></div></div><p>
+				This page gives you all the numbers you can think of,
+				in particular the period and number of revisions covered,
+				and some min/max/average values.
+			</p></div><div class="sect3" title="Commits by Author Page"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-showlog-stats-2"></a>Commits by Author Page</h4></div></div></div><p>
+				</p><div class="figure"><a name="tgit-dug-showlog-stats-dia-2"></a><p class="title"><b>Figure 2.34. Commits-by-Author Histogram</b></p><div class="figure-contents"><div><img src="images/StatsByAuthor.png" alt="Commits-by-Author Histogram"></div></div></div><p><br class="figure-break">
+				This graph shows you which authors have been active on the
+				project as a simple histogram, stacked histogram or
+				pie chart.
+				</p><div class="figure"><a name="tgit-dug-showlog-stats-dia-3"></a><p class="title"><b>Figure 2.35. Commits-by-Author Pie Chart</b></p><div class="figure-contents"><div><img src="images/StatsByAuthPie.png" alt="Commits-by-Author Pie Chart"></div></div></div><p><br class="figure-break">
+			</p><p>
+				Where there are a few major authors and many minor contributors,
+				the number of tiny segments can make the graph more difficult to
+				read. The slider at the bottom allows you to set a threshold
+				(as a percentage of total commits) below which any activity is
+				grouped into an <span class="emphasis"><em>Others</em></span> category.
+			</p></div><div class="sect3" title="Commits by date Page"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-showlog-stats-3"></a>Commits by date Page</h4></div></div></div><p>
+				</p><div class="figure"><a name="tgit-dug-showlog-stats-dia-4"></a><p class="title"><b>Figure 2.36. Commits-by-date Graph</b></p><div class="figure-contents"><div><img src="images/StatsByDate.png" alt="Commits-by-date Graph"></div></div></div><p><br class="figure-break">
+				This page gives you a graphical representation of project
+				activity in terms of number of commits <span class="emphasis"><em>and</em></span>
+				author. This gives some idea of when a project is being worked
+				on, and who was working at which time.
+			</p><p>
+				When there are several authors, you will get many lines on the
+				graph. There are two views available here: <span class="emphasis"><em>normal</em></span>,
+				where each author's activity is relative to the base line, and
+				<span class="emphasis"><em>stacked</em></span>, where each author's activity is
+				relative to the line underneath.
+				The latter option avoids the lines crossing over, which can make
+				the graph easier to read, but less easy to see one author's output.
+			</p></div><p>
+			By default the analysis is case-sensitive, so users
+			<code class="literal">PeterEgan</code> and <code class="literal">PeteRegan</code>
+			are treated as different authors. However, in many cases user names
+			are not case-sensitive, and are sometimes entered inconsistently,
+			so you may want <code class="literal">DavidMorgan</code> and
+			<code class="literal">davidmorgan</code> to be treated as the same person.
+			Use the <span class="guilabel">Authors case insensitive</span> checkbox
+			to control how this is handled.
+		</p><p>
+			The statistics dialog also honors the <code class="filename">.mailmap</code> file
+			(see <a class="xref" href="git-misc.html#gitmailmap(5)" title="gitmailmap(5)">the section called “gitmailmap(5)”</a>).
+		</p><p>
+			Note that the statistics cover the same period as the
+			Log dialog. If that is only displaying one revision
+			then the statistics will not tell you very much.
+		</p></div><div class="sect2" title="Refreshing the View"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-showlog-refresh"></a>Refreshing the View</h3></div></div></div><p>
+			If you want to check the repository again for newer log messages,
+			you can simply refresh the view using <span class="keycap"><strong>F5</strong></span>.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-changelists.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-revgraph.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Change Lists </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Revision Graphs</td></tr></table></div></body></html>

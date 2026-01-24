@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix B. IBugTraqProvider interface</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-faq.html" title="Appendix A. Frequently Asked Questions (FAQ)"><link rel="next" href="tgit-ibugtraqprovider-1.html" title="The IBugTraqProvider interface"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix B. IBugTraqProvider interface</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-faq.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-ibugtraqprovider-1.html">Next</a></td></tr></table><hr></div><div class="appendix" title="Appendix B. IBugTraqProvider interface"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-ibugtraqprovider"></a>Appendix B. IBugTraqProvider interface</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-ibugtraqprovider.html#tgit-bugtraqnaming">Naming conventions</a></span></dt><dt><span class="sect1"><a href="tgit-ibugtraqprovider-1.html">The IBugTraqProvider interface</a></span></dt><dt><span class="sect1"><a href="tgit-ibugtraqprovider-2.html">The IBugTraqProvider2 interface</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><a class="indexterm" name="id757437"></a><a class="indexterm" name="id757425"></a><a class="indexterm" name="id757461"></a><a class="indexterm" name="id757449"></a><p>
+			To get a tighter integration with issue trackers than by simply
+			using the <code class="literal">bugtraq.</code> config keys, TortoiseGit can make use of COM
+			plugins. With such plugins it is possible to fetch information
+			directly from the issue tracker, interact with the user and provide
+			information back to TortoiseGit about open issues, verify log
+			messages entered by the user and even run actions after a successful
+			commit to e.g, close an issue.
+		</p><p>
+			We can't provide information and tutorials on how you have
+			to implement a COM object in your preferred programming language, but
+			we have example plugins in C++/ATL and C# in our repository in
+			the <code class="filename">contrib/issue-tracker-plugins</code> folder.
+			In that folder you can also find the required include files you
+			need to build your plugin.
+			(<a class="xref" href="tgit-preface-source.html" title="TortoiseGit is free!">the section called “TortoiseGit is free!”</a> explains how to access the repository.)
+		</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+				You should provide both a 32-bit and 64-bit version of your
+				plugin. Because the x64-Version of TortoiseGit cannot use a 32-bit
+				plugin and vice-versa.
+			</p></div></div><div class="sect1" title="Naming conventions"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-bugtraqnaming"></a>Naming conventions</h2></div></div></div><p>
+			If you release an issue tracker plugin for Tortoise*-clients, please do
+			<span class="emphasis"><em>not</em></span> name it <span class="emphasis"><em>Tortoise&lt;Something&gt;</em></span>.
+			We'd like to reserve the <span class="emphasis"><em>Tortoise</em></span> prefix for a version control
+			client integrated into the windows shell. For example: TortoiseCVS, TortoiseSVN,
+			TortoiseHg, TortoiseGit and TortoiseBzr are all version control clients.
+		</p><p>
+			Please name your plugin for a Tortoise client <span class="emphasis"><em>Turtle&lt;Something&gt;</em></span>,
+			where <span class="emphasis"><em>&lt;Something&gt;</em></span> refers to the issue tracker that you are connecting to.
+			Alternatively choose a name that sounds like <span class="emphasis"><em>Turtle</em></span> but has
+			a different first letter. Nice examples are:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>TurtleMine - An issue tracker plugin for Redmine</p></li><li class="listitem"><p>VurtleOne - An issue tracker plugin for VersionOne</p></li></ul></div><p>
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-faq.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-ibugtraqprovider-1.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Frequently Asked Questions (FAQ) </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> The IBugTraqProvider interface</td></tr></table></div></body></html>

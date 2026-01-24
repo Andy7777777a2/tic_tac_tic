@@ -1,0 +1,223 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Integration with Bug Tracking Systems / Issue Trackers</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-export.html" title="Exporting a Git Working Tree"><link rel="next" href="tgit-dug-settings.html" title="TortoiseGit's Settings"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Integration with Bug Tracking Systems / Issue Trackers</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-export.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-settings.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Integration with Bug Tracking Systems / Issue Trackers"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-bugtracker"></a>Integration with Bug Tracking Systems / Issue Trackers</h2></div></div></div><a class="indexterm" name="id809475"></a><a class="indexterm" name="id809489"></a><a class="indexterm" name="id809483"></a><a class="indexterm" name="id809496"></a><p>
+		It is very common in Software Development for changes to be related to a specific
+		bug or issue ID. Users of bug tracking systems (issue trackers) would like to associate
+		the changes they make in Git with a specific ID in their issue tracker.
+		Most issue trackers therefore provide a pre-commit hook script which parses the log
+		message to find the bug ID with which the commit is associated.
+		This is somewhat error prone since it relies on the user to write the log message
+		properly so that the pre-commit hook script can parse it correctly.
+	</p><p>
+		TortoiseGit can help the user in two ways:
+		</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+					When the user enters a log message, a well defined line including
+					the issue number associated with the commit can be added automatically.
+					This reduces the risk that the user enters the issue number in a way
+					the bug tracking tools can't parse correctly.
+				</p><p>
+					Or TortoiseGit can highlight the part of
+					the entered log message which is recognized by the issue tracker.
+					That way the user knows that the log message can be parsed correctly.
+				</p></li><li class="listitem"><p>
+					When the user browses the log messages, TortoiseGit
+					creates a link out of each bug ID in the log message which fires
+					up the browser to the issue mentioned.
+				</p></li></ol></div><p>
+	</p><div class="sect2" title="Adding Issue Numbers to Log Messages"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-bugtracker-link"></a>Adding Issue Numbers to Log Messages</h3></div></div></div><p>
+			You can integrate a bug tracking tool of your choice in
+			TortoiseGit. To do this, you have to define
+			some configuration, which start with <code class="literal">bugtraq.</code>.
+			These settings can be edited using TortoiseGit settings dialog: <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-hooks-issuetracker-config" title="Config">the section called “Config”</a>
+		</p><p>
+			There are two ways to integrate TortoiseGit with issue trackers. One is
+			based on simple strings, the other is based on
+			<span class="emphasis"><em>regular expressions</em></span>.
+			The configuration used by both approaches are:
+			</p><div class="variablelist"><dl><dt><span class="term">bugtraq.url</span></dt><dd><p>
+							Set this configuration to the URL of your bug tracking tool.
+							It must be properly URI encoded and it has to contain
+							<code class="literal">%BUGID%</code>.
+							<code class="literal">%BUGID%</code> is replaced with the Issue number
+							you entered. This allows TortoiseGit
+							to display a link in the log dialog, so when you are looking
+							at the revision log you can jump directly to your
+							bug tracking tool.
+							You do not have to provide this configuration, but then
+							TortoiseGit shows only the
+							issue number and not the link to it.
+							e.g the TortoiseGit project is using
+							<code class="systemitem">https://tortoisegit.org/issue/%BUGID%</code>
+						</p></dd><dt><span class="term">bugtraq.warnifnoissue</span></dt><dd><p>
+							Set this to <code class="literal">true</code>, if you want
+							TortoiseGit to warn you
+							because of an empty issue-number text field. Valid values
+							are <code class="literal">true/false</code>.
+							<span class="emphasis"><em>
+								If not defined, <code class="literal">false</code> is assumed.
+							</em></span>
+						</p></dd></dl></div><p>
+		</p><div class="sect3" title="Issue Number in Text Box"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-bugtracker-link-simple"></a>Issue Number in Text Box</h4></div></div></div><p>
+				In the simple approach, TortoiseGit shows the user a separate
+				input field where a bug ID can be entered. Then a separate line
+				is appended/prepended to the log message the user entered.
+				</p><div class="variablelist"><dl><dt><span class="term">bugtraq.message</span></dt><dd><p>
+								This configuration activates the bug tracking system
+								in <span class="emphasis"><em>Input field</em></span> mode.
+								If this configuration is set, then TortoiseGit
+								will prompt you to enter an issue number when you commit
+								your changes. It's used to add a line at the end of the
+								log message. It must contain
+								<code class="literal">%BUGID%</code>, which is replaced with the
+								issue number on commit. This ensures that your commit log
+								contains a reference to the issue number which is always
+								in a consistent format and can be parsed by your
+								bug tracking tool to associate the issue number with a
+								particular commit. As an example you might use
+								<code class="literal">Issue : %BUGID%</code>,
+								but this depends on your Tool.
+							</p></dd><dt><span class="term">bugtraq.append</span></dt><dd><p>
+								This configuration defines if the bug-ID is appended (true)
+								to the end of the log message or inserted (false) at the
+								start of the log message. Valid values are
+								<code class="literal">true/false</code>.
+								<span class="emphasis"><em>
+									If not defined, <code class="literal">true</code> is assumed,
+									so that existing projects don't break.
+								</em></span>
+							</p></dd><dt><span class="term">bugtraq.label</span></dt><dd><p>
+								This text is shown by TortoiseGit
+								on the commit dialog to label the edit box where you enter
+								the issue number. If it's not set,
+								<code class="literal">Bug-ID / Issue-Nr:</code> will be displayed.
+								Keep in mind though that the window will not be resized
+								to fit this label, so keep the size of the label below
+								20-25 characters.
+							</p></dd><dt><span class="term">bugtraq.number</span></dt><dd><p>
+								If set to <code class="literal">true</code> only numbers are allowed
+								in the issue-number text field.
+								An exception is the comma, so you can comma separate several
+								numbers. Valid values are <code class="literal">true/false</code>.
+								<span class="emphasis"><em>
+									If not defined, <code class="literal">true</code> is assumed.
+								</em></span>
+							</p></dd></dl></div><p>
+			</p></div><div class="sect3" title="Issue Numbers Using Regular Expressions"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-bugtracker-link-regex"></a>Issue Numbers Using Regular Expressions</h4></div></div></div><p>
+				In the approach with <span class="emphasis"><em>regular expressions</em></span>, TortoiseGit
+				doesn't show a separate input field but marks the part of the log message
+				the user enters which is recognized by the issue tracker. This is done while
+				the user writes the log message. This also means that the bug ID can be
+				anywhere inside a log message! This method is much more flexible, and is
+				the one used by the TortoiseGit project itself.
+				</p><div class="variablelist"><dl><dt><span class="term">bugtraq.logregex</span></dt><dd><p>
+								This configuration activates the bug tracking system
+								in <span class="emphasis"><em>Regex</em></span> mode.
+								It contains either a single regular expressions,
+								or two regular expressions separated by a newline.
+							</p><p>
+								If two expressions are set, then the first expression is used as
+								a pre-filter to find expressions which contain bug IDs. The
+								second expression then extracts the bare bug IDs from the
+								result of the first regex. This allows you to use a list
+								of bug IDs and natural language expressions if you wish.
+								e.g. you might fix several bugs and include a string something
+								like this:
+								<span class="quote">“<span class="quote">This change resolves issues #23, #24 and #25</span>”</span>
+							</p><p>
+								If you want to catch bug IDs as used in the expression above
+								inside a log message, you could use the following regex strings,
+								which are the ones used by the TortoiseGit project:
+								<code class="literal">[Ii]ssues?:?(\s*(,|and)?\s*#\d+)+</code> and
+								<code class="literal">(\d+)</code>
+							</p><p>
+								The first expression picks out <span class="quote">“<span class="quote">issues #23, #24 and #25</span>”</span>
+								from the surrounding log message.
+								The second regex extracts plain decimal numbers from the output
+								of the first regex, so it will return <span class="quote">“<span class="quote">23</span>”</span>, <span class="quote">“<span class="quote">24</span>”</span>
+								and <span class="quote">“<span class="quote">25</span>”</span> to use as bug IDs.
+							</p><p>
+								Breaking the first regex down a little, it must start with
+								the word <span class="quote">“<span class="quote">issue</span>”</span>, possibly capitalised.
+								This is optionally followed by an <span class="quote">“<span class="quote">s</span>”</span> (more than one
+								issue) and optionally a colon. This is followed by one or more
+								groups each having zero or more leading whitespace, an optional
+								comma or <span class="quote">“<span class="quote">and</span>”</span> and more optional space. Finally there
+								is a mandatory <span class="quote">“<span class="quote">#</span>”</span> and a mandatory decimal number.
+							</p><p>
+								If only one expression is set, then the bare bug IDs must be
+								matched in the groups of the regex string. Example:
+								<code class="literal">[Ii]ssue(?:s)? #?(\d+)</code>
+								This method is required by a few issue trackers, e.g. trac,
+								but it is harder to construct the regex. We recommend that you
+								only use this method if your issue tracker documentation
+								tells you to.
+							</p><p>
+								If you are unfamiliar with regular expressions, take a look at
+								the introduction at
+								<a class="ulink" href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank">
+									<em class="citetitle">https://en.wikipedia.org/wiki/Regular_expression</em>
+								</a>,
+								and the online documentation and tutorial at
+								<a class="ulink" href="https://www.regular-expressions.info/" target="_blank">
+									<em class="citetitle">https://www.regular-expressions.info/</em>
+								</a>.
+							</p></dd></dl></div><p>
+			</p></div><p>
+			If both the <code class="literal">bugtraq:message</code> and <code class="literal">bugtraq:logregex</code>
+			properties are set, <code class="literal">logregex</code> takes precedence.
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				Even if you don't have an issue tracker with a pre-commit hook parsing your
+				log messages, you still can use this to turn the issues mentioned in your
+				log messages into links!
+			</p><p>
+				And even if you don't need the links, the issue numbers show up as a
+				separate column in the log dialog, making it easier to find the changes
+				which relate to a particular issue.
+			</p></div><div class="sect3" title="Issue Tracker Provider Settings based on Hierarchical Git Configuration"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-bugtracker-link-provider"></a>Issue Tracker Provider Settings based on Hierarchical Git Configuration</h4></div></div></div><p>
+				This is a hierarchical git configuration to associate issue tracker plugin with your project,
+				rather than with to a specific directory path. Such settings are more portable.
+				To deploy the settings, set to Project level and commit <code class="literal">.tgitconfig</code>.
+				</p><div class="variablelist"><dl><dt><span class="term">bugtraq.provideruuid</span></dt><dd><p>
+								This is the GUID of 32-bit issue tracker plugin.
+							</p></dd><dt><span class="term">bugtraq.provideruuid64</span></dt><dd><p>
+								This is the GUID of 64-bit issue tracker plugin.
+							</p></dd><dt><span class="term">bugtraq.providerparams</span></dt><dd><p>
+								This is the parameter string for the issue tracker plugin.
+							</p></dd></dl></div><p>
+			</p></div><p>
+			This issue tracker integration is not restricted to TortoiseGit; it can be used
+			with other clients (e.g. TortoiseSVN). For more information, read the full
+			<a class="ulink" href="https://gitlab.com/tortoisegit/tortoisegit/blob/master/doc/issuetrackers.txt" target="_blank">
+				<em class="citetitle">Issue Tracker Integration Specification</em>
+			</a>
+			in the TortoiseGit source repository.
+			(<a class="xref" href="tgit-preface-source.html" title="TortoiseGit is free!">the section called “TortoiseGit is free!”</a> explains how to access the repository).
+		</p></div><div class="sect2" title="Getting Information from the Issue Tracker"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-bugtracker-ref"></a>Getting Information from the Issue Tracker</h3></div></div></div><p>
+			The previous section deals with adding issue information to the
+			log messages. But what if you need to get information from the issue
+			tracker? The commit dialog has a Windows COM interface which allows
+			integration an external program that can talk to your tracker.
+			Typically you might want to query the tracker to get a list of
+			open issues assigned to you, so that you can pick the issues that
+			are being addressed in this commit.
+		</p><p>
+			Any such interface is of course highly specific to your system,
+			so we cannot provide this part, and describing how to create such a
+			program is beyond the scope of this manual. The interface definition
+			and sample programs can be obtained from the <code class="literal">contrib</code>
+			folder in the
+			<a class="ulink" href="https://gitlab.com/tortoisegit/tortoisegit/tree/master/contrib/issue-tracker-plugins" target="_blank">
+				<em class="citetitle">TortoiseGit repository</em>
+			</a>.
+			(<a class="xref" href="tgit-preface-source.html" title="TortoiseGit is free!">the section called “TortoiseGit is free!”</a> explains how to access the repository).
+			A summary of the API is also given in <a class="xref" href="tgit-ibugtraqprovider.html" title="Appendix B. IBugTraqProvider interface">Appendix B, <i>IBugTraqProvider interface</i></a>.
+		</p><p>
+			For illustration purposes, let's suppose that your system administrator
+			has provided you with an issue tracker plugin which you have installed,
+			and that you have set up some of your working trees to use the plugin
+			in TortoiseGit's settings dialog.
+			When you open the commit dialog from a working tree to which the plugin
+			has been assigned, you will see a new button at the top of the dialog.
+			</p><div class="figure"><a name="tgit-dug-bugtracker-dia-1"></a><p class="title"><b>Figure 2.72. Example issue tracker query dialog</b></p><div class="figure-contents"><div><img src="images/IssueTrackerQuery.png" alt="Example issue tracker query dialog"></div></div></div><p><br class="figure-break">
+			In this example you can select one or more open issues. The plugin
+			can then generate specially formatted text which it adds to your log
+			message.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-export.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-settings.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Exporting a Git Working Tree </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> TortoiseGit's Settings</td></tr></table></div></body></html>

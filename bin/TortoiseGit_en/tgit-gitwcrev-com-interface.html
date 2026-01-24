@@ -1,0 +1,189 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>COM interface</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-gitwcrev.html" title="Chapter 3. The GitWCRev Program"><link rel="prev" href="tgit-gitwcrev-example.html" title="Keyword Example"><link rel="next" href="tgit-faq.html" title="Appendix A. Frequently Asked Questions (FAQ)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">COM interface</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-gitwcrev-example.html">Prev</a> </td><th width="60%" align="center">Chapter 3. The GitWCRev Program</th><td width="20%" align="right"> <a accesskey="n" href="tgit-faq.html">Next</a></td></tr></table><hr></div><div class="sect1" title="COM interface"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-gitwcrev-com-interface"></a>COM interface</h2></div></div></div><a class="indexterm" name="id703337"></a><p>
+			If you need to access Git revision information from other
+			programs, you can use the COM interface of GitWCRev. The object to
+			create is <code class="literal">GitWCRev.object</code>, and the following
+			methods are supported:
+			</p><div class="table"><a name="tgit-gitwcrev-COM-table"></a><p class="title"><b>Table 3.4. COM/automation methods supported</b></p><div class="table-contents"><table summary="COM/automation methods supported" border="1"><colgroup><col><col></colgroup><thead><tr><th>Method</th><th>Description</th></tr></thead><tbody><tr><td>.GetWCInfo</td><td>
+								This method checks and traverses the passed path gathering the
+								status and revision information. Naturally you must call this before
+								you can access the information using the remaining methods.
+								The first parameter is the path.
+								The second parameter needs to be true if you want to exclude submodules.
+								Equivalent to the <code class="literal">-s</code> command line switch.
+							</td></tr><tr><td>.Revision</td><td>
+								The HEAD commit revision of the working tree.
+								Equivalent to <code class="literal">$WCREV$</code>.
+							</td></tr><tr><td>.Date</td><td>
+								The commit date/time of the HEAD commit.
+								Equivalent to <code class="literal">$WCDATE$</code>.
+							</td></tr><tr><td>.Author</td><td>
+								The author of the HEAD commit, that is, the
+								last person to commit changes to the working tree.
+							</td></tr><tr><td>.HasModifications</td><td>True if there are local modifications under the passed path</td></tr><tr><td>.HasUnversioned</td><td>True if there are unversioned items under the passed path</td></tr><tr><td>.IsGitItem</td><td>
+								True if the item is versioned (false for directories except the working tree root).
+							</td></tr><tr><td>.IsUnborn</td><td>
+								True if the branch is not yet born.
+							</td></tr><tr><td>.HasSubmodule</td><td>
+								True if passed path contains submodules.
+							</td></tr><tr><td>.HasSubmoduleModifications</td><td>
+								True if a submodule has uncommitted changes.
+							</td></tr><tr><td>.HasSubmoduleUnversioned</td><td>
+								True if a submodule has unversioned items.
+							</td></tr><tr><td>.IsSubmoduleUp2Date</td><td>
+								True if all submodules are checked out at the in the parent repository specified version.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			The following example shows how the interface might be used.
+</p><pre class="programlisting">
+// testCOM.js - javascript file
+// test script for the GitWCRev COM/Automation-object
+
+filesystem = new ActiveXObject("Scripting.FileSystemObject");
+
+GitWCRevObject1 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject2 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject3 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject4 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject5 = new ActiveXObject("GitWCRev.object");
+
+GitWCRevObject2_1 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject2_2 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject2_3 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject2_4 = new ActiveXObject("GitWCRev.object");
+GitWCRevObject2_5 = new ActiveXObject("GitWCRev.object");
+
+GitWCRevObject1.GetWCInfo(filesystem.GetAbsolutePathName("."), 0);
+GitWCRevObject2.GetWCInfo(filesystem.GetAbsolutePathName(".."), 0);
+GitWCRevObject3.GetWCInfo(filesystem.GetAbsolutePathName("GitWCRev.cpp"), 0);
+GitWCRevObject4.GetWCInfo(filesystem.GetAbsolutePathName("..\\.."), 0);
+
+GitWCRevObject2_1.GetWCInfo(filesystem.GetAbsolutePathName("."), 1);
+GitWCRevObject2_2.GetWCInfo(filesystem.GetAbsolutePathName(".."), 1);
+GitWCRevObject2_3.GetWCInfo(filesystem.GetAbsolutePathName("GitWCRev.cpp"), 1);
+GitWCRevObject2_4.GetWCInfo(filesystem.GetAbsolutePathName("..\\.."), 1);
+
+wcInfoString1 = "Revision = " + GitWCRevObject1.Revision +
+                "\nDate = " + GitWCRevObject1.Date +
+                "\nAuthor = " + GitWCRevObject1.Author +
+                "\nHasMods = " + GitWCRevObject1.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject1.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject1.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject1.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject1.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject1.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject1.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject1.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject1.IsSubmoduleUp2Date;
+wcInfoString2 = "Revision = " + GitWCRevObject2.Revision +
+                "\nDate = " + GitWCRevObject2.Date +
+                "\nAuthor = " + GitWCRevObject2.Author +
+                "\nHasMods = " + GitWCRevObject2.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject2.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject2.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject2.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject2.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject2.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject2.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject2.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject2.IsSubmoduleUp2Date;
+wcInfoString3 = "Revision = " + GitWCRevObject3.Revision +
+                "\nDate = " + GitWCRevObject3.Date +
+                "\nAuthor = " + GitWCRevObject3.Author +
+                "\nHasMods = " + GitWCRevObject3.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject3.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject3.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject3.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject3.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject3.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject3.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject3.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject3.IsSubmoduleUp2Date;
+wcInfoString4 = "Revision = " + GitWCRevObject4.Revision +
+                "\nDate = " + GitWCRevObject4.Date +
+                "\nAuthor = " + GitWCRevObject4.Author +
+                "\nHasMods = " + GitWCRevObject4.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject4.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject4.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject4.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject4.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject4.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject4.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject4.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject4.IsSubmoduleUp2Date;
+
+WScript.Echo(wcInfoString1 + "\n");
+WScript.Echo(wcInfoString2 + "\n");
+WScript.Echo(wcInfoString3 + "\n");
+WScript.Echo(wcInfoString4 + "\n");
+
+wcInfoString1 = "Revision = " + GitWCRevObject2_1.Revision +
+                "\nDate = " + GitWCRevObject2_1.Date +
+                "\nAuthor = " + GitWCRevObject2_1.Author +
+                "\nHasMods = " + GitWCRevObject2_1.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject2_1.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject2_1.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject2_1.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject2_1.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject2_1.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject2_1.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject2_1.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject2_1.IsSubmoduleUp2Date;
+wcInfoString2 = "Revision = " + GitWCRevObject2_2.Revision +
+                "\nDate = " + GitWCRevObject2_2.Date +
+                "\nAuthor = " + GitWCRevObject2_2.Author +
+                "\nHasMods = " + GitWCRevObject2_2.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject2_2.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject2_2.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject2_2.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject2_2.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject2_2.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject2_2.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject2_2.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject2_2.IsSubmoduleUp2Date;
+wcInfoString3 = "Revision = " + GitWCRevObject2_3.Revision +
+                "\nDate = " + GitWCRevObject2_3.Date +
+                "\nAuthor = " + GitWCRevObject2_3.Author +
+                "\nHasMods = " + GitWCRevObject2_3.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject2_3.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject2_3.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject2_3.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject2_3.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject2_3.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject2_3.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject2_3.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject2_3.IsSubmoduleUp2Date;
+wcInfoString4 = "Revision = " + GitWCRevObject2_4.Revision +
+                "\nDate = " + GitWCRevObject2_4.Date +
+                "\nAuthor = " + GitWCRevObject2_4.Author +
+                "\nHasMods = " + GitWCRevObject2_4.HasModifications +
+                "\nHasUnversioned = " + GitWCRevObject2_4.HasUnversioned +
+                "\nIsTagged = " + GitWCRevObject2_4.IsWcTagged +
+                "\nIsGitItem = " + GitWCRevObject2_4.IsGitItem +
+                "\nIsUnborn = " + GitWCRevObject2_4.IsUnborn +
+                "\nHasSubmodule = " + GitWCRevObject2_4.HasSubmodule +
+                "\nHasSubmoduleModifications = " + GitWCRevObject2_4.HasSubmoduleModifications +
+                "\nHasSubmoduleUnversioned = " + GitWCRevObject2_4.HasSubmoduleUnversioned +
+                "\nIsSubmoduleUp2Date = " + GitWCRevObject2_4.IsSubmoduleUp2Date;
+
+WScript.Echo(wcInfoString1 + "\n");
+WScript.Echo(wcInfoString2 + "\n");
+WScript.Echo(wcInfoString3 + "\n");
+WScript.Echo(wcInfoString4 + "\n");
+</pre><p>
+		</p><p>
+			The following listing is an example on how to use the GitWCRev COM
+			object from C#:
+</p><pre class="programlisting">
+using LibGitWCRev;
+GitWCRev sub = new GitWCRev();
+sub.GetWCInfo("C:\\PathToMyFile\\MyFile.cc", false);
+if (sub.IsGitItem == true)
+{
+    MessageBox.Show("versioned");
+}
+else
+{
+    MessageBox.Show("not versioned");
+}
+</pre><p>
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-gitwcrev-example.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-gitwcrev.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Keyword Example </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix A. Frequently Asked Questions (FAQ)</td></tr></table></div></body></html>

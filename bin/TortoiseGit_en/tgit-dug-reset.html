@@ -1,0 +1,24 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Reset</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-cleanup.html" title="Cleanup"><link rel="next" href="tgit-dug-stash.html" title="Stash Changes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Reset</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-cleanup.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-stash.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Reset"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-reset"></a>Reset</h2></div></div></div><a class="indexterm" name="id816573"></a><p>
+		The reset dialog can be used to reset the current HEAD to the specified state and optionally also the index and the working tree. This can also be used to abort a merge.
+		</p><div class="figure"><a name="tgit-dug-reset-dia-1"></a><p class="title"><b>Figure 2.51. The Reset dialog</b></p><div class="figure-contents"><div><img src="images/GitReset.png" alt="The Reset dialog"></div></div></div><p><br class="figure-break">
+		</p><div class="figure"><a name="tgit-dug-reset-dia-2"></a><p class="title"><b>Figure 2.52. The Abort Merge dialog</b></p><div class="figure-contents"><div><img src="images/AbortMerge.png" alt="The Abort Merge dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		On the Reset dialog, you can click <span class="guibutton">...</span> to browse the log and choose a specific version.
+		In Abort merge dialog, you can only reset to HEAD.
+	</p><p>
+		<span class="guilabel">Soft: Leave working tree and index untouched</span>
+		Does not touch the index file nor the working tree at all (but resets the head to the selected commit, just like all modes do). This leaves all your changed files "Changes to be committed" as before.
+		This option is not available in Abort Merge dialog.
+	</p><p>
+		<span class="guilabel">Mixed: Leave working tree untouched, reset index</span>
+		Resets the index but not the working tree (i.e., the changed files are preserved but not marked for commit) and reports what has not been updated. This is the git default action.
+		This option can abort a merge.
+	</p><p>
+		<span class="guilabel">Hard: Reset working tree and index (discard all local changes)</span>
+		Resets the index and working tree. Any changes to tracked files in the working tree since the selected commit are discarded.
+		This option can abort a merge, and it is the default action in Abort Merge dialog.
+	</p><div class="caution" title="Git hard reset does not use the Windows recycle bin" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Git hard reset does not use the Windows recycle bin</h3><p>
+			Unlike the revert or clean functions of TortoiseGit, the hard reset does not make use of the Windows recycle bin, i.e., uncommitted changes might get lost!
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-reset(1)" title="git-reset(1)">the section called “git-reset(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-cleanup.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-stash.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Cleanup </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Stash Changes</td></tr></table></div></body></html>

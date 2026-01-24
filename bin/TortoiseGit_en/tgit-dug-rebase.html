@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Rebase</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-cherrypick.html" title="Cherry picking"><link rel="next" href="tgit-dug-conflicts.html" title="Resolving Conflicts"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Rebase</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-cherrypick.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-conflicts.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Rebase"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-rebase"></a>Rebase</h2></div></div></div><a class="indexterm" name="id817991"></a><p>
+		Rebase is quite complex and it alters/rewrites the history of a repository. Please make sure you understood its principles before using it (for general hints where to find more information about Git and rebasing see <a class="xref" href="tgit-preface-readingguide.html" title="Reading Guide">the section called “Reading Guide”</a> and especially <a class="xref" href="git-command.html#git-rebase(1)" title="git-rebase(1)">the section called “git-rebase(1)”</a>).
+	</p><p>
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Rebase</span>
+	</p><p>
+		The Rebase dialog will be shown.
+		</p><div class="figure"><a name="tgit-dug-rebase-dia-rebasedialog"></a><p class="title"><b>Figure 2.61. Rebase dialog</b></p><div class="figure-contents"><div><img src="images/GitRebase.png" alt="Rebase dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		Rebasing commits takes places from the bottom of the list to the top (in ascending order of the ID column). For example, <code class="option">squash</code> means that the commit gets squashed/combined with the previous commit(s) which are located below in the list (with a lower ID).
+	</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			Instead of setting <code class="option">pick</code>, <code class="option">skip</code>, <code class="option">edit</code>, <code class="option">squash</code> by using the context-menu, you can also use the following keys:
+			<span class="keycap"><strong>space</strong></span>: shifts the state, <span class="keycap"><strong>s</strong></span>: <code class="option">skip</code>, <span class="keycap"><strong>e</strong></span>: <code class="option">edit</code>, <span class="keycap"><strong>p</strong></span>: <code class="option">pick</code>, <span class="keycap"><strong>q</strong></span>: <code class="option">squash</code>
+		</p></div><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			There is a button that swaps branch and upstream.
+			Assume you are currently working on <code class="literal">master</code> branch,
+			and wish to rebase <code class="literal">feature</code> branch onto <code class="literal">master</code>.
+			Instead of switching to <code class="literal">feature</code> in advance,
+			select the commit of <code class="literal">feature</code> in log list,
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Rebase</span>
+			and click this swap button.
+			TortoiseGit's rebase moves <code class="literal">feature</code> to <code class="literal">master</code> directly, then
+			cherry-picks the commits. This approach touches fewer files and runs faster.
+		</p></div><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+			When preserving merge commits, re-ordering commits cannot be handled properly in all cases, see in known bugs of vanilla git rebase: <a class="xref" href="git-command.html#git-rebase(1)" title="git-rebase(1)">the section called “git-rebase(1)”</a>.
+		</p></div><div class="important" title="Conflicts" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Conflicts</h3><p>
+			Although major merge work is done by git automatically while rebasing, a conflict may happen during rebase (i.e., a file was modified in both branches, the one you are rebasing one and the on which you are rebasing),
+			please see <a class="xref" href="tgit-dug-conflicts.html" title="Resolving Conflicts">the section called “Resolving Conflicts”</a> on how to resolve conflicts.
+		</p><p>
+			Please note, that "REMOTE"/"theirs" in the conflict editor refers to the changes of the branch you rebase onto and "LOCAL"/"mine" to your version on the branch which you are rebasing.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-cherrypick.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-conflicts.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Cherry picking </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Resolving Conflicts</td></tr></table></div></body></html>

@@ -1,0 +1,132 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 2. TortoiseGit Daily Use Guide</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-intro-install.html" title="Installing TortoiseGit"><link rel="next" href="tgit-dug-create.html" title="Create Repository"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 2. TortoiseGit Daily Use Guide</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-intro-install.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-create.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 2. TortoiseGit Daily Use Guide"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-dug"></a>Chapter 2. TortoiseGit Daily Use Guide</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-dug.html#tgit-dug-general">Getting Started</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-icons">Icon Overlays</a></span></dt><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-menu">Context Menus</a></span></dt><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-drag">Drag and Drop</a></span></dt><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-shortcuts">Common Shortcuts</a></span></dt><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-auth">Authentication</a></span></dt><dt><span class="sect2"><a href="tgit-dug.html#tgit-dug-general-window-max">Maximizing Windows</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-create.html">Create Repository</a></span></dt><dt><span class="sect1"><a href="tgit-dug-clone.html">Clone Repository</a></span></dt><dt><span class="sect1"><a href="tgit-dug-checkout.html">Checking Out A Working Tree (Switch to commit)</a></span></dt><dt><span class="sect1"><a href="tgit-dug-commit.html">Committing Your Changes To The Repository</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-basics">The Commit Dialog</a></span></dt><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-changelists">Change Lists</a></span></dt><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-ignore">Excluding Items from the Commit List</a></span></dt><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-restore">Commit only parts of files</a></span></dt><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-log">Commit Log Messages</a></span></dt><dt><span class="sect2"><a href="tgit-dug-commit.html#tgit-dug-commit-progress">Commit Progress</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-wcstatus.html">Getting Status Information</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-wcstatus.html#tgit-dug-wcstatus-1">Icon Overlays</a></span></dt><dt><span class="sect2"><a href="tgit-dug-wcstatus.html#tgit-dug-wcstatus-winprops">Explorer Properties</a></span></dt><dt><span class="sect2"><a href="tgit-dug-wcstatus.html#tgit-dug-wcstatus-2">Status</a></span></dt><dt><span class="sect2"><a href="tgit-dug-wcstatus.html#tgit-dug-diffing">Viewing Diffs</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-pull.html">Pull and Fetch change</a></span></dt><dt><span class="sect1"><a href="tgit-dug-push.html">Push</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-push.html#id752255">Branch</a></span></dt><dt><span class="sect2"><a href="tgit-dug-push.html#id752274">Destination</a></span></dt><dt><span class="sect2"><a href="tgit-dug-push.html#id752288">Options</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-sync.html">Sync</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-sync.html#id752458">Branch</a></span></dt><dt><span class="sect2"><a href="tgit-dug-sync.html#id752498">Destination</a></span></dt><dt><span class="sect2"><a href="tgit-dug-sync.html#id752561">Options</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-daemon.html">Daemon</a></span></dt><dt><span class="sect1"><a href="tgit-dug-browse-ref.html">Browse All Refs</a></span></dt><dt><span class="sect1"><a href="tgit-dug-submodules.html">Submodules</a></span></dt><dt><span class="sect1"><a href="tgit-dug-changelists.html">Change Lists</a></span></dt><dt><span class="sect1"><a href="tgit-dug-showlog.html">Log Dialog</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-1">Invoking the Revision Log Dialog</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-actions">Revision Log Actions</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-graph">The revision graph</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-messages">Commit messages and branch/tag indicators</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-2">Getting Additional Information</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-filter">Filtering Log Messages</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-navigation">Navigation</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-5">Statistical Information</a></span></dt><dt><span class="sect2"><a href="tgit-dug-showlog.html#tgit-dug-showlog-refresh">Refreshing the View</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-revgraph.html">Revision Graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-revgraph.html#tgit-dug-revgraph-nodes">Revision Graph Nodes</a></span></dt><dt><span class="sect2"><a href="tgit-dug-revgraph.html#tgit-dug-revgraph-use">Using the Graph</a></span></dt><dt><span class="sect2"><a href="tgit-dug-revgraph.html#tgit-dug-revgraph-refresh">Refreshing the View</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-reflog.html">Reference Log</a></span></dt><dt><span class="sect1"><a href="tgit-dug-repobrowser.html">The Repository Browser</a></span></dt><dt><span class="sect1"><a href="tgit-dug-diff.html">Viewing Differences</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-diff-file">File Differences</a></span></dt><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-diff-eol-whitespace">Line-end and Whitespace Options</a></span></dt><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-compare-revs">Comparing Version</a></span></dt><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-submodulediff">Diffing submodules using Submodule Diff Dialog</a></span></dt><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-idiff">Diffing Images Using TortoiseGitIDiff</a></span></dt><dt><span class="sect2"><a href="tgit-dug-diff.html#tgit-dug-diff-tools">External Diff/Merge Tools</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-add.html">Adding New Files</a></span></dt><dt><span class="sect1"><a href="tgit-dug-ignore.html">Ignoring Files And Directories</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-ignore.html#tgit-dug-ignore-glob">Pattern Matching in Ignore Lists</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-delete-copy-move.html">Deleting, Copying, Moving and Renaming Files and Folders</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-delete-copy-move-delete">Deleting files and folders</a></span></dt><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-delete-copy-move-copy">Copying Files and Folders</a></span></dt><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-delete-copy-move-move">Moving Files and Folders</a></span></dt><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-renameincase">Changing case in a filename</a></span></dt><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-delete-copy-move-rename-case-conflict">Dealing with filename case conflicts</a></span></dt><dt><span class="sect2"><a href="tgit-dug-delete-copy-move.html#tgit-dug-delete-copy-move-del-unversioned">Deleting Unversioned Files</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-revert.html">Undo Changes</a></span></dt><dt><span class="sect1"><a href="tgit-dug-cleanup.html">Cleanup</a></span></dt><dt><span class="sect1"><a href="tgit-dug-reset.html">Reset</a></span></dt><dt><span class="sect1"><a href="tgit-dug-stash.html">Stash Changes</a></span></dt><dt><span class="sect1"><a href="tgit-dug-bisect.html">Bisect</a></span></dt><dt><span class="sect1"><a href="tgit-dug-branchtag.html">Branching/Tagging</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-branchtag.html#tgit-dug-branch-1">Creating a Branch or Tag</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-merge.html">Merging</a></span></dt><dt><span class="sect1"><a href="tgit-dug-cherrypick.html">Cherry picking</a></span></dt><dt><span class="sect1"><a href="tgit-dug-rebase.html">Rebase</a></span></dt><dt><span class="sect1"><a href="tgit-dug-conflicts.html">Resolving Conflicts</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-conflicts.html#tgit-dug-conflicts-special">Special conflict cases</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-patch.html">Creating and Applying Patches and Pull Requests</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-patch.html#tgit-dug-patch-createpatchserial">Creating a Patch Serial</a></span></dt><dt><span class="sect2"><a href="tgit-dug-patch.html#tgit-dug-patch-sendpatches">Sending patches by mail</a></span></dt><dt><span class="sect2"><a href="tgit-dug-patch.html#tgit-dug-patch-applysinglepatch">Applying a single Patch File</a></span></dt><dt><span class="sect2"><a href="tgit-dug-patch.html#tgit-dug-patch-applaypatchserial">Applying a Patch Serial</a></span></dt><dt><span class="sect2"><a href="tgit-dug-patch.html#tgit-dug-patch-pullrequest">Creating a pull request</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-blame.html">Who Changed Which Line?</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-blame.html#tgit-dug-blame-simple">Blame for Files</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-export.html">Exporting a Git Working Tree</a></span></dt><dt><span class="sect1"><a href="tgit-dug-bugtracker.html">Integration with Bug Tracking Systems / Issue Trackers</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-bugtracker.html#tgit-dug-bugtracker-link">Adding Issue Numbers to Log Messages</a></span></dt><dt><span class="sect2"><a href="tgit-dug-bugtracker.html#tgit-dug-bugtracker-ref">Getting Information from the Issue Tracker</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-settings.html">TortoiseGit's Settings</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-main">General Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-overlay">Icon Overlay Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-network">Network Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-progs">External Program Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-saved-data">Saved Data Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-git">Git</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-hooks">Client Side Hook Scripts</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-tortoiseblame">TortoiseGitBlame Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-tortoiseudiff">TortoiseGitUDiff Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-registry">Advanced Settings</a></span></dt><dt><span class="sect2"><a href="tgit-dug-settings.html#tgit-dug-settings-export">Exporting TortoiseGit Settings</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-worktrees.html">Working with worktrees</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-worktrees.html#tgit-dug-worktree-create">Creating a worktree</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-svn-dcommit.html">git svn dcommit</a></span></dt><dt><span class="sect1"><a href="tgit-dug-lfslocking.html">Git LFS Locking</a></span></dt><dd><dl><dt><span class="sect2"><a href="tgit-dug-lfslocking.html#id774833">Setting up the repository</a></span></dt><dt><span class="sect2"><a href="tgit-dug-lfslocking.html#id774866">Locking a file</a></span></dt><dt><span class="sect2"><a href="tgit-dug-lfslocking.html#id774889">Unlocking a file</a></span></dt><dt><span class="sect2"><a href="tgit-dug-lfslocking.html#tgit-dug-lfslocking-locks">Show Locks Dialog</a></span></dt></dl></dd><dt><span class="sect1"><a href="tgit-dug-donate.html">Final Step</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+			This document describes day to day usage of the TortoiseGit client.
+			It is <span class="emphasis"><em>not</em></span> an introduction to version control
+			systems, and <span class="emphasis"><em>not</em></span> an introduction to Git. It is
+			more like a place you may turn to when you know	approximately
+			what you want to do, but don't quite remember how to do it.
+		</p><p>
+			For hints where to find more information about doing version control with Git see <a class="xref" href="tgit-preface-readingguide.html" title="Reading Guide">the section called “Reading Guide”</a>.
+		</p><p>
+			This document is also a work in progress, just as TortoiseGit and
+			Git are. If you find any mistakes, please report them to
+			the mailing list so we can update the documentation. Some of
+			the screenshots in the Daily Use Guide (DUG) might not reflect the
+			current state of the software. Please forgive us. We're working on
+			TortoiseGit in our free time.
+		</p><p>
+			In order to get the most out of the Daily Use Guide:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+						You should have installed TortoiseGit already.
+					</p></li><li class="listitem"><p>
+						You should be familiar with version control systems.
+					</p></li><li class="listitem"><p>
+						You should know the basics of Git.
+					</p></li><li class="listitem"><p>
+						You should have set up a server and/or have access
+						to a Git repository.
+					</p></li></ul></div><p>
+		</p></div><div class="sect1" title="Getting Started"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-general"></a>Getting Started</h2></div></div></div><div class="sect2" title="Icon Overlays"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-icons"></a>Icon Overlays</h3></div></div></div><p>
+			</p><div class="figure"><a name="tgit-dug-general-dia-icons"></a><p class="title"><b>Figure 2.1. Explorer showing icon overlays</b></p><div class="figure-contents"><div><img src="images/Overlays.png" alt="Explorer showing icon overlays"></div></div></div><p><br class="figure-break">
+			One of the most visible features of TortoiseGit is the icon
+			overlays which appear on files in your working tree. These
+			show you at a glance which of your files have been modified.
+			Refer to <a class="xref" href="tgit-dug-wcstatus.html#tgit-dug-wcstatus-1" title="Icon Overlays">the section called “Icon Overlays”</a> to find out
+			what the different overlays represent.
+		</p></div><div class="sect2" title="Context Menus"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-menu"></a>Context Menus</h3></div></div></div><a class="indexterm" name="id763553"></a><a class="indexterm" name="id763619"></a><p>
+			</p><div class="figure"><a name="tgit-dug-context-dir-control"></a><p class="title"><b>Figure 2.2. Context menu for a directory under version control</b></p><div class="figure-contents"><div><img src="images/ContextMenuDirControl.png" alt="Context menu for a directory under version control"></div></div></div><p><br class="figure-break">
+			All TortoiseGit commands are invoked from the context menu of the windows
+			explorer. Most are directly visible, when you <span class="action">right click</span>
+			on a file or folder. The commands that are available depend on whether the
+			file or folder or its parent folder is under version control or not.
+			You can also see the TortoiseGit menu as part of the Explorer file menu.
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				Some commands which are very rarely used are only available in the
+				extended context menu. To bring up the extended context menu, hold
+				down the <span class="keycap"><strong>Shift</strong></span> key when you <span class="action">right-click</span>.
+			</p></div><p>
+			In some cases you may see several TortoiseGit entries. This is not a bug!
+			</p><div class="figure"><a name="tgit-dug-explorer-file-menu"></a><p class="title"><b>Figure 2.3. Explorer file menu for a shortcut in a versioned folder</b></p><div class="figure-contents"><div><img src="images/ExplorerFileMenuFileShortcut.png" alt="Explorer file menu for a shortcut in a versioned folder"></div></div></div><p><br class="figure-break">
+			This example is for an unversioned shortcut within a versioned folder, and
+			in the Explorer file menu there are <span class="emphasis"><em>two</em></span> entries
+			for TortoiseGit. One for the shortcut itself
+			and the second for the object the shortcut is pointing to.
+			To help you distinguish between them, the icons have an indicator in the
+			lower right corner to show whether the menu entry is for a file,
+			a folder, a shortcut or for multiple selected items.
+		</p></div><div class="sect2" title="Drag and Drop"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-drag"></a>Drag and Drop</h3></div></div></div><a class="indexterm" name="id763661"></a><a class="indexterm" name="id763686"></a><a class="indexterm" name="id763675"></a><p>
+			</p><div class="figure"><a name="tgit-dug-right-drag"></a><p class="title"><b>Figure 2.4. Right drag menu for a directory under version control</b></p><div class="figure-contents"><div><img src="images/RightDragMenu.png" alt="Right drag menu for a directory under version control"></div></div></div><p><br class="figure-break">
+			Other commands are available as drag handlers, when you <span class="action">right drag</span>
+			files or folders to a new location inside working trees or when you
+			<span class="action">right drag</span> a non-versioned file or folder into a directory
+			which is under version control.
+		</p></div><div class="sect2" title="Common Shortcuts"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-shortcuts"></a>Common Shortcuts</h3></div></div></div><p>
+			Some common operations have well-known Windows shortcuts, but do
+			not appear on buttons or in menus. If you can't work out how
+			to do something obvious, like refreshing a view, check here.
+			</p><div class="variablelist"><dl><dt><span class="term">F1</span></dt><dd><p>
+							Help, of course.
+						</p></dd><dt><span class="term">F5</span></dt><dd><p>
+							Refresh the current view. This is perhaps the single
+							most useful one-key command. For example ...
+							In Explorer this will refresh the icon overlays on your working tree.
+							In the commit dialog it will re-scan the working tree
+							to see what may need to be committed.
+							In the Revision Log dialog it will contact the repository
+							again to check for more recent changes.
+						</p></dd><dt><span class="term">Ctrl-A</span></dt><dd><p>
+							Select all. This can be used if you get an error message
+							and want to copy and paste into an email. Use Ctrl-A
+							to select the error message and then ...
+						</p></dd><dt><span class="term">Ctrl-C</span></dt><dd><p>
+							... Copy the selected text.
+						</p></dd><dt><span class="term">Ctrl-F</span></dt><dd><p>
+							Search
+						</p></dd></dl></div><p>
+		</p></div><div class="sect2" title="Authentication"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-auth"></a>Authentication</h3></div></div></div><a class="indexterm" name="id763826"></a><div class="sect3" title="SSH (URLs look like git@example.com)"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-general-auth-ssh"></a>SSH (URLs look like git@example.com)</h4></div></div></div><p>
+				TortoiseGitPlink is recommended as SSH client because it better integrates with Windows.
+				By default TortoiseGitPlink does not store passwords, you can use the PuTTY authentication agent
+				for caching the password (done automatically if a PuTTY key is configured for a remote).
+				For advanced tips &amp; tricks see <a class="xref" href="tgit-ssh-howto.html" title="Appendix F. Tips and tricks for SSH/PuTTY">Appendix F, <i>Tips and tricks for SSH/PuTTY</i></a>. Note, however, that TortoiseGitPlink
+				does not respect <code class="filename">~/.ssh/config</code> which is OpenSSH specific (see PuTTY tips &amp; tricks
+				or configure OpenSSH as SSH client, see next paragraph). If you also want to use
+				TortoiseGitPlink on Git Bash, create an environment variable called <code class="literal">GIT_SSH</code>
+				with the path to the PuTTY plink.exe or preferably to TortoiseGitPlink.exe. This can be done by
+				re-executing the Git for Windows installer (there you can choose which SSH client to use), on the
+				command line by executing <code class="literal">set GIT_SSH=PATH_TO_PLINK.EXE"</code>
+				(<code class="filename">C:\Program Files\TortoiseGit\bin\TortoiseGitPlink.exe</code> on default installations)
+				or configure the environment variables
+				<a class="ulink" href="https://www.computerhope.com/issues/ch000549.htm" target="_blank">
+					<em class="citetitle">permanently</em>
+				</a>.
+			</p><p>
+				It is also possible to use OpenSSH (shipped with Git for Windows, Cygwin, and MSYS2). Just open TortoiseGit
+				settings and open the <span class="guilabel">Network</span> page and enter <code class="filename">ssh.exe</code> as SSH client,
+				see <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-network" title="Network Settings">the section called “Network Settings”</a> and
+				<a class="ulink" href="https://stackoverflow.com/a/32115724/3906760" target="_blank">
+					<em class="citetitle">this answer on StackOverflow</em>
+				</a>. When OpenSSH is used, you can also make use of <code class="filename">~/.ssh/config</code> (cf.
+				<a class="ulink" href="https://stackoverflow.com/q/30320458/3906760" target="_blank">
+					<em class="citetitle">this answer on StackOverflow</em>
+				</a>).
+			</p></div><div class="sect3" title="HTTP/HTTPS (URLs start with https:// or http://)"><div class="titlepage"><div><div><h4 class="title"><a name="tgit-dug-general-auth-https"></a>HTTP/HTTPS (URLs start with https:// or http://)</h4></div></div></div><p>
+				By default Git does not save/cache credentials. However, you can configure a
+				<a class="ulink" href="https://stackoverflow.com/q/14000173/3906760" target="_blank">
+					<em class="citetitle">credential helper</em>
+				</a>
+				(recommended, also see <a class="xref" href="git-misc.html#gitcredentials(7)" title="gitcredentials(7)">the section called “gitcredentials(7)”</a>) or manually use
+				<a class="ulink" href="https://stackoverflow.com/revisions/6031266/6" target="_blank">
+					<em class="citetitle"><code class="filename">%HOME%/_netrc</code></em>
+				</a>.
+			</p><p>
+				If you have set up a credential store and you want to clear some stored credentials see
+				<a class="ulink" href="https://stackoverflow.com/a/31782500/3906760" target="_blank">
+					<em class="citetitle">this answer on StackOverflow</em>
+				</a>.
+			</p></div></div><div class="sect2" title="Maximizing Windows"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-general-window-max"></a>Maximizing Windows</h3></div></div></div><a class="indexterm" name="id761928"></a><p>
+			Many of TortoiseGit's dialogs have a lot of information to display,
+			but it is often useful to maximize only the height, or only the width,
+			rather than maximizing to fill the screen. As a convenience, there are
+			shortcuts for this on the <span class="guilabel">Maximize</span> button.
+			Use the <span class="action">middle mouse</span> button to maximize vertically,
+			and <span class="action">right mouse</span> to maximize horizontally.
+		</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-intro-install.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-create.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Installing TortoiseGit </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Create Repository</td></tr></table></div></body></html>

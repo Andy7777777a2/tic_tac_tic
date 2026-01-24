@@ -1,0 +1,33 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Stash Changes</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-reset.html" title="Reset"><link rel="next" href="tgit-dug-bisect.html" title="Bisect"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Stash Changes</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-reset.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-bisect.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Stash Changes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-stash"></a>Stash Changes</h2></div></div></div><a class="indexterm" name="id816656"></a><p>
+		Often, when you’ve been working on part of your project, things are in a messy state and you want to switch branches for a bit to work on something else.
+		The problem is, you don’t want to do a commit of half-done work just so you can get back to this point later. The answer to this issue is the git stash command.
+	</p><p>
+		Stashing takes the dirty state of your working directory — that is, your modified tracked files and staged changes — and saves it on a stack of unfinished changes that you can reapply at any time (even on a different branch).
+	</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			There is a similar function in TortoiseGit called changelists (<a class="xref" href="tgit-dug-changelists.html" title="Change Lists">the section called “Change Lists”</a>) which can be used to structure commits.
+		</p></div><p>
+		When you want to record the current state of the working directory and the index,
+		but want to go back to a clean working directory,
+		<span class="action">right click</span> on a folder to pop up the context menu and then select
+		the command
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Stash changes</span>
+		A dialog will pop up where you can optionally enter a message for this state:
+		</p><div class="figure"><a name="tgit-dug-stash-dia-1"></a><p class="title"><b>Figure 2.53. Stash changes dialog</b></p><div class="figure-contents"><div><img src="images/stash.png" alt="Stash changes dialog"></div></div></div><p><br class="figure-break">
+		You can also select <span class="guilabel">include untracked</span>, to stash untracked files away, too.
+		To stash all files away, including ignored files in addition to the untracked files, select <span class="guilabel">--all</span>.
+	</p><p>
+		When TortoiseGit detects that a stashed changes exist, the context menu will be extended:
+		</p><div class="figure"><a name="tgit-dug-stash-dia-2"></a><p class="title"><b>Figure 2.54. (un)stash options</b></p><div class="figure-contents"><div><img src="images/ContextMenuStash.png" alt="(un)stash options"></div></div></div><p><br class="figure-break">
+		The stash is implemented as a stack. <span class="guimenuitem">Stash Apply</span> will apply the changes of the latest stash
+		to your working tree. <span class="guimenuitem">Stash Pop</span> does the same, but will remove the latest stash from the stack
+		after applying it. <span class="guimenuitem">Stash changes</span> is still possible and will stash the current changes of the working
+		copy to the top of the stack. <span class="guimenuitem">Stash List</span> provides an overview of all the whole stash stack. You
+		can also remove and view the stashed changes there (similarly to the <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a> and <a class="xref" href="tgit-dug-reflog.html" title="Reference Log">the section called “Reference Log”</a>).
+	</p><div class="important" title="Conflicts" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Conflicts</h3><p>
+			Although major merge work is done by git automatically applying a stash, a conflict may happen during cherry-picking (i.e., a file was modified in your current branch and also in the stash),
+			please see <a class="xref" href="tgit-dug-conflicts.html" title="Resolving Conflicts">the section called “Resolving Conflicts”</a> on how to resolve conflicts.
+		</p><p>
+			Please note, that "REMOTE"/"theirs" in the conflict editor refers to the to be merged stash and "LOCAL"/"mine" to your version in the working tree before you applied the stash.
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-stash(1)" title="git-stash(1)">the section called “git-stash(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-reset.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-bisect.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Reset </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Bisect</td></tr></table></div></body></html>

@@ -1,0 +1,51 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Revision Graphs</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-showlog.html" title="Log Dialog"><link rel="next" href="tgit-dug-reflog.html" title="Reference Log"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Revision Graphs</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-showlog.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-reflog.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Revision Graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-revgraph"></a>Revision Graphs</h2></div></div></div><a class="indexterm" name="id720335"></a><a class="indexterm" name="id720394"></a><a class="indexterm" name="id720376"></a><p>
+		</p><div class="figure"><a name="tgit-dug-revgraph-dia-1"></a><p class="title"><b>Figure 2.37. A Revision Graph</b></p><div class="figure-contents"><div><img src="images/RevisionGraph.png" alt="A Revision Graph"></div></div></div><p><br class="figure-break">
+		Sometimes you need to know where branches and tags were taken from
+		the point, and the ideal way to view this sort of information is
+		as a graph or tree structure. That's when you need to use
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Revision Graph...</span>
+	</p><p>
+		This command analyses the revision history and attempts to create
+		a direct graph showing the points at tag, branch and other reference.
+	</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+			In order to generate the graph, TortoiseGit must fetch all log messages
+			from the repository root. Just show commits which have some reference point to.
+		</p></div><div class="sect2" title="Revision Graph Nodes"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-revgraph-nodes"></a>Revision Graph Nodes</h3></div></div></div><p>
+			Each revision graph node represents a revision in the repository
+			where something changed in the tree you are looking at.
+			Different types of nodes can be distinguished by color which can be configured using
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Settings</span>
+
+		</p><p>
+			Note that the graph only shows the points at which items were
+			reference by tag, branch or the other ref. Showing every revision of a project will
+			generate a very large graph for non-trivial cases.
+		</p></div><div class="sect2" title="Using the Graph"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-revgraph-use"></a>Using the Graph</h3></div></div></div><p>
+			To make it easier to navigate a large graph, use the overview window.
+			This shows the entire graph in a small window, with the currently
+			displayed portion highlighted. You can drag the highlighted area to
+			change the displayed region.
+		</p><p>
+			The revision date, author and comments are shown in a hint box whenever
+			the mouse hovers over a revision box.
+		</p><p>
+			If you select two revisions (Use <span class="keycap"><strong>Ctrl</strong></span>-<span class="action">left click</span>),
+			you can use the context menu to show the
+			differences between these revisions. You can choose to show differences
+			as at the branch creation points, but usually you will want to show the
+			differences at the branch end points, i.e. at the HEAD revision.
+		</p><p>
+			You can view the differences as a Unified-Diff file, which shows all
+			differences in a single file with minimal context. If you opt to
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Compare Revisions</span>
+			you will be presented with a list of changed files.
+			<span class="action">Double click</span> on a file name to fetch both revisions
+			of the file and compare them using the visual difference tool.
+		</p><p>
+			If you <span class="action">right click</span> on a revision you can use
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Show Log</span>
+			to view the history.
+		</p></div><div class="sect2" title="Refreshing the View"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-revgraph-refresh"></a>Refreshing the View</h3></div></div></div><p>
+			If you want to check the server again for newer information,
+			you can simply refresh the view using <span class="keycap"><strong>F5</strong></span>.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-showlog.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-reflog.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Log Dialog </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Reference Log</td></tr></table></div></body></html>

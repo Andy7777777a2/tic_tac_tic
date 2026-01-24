@@ -1,0 +1,50 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Change Lists</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-submodules.html" title="Submodules"><link rel="next" href="tgit-dug-showlog.html" title="Log Dialog"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Change Lists</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-submodules.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-showlog.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Change Lists"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-changelists"></a>Change Lists</h2></div></div></div><a class="indexterm" name="id752996"></a><p>
+		In an ideal world, you only ever work on one thing at a time, and your
+		working tree contains only one set of logical changes. OK, back to reality.
+		It often happens that you have to work on several unrelated tasks at once,
+		and when you look in the commit dialog, all the changes are mixed in together.
+		The <em class="firstterm">changelist</em> feature helps you group files together,
+		making it easier to see what you are doing. Of course this can only work if
+		the changes do not overlap. If two different tasks affect the same file, there
+		is no way to separate the changes.
+	</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			There is a similar functionality in Git called stashing (<a class="xref" href="tgit-dug-stash.html" title="Stash Changes">the section called “Stash Changes”</a>).
+		</p><p>
+			Generally you should consider to create a new branch as Git commits are just local, you're not messing with everybody's repository, but just your own.
+		</p></div><p>
+		You can see changelists in several places, but the most important ones are
+		the commit dialog and the check-for-modifications dialog. Let's start
+		in the check-for-modifications dialog after you have worked on several
+		features and many files. When you first open the dialog, all the changed
+		files are listed together. Suppose you now want to organize things and
+		group those files according to feature.
+	</p><p>
+		Select one or more files and use
+		<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Move to changelist</span>
+		to add an item to a changelist. Initially there will be no changelists,
+		so the first time you do this you will create a new changelist.
+		Give it name which describes what you are using it for, and click
+		<span class="guibutton">OK</span>. The dialog will now change to show
+		groups of items.
+	</p><p>
+		</p><div class="figure"><a name="tgit-dug-commit-dia-changelist"></a><p class="title"><b>Figure 2.26. Commit dialog with Changelists</b></p><div class="figure-contents"><div><img src="images/Changelist.png" alt="Commit dialog with Changelists"></div></div></div><p><br class="figure-break">
+		In the commit dialog you can see those same files, grouped by changelist.
+		Apart from giving an immediate visual indication of groupings, you can
+		also use the group headings to select which files to commit.
+	</p><p>
+		Click on the group header to select all
+		entries, then check one of the selected entries to check all.
+	</p><p>
+		TortoiseGit reserves one changelist name for its own use, namely
+		<code class="literal">ignore-on-commit</code>. This is used to mark versioned
+		files which you almost never want to commit even though they have local
+		changes. This feature is described in <a class="xref" href="tgit-dug-commit.html#tgit-dug-commit-ignore" title="Excluding Items from the Commit List">the section called “Excluding Items from the Commit List”</a>.
+	</p><p>
+		When you commit files belonging to a changelist then normally you would expect
+		that the changelist membership is no longer needed. So by default, files are
+		removed from changelists automatically on commit. 
+	</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+			Changelists are purely a local TortoiseGit client feature. Creating and removing
+			changelists will not affect the repository, nor anyone else's working
+			copy. They are simply a convenient way for you to organize your files.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-submodules.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-showlog.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Submodules </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Log Dialog</td></tr></table></div></body></html>

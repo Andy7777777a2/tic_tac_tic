@@ -1,0 +1,32 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Cleanup</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-revert.html" title="Undo Changes"><link rel="next" href="tgit-dug-reset.html" title="Reset"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Cleanup</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-revert.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-reset.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Cleanup"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-cleanup"></a>Cleanup</h2></div></div></div><a class="indexterm" name="id816446"></a><p>
+		 In order to remove untracked or ignored files from the working tree use
+		 <span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Cleanup</span>.
+		Then a dialog comes up which allows you to clean up the working tree by recursively removing files that are not under version control or ignored,
+		starting from the current directory <span class="emphasis"><em>or</em></span> on the whole working tree (depends on version of installed git).
+		</p><div class="figure"><a name="tgit-dug-clean-dia-1"></a><p class="title"><b>Figure 2.50. Clean dialog</b></p><div class="figure-contents"><div><img src="images/clean.png" alt="Clean dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		<span class="guilabel">Clean all untracked files</span>
+		This removes all untracked files, including those ignored by Git.
+		This is the cleanest option.
+	</p><p>
+		<span class="guilabel">Clean only non-ignore untracked files</span>
+		This removes untracked files, but excluding those ignored by Git.
+	</p><p>
+		<span class="guilabel">Clean only ignored files</span>
+		This removes only files ignored by Git.
+	</p><p>
+		<span class="guilabel">Remove untracked directories</span>
+		This removes untracked directories too.
+	</p><p>
+		<span class="guilabel">Do not use recycle bin</span>
+		Use this option if you want to delete those files directly and permanently.
+		Make sure you do not regret!
+	</p><p>
+		<span class="guilabel">Dry run</span>
+		This just gives the list of files to be deleted, but it does not perform any deletion.
+	</p><p>
+		<span class="guilabel">Submodules</span>
+		This also cleans submodules recursively.
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-clean(1)" title="git-clean(1)">the section called “git-clean(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-revert.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-reset.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Undo Changes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Reset</td></tr></table></div></body></html>

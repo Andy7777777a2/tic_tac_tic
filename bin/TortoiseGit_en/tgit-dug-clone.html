@@ -1,0 +1,39 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Clone Repository</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-create.html" title="Create Repository"><link rel="next" href="tgit-dug-checkout.html" title="Checking Out A Working Tree (Switch to commit)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Clone Repository</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-create.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-checkout.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Clone Repository"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-clone"></a>Clone Repository</h2></div></div></div><a class="indexterm" name="id762019"></a><a class="indexterm" name="id762014"></a><p>
+		This section talks about how to clone a git repository from an existing repository. This operation is used to get a full copy of a remote repository.
+		Cloning a git repository is very simple. At an empty directory,
+		just use the explorer context menu and select
+		<span class="guimenu">Git Clone...</span>.
+	</p><p>
+		The Clone Dialog will show.
+		</p><div class="figure"><a name="tgit-dug-clone-dia-clonedialog"></a><p class="title"><b>Figure 2.7. Clone dialog</b></p><div class="figure-contents"><div><img src="images/GitClone.png" alt="Clone dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		<span class="guilabel">URL:</span> Input repository URL address, which you will clone <span class="emphasis"><em>from</em></span>.
+		You can click <span class="guibutton">Browse</span> to browse directory.
+	</p><p>
+		<span class="guilabel">Directory:</span> Input your local directory, which you will clone <span class="emphasis"><em>to</em></span>.
+		You can click <span class="guibutton">Browse</span> to browse directory.
+	</p><p>
+		<span class="guilabel">Depth:</span> Create a shallow clone with a limited history cut at the specified number of commits.
+	</p><p>
+		<span class="guilabel">Recursive:</span> Submodules are initialized and cloned using their default settings.
+	</p><p>
+		<span class="guilabel">Clone into Bare Repo:</span> Clone into a bare Git repository without a working tree.
+	</p><p>
+		<span class="guilabel">No Checkout:</span> No checkout of HEAD is performed after cloning is completed. This will result in an empty working tree.
+	</p><p>
+		<span class="guilabel">Branch:</span> Instead of pointing the newly created HEAD to the cloned repository’s HEAD, point to the specified branch instead.
+	</p><p>
+		<span class="guilabel">Origin Name:</span> Instead of using the remote name "origin" (default) to keep track of the upstream repository, use the specified name.
+	</p><p>
+		<span class="guilabel">LFS:</span> Use Git LFS (Large File Storage) - this option is only available if Git LFS is installed.
+	</p><p>
+		If you check the <span class="guilabel">Load Putty Key</span> checkbox, clone will auto load putty key file with Pageant.
+		You can click <span class="guibutton">...</span> to browse for a putty key file.
+	</p><p>
+		Clone will checkout current HEAD to work space automatically.
+	</p><p>
+		Git clone supports HTTP, Git and SSH protocol. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-network" title="Network Settings">the section called “Network Settings”</a> shows how to choose SSH client.
+		OpenSSH, Plink or TortoiseGitPlink.
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-clone(1)" title="git-clone(1)">the section called “git-clone(1)”</a>
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-create.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-checkout.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Create Repository </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Checking Out A Working Tree (Switch to commit)</td></tr></table></div></body></html>

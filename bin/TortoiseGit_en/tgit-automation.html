@@ -1,0 +1,321 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix D. Automating TortoiseGit</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-admins-disablemenus.html" title="Disable context menu entries"><link rel="next" href="tgit-automation-idiff.html" title="TortoiseGitIDiff Commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix D. Automating TortoiseGit</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-admins-disablemenus.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-automation-idiff.html">Next</a></td></tr></table><hr></div><div class="appendix" title="Appendix D. Automating TortoiseGit"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-automation"></a>Appendix D. Automating TortoiseGit</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-automation.html#tgit-automation-basics">TortoiseGit Commands</a></span></dt><dt><span class="sect1"><a href="tgit-automation-idiff.html">TortoiseGitIDiff Commands</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+			Since all commands for TortoiseGit are controlled through command
+			line parameters, you can automate it with batch scripts or start specific
+			commands and dialogs from other programs (e.g. your favorite text editor).
+		</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+			Remember that TortoiseGit is a GUI client, and this automation guide
+			shows you how to make the TortoiseGit dialogs appear to collect user
+			input. If you want to write a script which requires no input, you should
+			use the official Git command line client instead.
+		</p></div></div><div class="sect1" title="TortoiseGit Commands"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-automation-basics"></a>TortoiseGit Commands</h2></div></div></div><a class="indexterm" name="id756952"></a><a class="indexterm" name="id756986"></a><p>
+			The TortoiseGit GUI program is called <code class="literal">TortoiseGitProc.exe</code>.
+			All commands are specified with the parameter <code class="option">/command:abcd</code>
+			where <code class="literal">abcd</code> is the required command name. Most of these
+			commands need at least one path argument, which is given with
+			<code class="option">/path:"some\path"</code>. In the following table the command
+			refers to the <code class="option">/command:abcd</code> parameter and the path
+			refers to the <code class="option">/path:"some\path"</code> parameter.
+		</p><p>
+			There are two alternatives for passing command line parameters to TortoiseGit in addition to the <code class="option">/option:argument</code> syntax. First, you can use the <code class="option">/option argument</code> syntax, which may be useful in PowerShell, for example. Second, you can use the *nix style <code class="option">-option argument</code> syntax, which is useful in MSYS environments.
+		</p><p>
+			Since some of the commands can take a list of target paths (e.g. committing
+			several specific files) the <code class="option">/path</code> parameter can take
+			several paths, separated by a <code class="literal">*</code> character.
+		</p><p>
+			TortoiseGit uses temporary files to pass multiple arguments between
+			the shell extension and the main program. From TortoiseGit 1.5.0 on and later,
+			<code class="option">/notempfile</code> parameter is obsolete and there is no need
+			to add it anymore.
+		</p><p>
+			The progress dialog which is used for commits, updates and many more <code class="filename">git.exe</code> commands
+			usually stays open after the command has finished until the user presses
+			the <span class="guibutton">OK</span> button. This can be changed in the settings dialog.
+			You may use <code class="option">/closeonend</code> parameter to override the this setting
+			from your batch file.
+		</p><p>
+			To close the (<code class="filename">git.exe</code>) progress dialog at the end of a command automatically without
+			using the permanent setting you can pass the <code class="option">/closeonend</code>
+			parameter.
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+						<code class="option">/closeonend:0</code> Close manually
+					</p></li><li class="listitem"><p>
+						<code class="option">/closeonend:1</code> Auto-close if no further options are available
+					</p></li><li class="listitem"><p>
+						<code class="option">/closeonend:2</code> Auto-close if no errors
+					</p></li></ul></div><p>
+		</p><p>
+			The table below lists all the commands which can be accessed
+			using the TortoiseGitProc.exe command line. As described above,
+			these should be used in the form <code class="literal">/command:abcd</code>.
+			In the table, the <code class="literal">/command</code> prefix is omitted
+			to save space.
+		</p><p>
+			</p><div class="table"><a name="tgit-automation-1-table"></a><p class="title"><b>Table D.1. List of available commands and options</b></p><div class="table-contents"><table summary="List of available commands and options" border="1"><colgroup><col><col></colgroup><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td>:about</td><td>
+								Shows the about dialog. This is also shown if no
+								command is given.
+							</td></tr><tr><td>:bisect</td><td>
+								Allows to control the <a class="link" href="tgit-dug-bisect.html" title="Bisect">bisect logic</a> of TortoiseGit.
+								Use the <code class="option">/start</code> parameter to start a bisect you can specify <code class="option">/good:REF</code> and <code class="option">/bad:REF</code> here).
+								When bisect is active, you can use <code class="option">/good</code>, <code class="option">/bad</code>, <code class="option">/skip</code> and <code class="option">/reset</code> to control the bisect process.
+							</td></tr><tr><td>:fetch</td><td>
+								Opens the <a class="link" href="tgit-dug-pull.html" title="Pull and Fetch change">fetch dialog</a>.
+								Use the <code class="option">/remote</code> parameter to control the remote which should be pre-selected.
+							</td></tr><tr><td>:firststart</td><td>
+								Shows the first start wizard.
+							</td></tr><tr><td>:log</td><td>
+								Opens the <a class="link" href="tgit-dug-showlog.html" title="Log Dialog">log dialog</a>. The <code class="option">/path</code> specifies the
+								file or folder for which the log should be shown.
+								Additional options can be set:
+								<code class="option">/rev:"SHA1"</code> highlights and automatically scrolls to the specified revision,
+								<code class="option">/endrev:"SHA1/branch"</code>, shows the log of the specified revision,
+								<code class="option">/startrev:"SHA1/branch"</code> (only in combination with <code class="literal">endrev</code>), shows the log of the revision range <code class="literal">startrev..endrev</code>,
+								<code class="option">/range:"gitrevision"</code>, shows the log of the entered <code class="literal">gitrevision</code> (e.g. "<code class="literal">branch1...branch2</code>"),
+								<code class="option">/limit:"N SCALE"</code>, SCALE could be "Commit", "Year", "Month", "Week";
+								it shows last N commit(s), last N year(s), last N month(s), last N week(s).
+								Use <code class="option">/limit:0</code> to disable any default limit.
+								<code class="option">/findstring:"filterstring"</code> fills in the filter text,
+								<code class="option">/findtext</code> forces the filter to use text, not regex, or
+								<code class="option">/findregex</code> forces the filter to use regex, not simple text search, and
+								<code class="option">/findtype:X</code> with X being a number between 0 and 127. The numbers
+								are the sum of the following options:
+								<div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+											<code class="option">/findtype:0</code> filter by everything
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:1</code> filter by messages
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:2</code> filter by path
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:4</code> filter by authors
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:8</code> filter by revisions
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:16</code> not used
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:32</code> filter by bug ID
+										</p></li><li class="listitem"><p>
+											<code class="option">/findtype:64</code> filter by subject
+										</p></li></ul></div>
+								If <code class="option">/outfile:path\to\file</code> is specified,
+								the selected revision is written to that file when
+								the log dialog is closed.
+							</td></tr><tr><td>:clone</td><td>
+								Opens the <a class="link" href="tgit-dug-clone.html" title="Clone Repository">clone dialog</a>.
+								The <code class="option">/url</code> specifies the URL to clone from.
+								The <code class="option">/path</code> specifies the target directory
+								to clone to.
+								If <code class="option">/exactpath</code> is not specified, the
+								repository name (without trailing .git) will be appended to
+								target directory. This is the default behavior.
+								If <code class="option">/exactpath</code> is specified, the
+								exact <code class="option">/path</code> is considered the target directory,
+								without appending repository name to it.
+							</td></tr><tr><td>:commit</td><td>
+								Opens the <a class="link" href="tgit-dug-commit.html" title="Committing Your Changes To The Repository">commit dialog</a>. The <code class="option">/path</code> specifies the
+								target directory or the list of files to commit.
+								You can also specify the <code class="option">/logmsg</code> switch
+								to pass a predefined log message to the commit dialog.
+								Or, if you don't want to pass the log message on the
+								command line, use <code class="option">/logmsgfile:path</code>,
+								where <code class="option">path</code>
+								points to a file containing the log message.
+								To pre-fill the bug ID box (in case you've set up
+								integration with bug trackers properly), you can use
+								the <code class="option">/bugid:"the bug id here"</code> to
+								do that.
+							</td></tr><tr><td>:add</td><td>
+								Adds the files in <code class="option">/path</code> to
+								version control.
+							</td></tr><tr><td>:revert</td><td>
+								Reverts local modifications of a working tree.
+								The <code class="option">/path</code> tells which items
+								to revert.
+							</td></tr><tr><td>:cleanup</td><td>
+								<a class="link" href="tgit-dug-cleanup.html" title="Cleanup">Cleans up the working tree</a> in <code class="option">/path</code>.
+							</td></tr><tr><td>:resolve</td><td>
+								Marks a conflicted file specified in
+								<code class="option">/path</code> as resolved. If
+								<code class="option">/noquestion</code> is given, then resolving
+								is done without asking the user first if it really
+								should be done.
+							</td></tr><tr><td>:repocreate</td><td>
+								<a class="link" href="tgit-dug-create.html" title="Create Repository">Creates a repository</a> in <code class="option">/path</code>
+							</td></tr><tr><td>:switch</td><td>
+								Opens the <a class="link" href="tgit-dug-checkout.html" title="Checking Out A Working Tree (Switch to commit)">switch dialog</a>. The <code class="option">/path</code> specifies the
+								target directory.
+							</td></tr><tr><td>:export</td><td>
+								<a class="link" href="tgit-dug-export.html" title="Exporting a Git Working Tree">Exports a revision</a> of the repository in <code class="option">/path</code>
+								to a zip file.
+							</td></tr><tr><td>:merge</td><td>
+								Opens the <a class="link" href="tgit-dug-merge.html" title="Merging">merge dialog</a>. The <code class="option">/path</code> specifies the
+								target directory.
+								The <code class="option">/abort</code> opens <a class="link" href="tgit-dug-reset.html" title="Reset">abort merge dialog</a>.
+							</td></tr><tr><td>:settings</td><td>
+								Opens the <a class="link" href="tgit-dug-settings.html" title="TortoiseGit's Settings">settings dialog</a>.
+							</td></tr><tr><td>:remove</td><td>
+								Removes the file(s) in <code class="option">/path</code> from
+								version control.
+							</td></tr><tr><td>:rename</td><td>
+								Renames the file in <code class="option">/path</code>. The new
+								name for the file is asked with a dialog.
+
+							</td></tr><tr><td>:diff</td><td>
+								Starts the external diff program specified in the
+								TortoiseGit settings. The <code class="option">/path</code>
+								specifies the first file.
+								If the option <code class="option">/path2</code>
+								is set, then the diff program is started with those
+								two files. If <code class="option">/path2</code> is omitted,
+								then the diff is done between the file in
+								<code class="option">/path</code> and its BASE.
+								To explicitly set the revision use
+								<code class="option">/startrev:xxx</code> (BASE revision) and
+								<code class="option">/endrev:xxx</code>.
+								Add <code class="option">/unified</code> to get a unified diff.
+								Add <code class="option">/line:NN</code> to get scroll to the mentioned line.
+
+							</td></tr><tr><td>:showcompare</td><td>
+								<p>
+								Depending on revisions to compare and the path, this
+								either shows a unified diff (if the option <code class="option">unified</code> is set),
+								a dialog with a list of files that have changed (filtered by a possibly entered sub path) or if
+								the path point to a file starts the diff viewer for
+								those the file in the different revisions.
+								Use <code class="option">/revision1:xxx</code> and <code class="option">/revision2:xxx</code> to specify the revisions to compare,
+								whereas <code class="option">/revision1:xxx</code> indicates the base revision to compare with.
+								</p>
+							</td></tr><tr><td>:conflicteditor</td><td>
+								Starts the conflict editor specified in the TortoiseGit
+								settings with the correct files for the conflicted
+								file in <code class="option">/path</code>.
+							</td></tr><tr><td>:help</td><td>
+								Opens the help file.
+							</td></tr><tr><td>:repostatus</td><td>
+								Opens the check-for-modifications dialog. The <code class="option">/path</code>
+								specifies the working tree directory.
+							</td></tr><tr><td>:repobrowser</td><td>
+								Starts the <a class="link" href="tgit-dug-repobrowser.html" title="The Repository Browser">repository browser dialog</a>, pointing to
+								the working tree given in <code class="option">/path</code>.
+								An additional option <code class="option">/rev:xxx</code> can
+								be used to specify the revision which the repository
+								browser should show. If the <code class="option">/rev:xxx</code>
+								is omitted, it defaults to HEAD.
+							</td></tr><tr><td>:ignore</td><td>
+								Adds all targets in <code class="option">/path</code> to the
+								ignore list, i.e. adds file(s) to the <code class="literal">.gitignore</code>
+								file.
+							</td></tr><tr><td>:blame</td><td>
+								<p>
+								Opens <a class="link" href="tgit-dug-blame.html" title="Who Changed Which Line?">TortoiseGitBlame</a> for the file specified
+								in <code class="option">/path</code>.
+								</p>
+								<p>
+								If the option <code class="option">/endrev</code> is set TortoiseGitBlame
+								ends at that revision.
+								</p>
+								<p>
+								If the option <code class="option">/line:nnn</code> is set,
+								TortoiseGitBlame will open with the specified line
+								number showing.
+								</p>
+							</td></tr><tr><td>:cat</td><td>
+								Saves a file from an URL or working tree path given
+								in <code class="option">/path</code> to the location given in
+								<code class="option">/savepath:path</code>. The revision is
+								given in <code class="option">/revision:xxx</code>. This can
+								be used to get a file with a specific revision.
+							</td></tr><tr><td>:pull</td><td>
+								Opens the <a class="link" href="tgit-dug-pull.html" title="Pull and Fetch change">pull dialog</a> in the working tree located in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:push</td><td>
+								Opens the <a class="link" href="tgit-dug-push.html" title="Push">push dialog</a> in the working tree located in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:rebase</td><td>
+								Opens the <a class="link" href="tgit-dug-rebase.html" title="Rebase">rebase dialog</a> for the working tree located in
+								<code class="option">/path</code>. To select the upstream branch/commit use the <code class="option">/upstream</code> option.
+								For activating the force option use <code class="option">/force</code>. 
+							</td></tr><tr><td>:stashsave</td><td>
+								Opens the <a class="link" href="tgit-dug-stash.html" title="Stash Changes">stash save dialog</a> for the working tree located in
+								<code class="option">/path</code>. A pre-filled message can be achieved by using the <code class="option">/msg</code> parameter.
+							</td></tr><tr><td>:stashapply</td><td>
+								Applies to latest stash to the working tree located in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:stashpop</td><td>
+								Applies to latest stash to the working tree located in
+								<code class="option">/path</code> and drops the latest stash entry.
+							</td></tr><tr><td>:subadd</td><td>
+								Opens the <a class="link" href="tgit-dug-submodules.html" title="Submodules">submodule add dialog</a>.
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:subupdate</td><td>
+								Opens the <a class="link" href="tgit-dug-submodules.html" title="Submodules">submodule update dialog</a> for and filters the submodules regarding the folder
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:subsync</td><td>
+								Syncs the submodule information for the working tree located in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:reflog</td><td>
+								Opens the RefLog dialog for the repository located in <code class="option">/path</code>.
+							</td></tr><tr><td>:refbrowse</td><td>
+								Opens the <a class="link" href="tgit-dug-browse-ref.html" title="Browse All Refs">browse references dialog</a> for the repository located in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:updatecheck</td><td>
+								<code class="option">/visible</code>: Shows the dialog even if no newer TortoiseGit version is available.
+								<code class="option">/force</code>: Shows file list for download even if the latest TortoiseGit has been installed.
+							</td></tr><tr><td>:revisiongraph</td><td>
+								Shows the <a class="link" href="tgit-dug-revgraph.html" title="Revision Graphs">revision graph</a> for the repository given in
+								<code class="option">/path</code>.
+								<p>
+								To create an image file of the revision graph for a specific path, but
+								without showing the graph window, pass <code class="option">/output:path</code>
+								with the path to the output file. The output file must have
+								an extension that the revision graph can actually
+								export to. These are:
+								<code class="literal">.svg</code>,
+								<code class="literal">.wmf</code>,
+								<code class="literal">.gv</code>,
+								<code class="literal">.png</code>,
+								<code class="literal">.jpg</code>,
+								<code class="literal">.bmp</code> and
+								<code class="literal">.gif</code>.
+								</p>
+							</td></tr><tr><td>:daemon</td><td>
+								Launches the <a class="link" href="tgit-dug-daemon.html" title="Daemon">Git Daemon</a> for the repository given in
+								<code class="option">/path</code>.
+							</td></tr><tr><td>:pgpfp</td><td>
+								Prints the TortoiseGit Release Signing Key fingerprint. If you trust the current TortoiseGit installation, this can be used as a trust anchor to future releases.
+							</td></tr><tr><td>:tag</td><td>
+								Opens the <a class="link" href="tgit-dug-branchtag.html" title="Branching/Tagging">Create Tag dialog</a>. The <code class="option">/path</code> specifies the
+								repository folder.
+								Additional options can be set:
+								<code class="option">/rev:"ref"</code> tags on the specified ref/commit,
+								<code class="option">/name:"tag_name"</code> fills the Tag name in Create Tag dialog.
+							</td></tr><tr><td>:branch</td><td>
+								Opens the <a class="link" href="tgit-dug-branchtag.html" title="Branching/Tagging">Create Branch dialog</a>. The <code class="option">/path</code> specifies the
+								repository folder.
+								Additional options can be set:
+								<code class="option">/rev:"ref"</code> tags on the specified ref/commit,
+								<code class="option">/name:"tag_name"</code> fills the Tag name in Create Tag dialog.
+							</td></tr><tr><td>:lfslocks</td><td>
+								Opens the <a class="link" href="tgit-dug-lfslocking.html#tgit-dug-lfslocking-locks" title="Show Locks Dialog">Show Locks dialog</a>.
+								More info in <a class="link" href="tgit-dug-lfslocking.html" title="Git LFS Locking">LFS Locking</a>.
+							</td></tr><tr><td>:worktreelist</td><td>
+								Opens the <a class="link" href="tgit-dug-worktrees.html" title="Working with worktrees">Worktree List dialog</a>.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			Examples (which should be entered on one line):
+</p><pre class="screen">
+TortoiseGitProc.exe /command:commit
+                 /path:"d:\git_wc\file1.txt*c:\git_wc\file2.txt"
+                 /logmsg:"test log message" /closeonend:2
+
+TortoiseGitProc.exe /command:log /path:"c:\git_wc\file1.txt"
+                 /startrev:master~100 /endrev:master
+</pre><p>
+		</p><p>
+			</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+					When calling TortoiseGit from within the MSYS environment, you can also use more *nix style command line parameters:
+					</p><pre class="screen">
+TortoiseGitProc.exe -command commit
+                    -path "d:\git_wc\file1.txt*c:\git_wc\file2.txt"
+                    -logmsg "test log message" -closeonend 2
+					</pre><p>
+				</p></div><p>
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-admins-disablemenus.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-automation-idiff.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Disable context menu entries </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> TortoiseGitIDiff Commands</td></tr></table></div></body></html>

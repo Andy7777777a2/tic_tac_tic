@@ -1,0 +1,55 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Push</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-pull.html" title="Pull and Fetch change"><link rel="next" href="tgit-dug-sync.html" title="Sync"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Push</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-pull.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-sync.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Push"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-push"></a>Push</h2></div></div></div><a class="indexterm" name="id752173"></a><p>
+		This section talks about how to push (i.e., send) changes to another repository.
+	</p><p>
+		In order to perform a push open the push dialog using
+		<span class="guimenu">TortoiseGit
+			</span> → <span class="guimenuitem">Push...
+			</span>.
+		Pushing changes is also possible using the Sync dialog (cf. <a class="xref" href="tgit-dug-sync.html" title="Sync">the section called “Sync”</a>), however, there you have less options, but the sync dialog allows you to initiate other operations such as pulling and to see diffs and changes.
+	</p><p>
+		</p><div class="figure"><a name="tgit-dug-push-dia-pushdialog"></a><p class="title"><b>Figure 2.17. Push dialog</b></p><div class="figure-contents"><div><img src="images/GitPush.png" alt="Push dialog"></div></div></div><p><br class="figure-break">
+	</p><div class="sect2" title="Branch"><div class="titlepage"><div><div><h3 class="title"><a name="id752255"></a>Branch</h3></div></div></div><p>
+			<span class="guilabel">Local</span>: The source branch which will be pushed to the other repository. If the current branch or the selected local branch has a remote tracked branch set, the remote branch and remote repository are automatically selected. A remote tracked branch can be set using the reference browser (cf. <a class="xref" href="tgit-dug-browse-ref.html" title="Browse All Refs">the section called “Browse All Refs”</a>) or by using <span class="guilabel">Set upstream/track remote branch</span>. This can be overridden in this dialog by using one of the <span class="guilabel">Always push to the selected remote ...</span> options, so that for pushing a different branch is selected automatically as for merging and pulling.
+		</p><p>
+			<span class="guilabel">Remote</span>: The remote branch of the other repository.
+		</p></div><div class="sect2" title="Destination"><div class="titlepage"><div><div><h3 class="title"><a name="id752274"></a>Destination</h3></div></div></div><p>
+			<span class="guilabel">Remote</span>: Choose an already configured remote repository.
+		</p><p>
+			<span class="guilabel">Arbitrary URL</span>: The URL of a remote repository.
+		</p><p>
+			You must push change to a bare repository.
+			Pushing changes to repository which has a working tree can lead to unexpected results.
+		</p></div><div class="sect2" title="Options"><div class="titlepage"><div><div><h3 class="title"><a name="id752288"></a>Options</h3></div></div></div><p>
+			<span class="guilabel">force with lease</span>
+			This allows remote repository to accept a safer non-fast-forward push. This can cause the remote repository to lose commits; use it with care.
+			This can prevent from losing unknown changes from other people on the remote.
+			It checks if the server branch points to the same commit as the remote-tracking branch (known changes).
+			If yes, a force push will be performed. Otherwise it will be rejected.
+			Since git does not have remote-tracking tags, tags cannot be overwritten using this option.
+			This passes <code class="literal">--force-with-lease</code> option of <code class="literal">git push</code> command.
+		</p><p>
+			<span class="guilabel">force</span>
+			This allows remote repository to accept an unsafe non-fast-forward push. This can cause the remote repository to lose commits; use it with care.
+			This does not check any server commits, so it is possible to lose unknown changes on the remote.
+			Use this option with <span class="guilabel">Include Tags</span> to overwrite tags.
+			This passes the traditional <code class="literal">--force</code> option of <code class="literal">git push</code> command.
+		</p><p>
+			<span class="guilabel">Include Tags</span>
+			Also push tags to remote repository.
+		</p><p>
+			<span class="guilabel">Autoload Putty Key</span>
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>You can find more information about PuTTY and using SSH keys at <a class="xref" href="tgit-ssh-howto.html" title="Appendix F. Tips and tricks for SSH/PuTTY">Appendix F, <i>Tips and tricks for SSH/PuTTY</i></a>. There is also explained how you can use several accounts at the same time for a remote.</p></div><p>
+			<span class="guilabel">Set upstream/track remote branch</span>:
+			After a successful push, the tracking relationship will be set between the pushed local branch and its remote tracking branch. This will select the remote branch automatically for pulling/pushing and merging.
+		</p><p>
+			<span class="guilabel">Always push to the selected remote archive for this local branch</span>
+		</p><p>
+			<span class="guilabel">Always push to the selected remote branch for this local branch</span>
+		</p><p>
+			<span class="guilabel">Recurse submodule</span>
+			<code class="option">None</code>: No checking.
+			<code class="option">Check</code>: Checks if the bounded commits of all submodules are present on the remote repositories. If any of the submodules are not pushed, the super project push will fail.
+			<code class="option">On-demand</code>: Checks if the bounded commits of all submodules are present on the remote repositories. If the submodules are not pushed yet, it will try to push them.
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-push(1)" title="git-push(1)">the section called “git-push(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-pull.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-sync.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Pull and Fetch change </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Sync</td></tr></table></div></body></html>

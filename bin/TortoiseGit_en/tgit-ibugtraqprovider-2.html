@@ -1,0 +1,160 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>The IBugTraqProvider2 interface</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-ibugtraqprovider.html" title="Appendix B. IBugTraqProvider interface"><link rel="prev" href="tgit-ibugtraqprovider-1.html" title="The IBugTraqProvider interface"><link rel="next" href="tgit-admins.html" title="Appendix C. Useful Tips For Administrators"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">The IBugTraqProvider2 interface</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider-1.html">Prev</a> </td><th width="60%" align="center">Appendix B. IBugTraqProvider interface</th><td width="20%" align="right"> <a accesskey="n" href="tgit-admins.html">Next</a></td></tr></table><hr></div><div class="sect1" title="The IBugTraqProvider2 interface"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-ibugtraqprovider-2"></a>The IBugTraqProvider2 interface</h2></div></div></div><p>
+			In TortoiseSVN 1.6 a new interface was added which provides
+			more functionality for plugins (also available in TortoiseGit since 1.2.1). This IBugTraqProvider2 interface
+			inherits from IBugTraqProvider.
+		</p><pre class="programlisting">
+HRESULT GetCommitMessage2 (
+  // Parent window for your provider's UI.
+  [in] HWND hParentWnd,
+
+  // Parameters for your provider.
+  [in] BSTR parameters,
+  // The common URL of the commit
+  [in] BSTR commonURL,
+  [in] BSTR commonRoot,
+  [in] SAFEARRAY(BSTR) pathList,
+
+  // The text already present in the commit message.
+  // Your provider should include this text in the new message,
+  // where appropriate.
+  [in] BSTR originalMessage,
+
+  // You can assign custom revision properties to a commit
+  // by setting the next two params.
+  // note: Both safearrays must be of the same length.
+  //       For every property name there must be a property value!
+
+  // The content of the bugID field (if shown)
+  [in] BSTR bugID,
+
+  // Modified content of the bugID field
+  [out] BSTR * bugIDOut,
+
+  // The list of revision property names.
+  [out] SAFEARRAY(BSTR) * revPropNames,
+
+  // The list of revision property values.
+  [out] SAFEARRAY(BSTR) * revPropValues,
+
+  // The new text for the commit message.
+  // This replaces the original message
+  [out, retval] BSTR * newMessage
+);
+</pre><p>
+			This method is called from the TortoiseGit commit dialog
+			when the user clicks on the plugin button. This method is called
+			instead of <code class="literal">GetCommitMessage()</code>. Please refer
+			to the documentation for <code class="literal">GetCommitMessage</code>
+			for the parameters that are also used there.
+		</p><p>
+			The parameter <code class="literal">commonURL</code> is the parent URL
+			of all items selected to bring up the commit dialog. This is basically
+			the URL of the <code class="literal">commonRoot</code> path.
+		</p><p>
+			The parameter <code class="literal">bugID</code> contains the content of
+			the bug-ID field (if it is shown, configured with the property
+			<code class="literal">bugtraq.message</code>).
+		</p><p>
+			The return parameter <code class="literal">bugIDOut</code> is used to fill
+			the bug-ID field when the method returns.
+		</p><p>
+			The <code class="literal">revPropNames</code> and <code class="literal">revPropValues</code>
+			are only honored by TortoiseSVN and are ignored by TortoiseGit.
+			If no revision properties are to be set, the plugin must return empty arrays.
+		</p><pre class="programlisting">
+HRESULT CheckCommit (
+  [in] HWND hParentWnd,
+  [in] BSTR parameters,
+  [in] BSTR commonURL,
+  [in] BSTR commonRoot,
+  [in] SAFEARRAY(BSTR) pathList,
+  [in] BSTR commitMessage,
+  [out, retval] BSTR * errorMessage
+);
+</pre><p>
+			This method is called right before the commit dialog is closed
+			and the commit begins. A plugin can use this method to validate
+			the selected files/folders for the commit and/or the commit
+			message entered by the user. The parameters are the same as
+			for <code class="literal">GetCommitMessage2()</code>, with the difference that
+			<code class="literal">commonURL</code> is now the common URL of all
+			<span class="emphasis"><em>checked</em></span> items, and <code class="literal">commonRoot</code>
+			the root path of all checked items.
+		</p><p>
+			For the branch/tag dialog, the <code class="literal">commonURL</code> is the source
+			URL of the copy, and <code class="literal">commonRoot</code> is set to the
+			target URL of the copy.
+		</p><p>
+			The return parameter <code class="literal">errorMessage</code> must
+			either contain an error message which TortoiseGit shows to the
+			user or be empty for the commit to start.
+			If an error message is returned, TortoiseGit shows the error
+			string in a dialog and keeps the commit dialog open so the
+			user can correct whatever is wrong. A plugin should therefore
+			return an error string which informs the user <span class="emphasis"><em>what</em></span>
+			is wrong and how to correct it.
+		</p><pre class="programlisting">
+HRESULT  OnCommitFinished (
+  // Parent window for any (error) UI that needs to be displayed.
+  [in] HWND hParentWnd,
+
+  // The common root of all paths that got committed.
+  [in] BSTR commonRoot,
+
+  // All the paths that got committed.
+  [in] SAFEARRAY(BSTR) pathList,
+
+
+  // The text already present in the commit message.
+  [in] BSTR logMessage,
+
+  // The revision of the commit.
+  [in] ULONG revision,
+
+
+  // An error to show to the user if this function
+  // returns something else than S_OK
+  [out, retval] BSTR * error
+);
+</pre><p>
+			This method is called after a successful commit. A plugin
+			can use this method to e.g., close the selected issue or add
+			information about the commit to the issue.
+			The parameters are the same as for <code class="literal">GetCommitMessage2</code>.
+		</p><pre class="programlisting">
+HRESULT HasOptions(
+  // Whether the provider provides options
+  [out, retval] VARIANT_BOOL *ret
+);
+</pre><p>
+			This method is called from the settings dialog where the user
+			can configure the plugins. If a plugin provides its own
+			configuration dialog with <code class="literal">ShowOptionsDialog</code>, it must
+			return TRUE here, otherwise it must return FALSE.
+		</p><pre class="programlisting">
+HRESULT ShowOptionsDialog(
+  // Parent window for the options dialog
+  [in] HWND hParentWnd,
+
+  // Parameters for your provider.
+  [in] BSTR parameters,
+
+  // The parameters string
+  [out, retval] BSTR * newparameters
+);
+</pre><p>
+			This method is called from the settings dialog when the user
+			clicks on the "Options" button that is shown if <code class="literal">HasOptions</code>
+			returns TRUE.
+			A plugin can show an options dialog to make it easier for the user
+			to configure the plugin.
+		</p><p>
+			The <code class="literal">parameters</code> string contains the plugin
+			parameters string that is already set/entered.
+		</p><p>
+			The <code class="literal">newparameters</code> return parameter must contain
+			the parameters string which the plugin constructed from the info
+			it gathered in its options dialog. That <code class="literal">paramameters</code>
+			string is passed to all other IBugTraqProvider and IBugTraqProvider2
+			methods.
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-ibugtraqprovider.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-admins.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">The IBugTraqProvider interface </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix C. Useful Tips For Administrators</td></tr></table></div></body></html>

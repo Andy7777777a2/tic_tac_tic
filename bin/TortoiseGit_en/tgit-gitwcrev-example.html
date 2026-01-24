@@ -1,0 +1,73 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Keyword Example</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-gitwcrev.html" title="Chapter 3. The GitWCRev Program"><link rel="prev" href="tgit-gitwcrev-keywords.html" title="Keyword Substitution"><link rel="next" href="tgit-gitwcrev-com-interface.html" title="COM interface"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Keyword Example</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-gitwcrev-keywords.html">Prev</a> </td><th width="60%" align="center">Chapter 3. The GitWCRev Program</th><td width="20%" align="right"> <a accesskey="n" href="tgit-gitwcrev-com-interface.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Keyword Example"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-gitwcrev-example"></a>Keyword Example</h2></div></div></div><p>
+			The example below shows how keywords in a template file are
+			substituted in the output file.
+		</p><pre class="programlisting">
+// Test file for GitWCRev
+
+char* Revision                    = "$WCREV$";
+char* RevisionShort               = "$WCREV=7$";
+char* Modified                    = "$WCMODS?Modified:Not modified$";
+char* Unversioned                 = "$WCUNVER?Unversioned items found:no unversioned items$";
+char* Date                        = "$WCDATE$";
+char* DateUTC                     = "$WCDATEUTC$";
+char* CustDate                    = "$WCDATE=%a, %d %B %Y$";
+char* CustDateEmpty               = "$WCDATE=$";
+char* CustDateInval               = "$WCDATE=%a, %c %B %Y$";
+char* CustDateUTC                 = "$WCDATEUTC=%a, %d %B %Y$";
+char* TimeNow                     = "$WCNOW$";
+char* TimeNowUTC                  = "$WCNOWUTC$";
+char* IsTagged                    = "$WCISTAGGED?Tagged:Not tagged$";
+char* IsInGit                     = "$WCINGIT?versioned:not versioned$";
+char* ModifiedFiles               = "$WCFILEMODS?Modified:Not modified$";
+char* HasSubmodule                = "$WCSUBMODULE?Working tree has at least one submodule:Working tree has no submodules$";
+char* SubmodulesUp2Date           = "$WCSUBMODULEUP2DATE?All submodules are up2date (checked out HEAD):At least one submodule is not up2date (checked HEAD differs)$";
+char* SubmoduleHasModifications   = "$WCMODSINSUBMODULE?At least one submodule has uncommitted items:No submodule has uncommitted items$";
+char* SubmoduleHasUnversioned     = "$WCUNVERINSUBMODULE?At least one submodule has unversioned files:No submodule with unversioned files$";
+char* ModifiedAlsoInSubmodules    = "$WCMODSFULL?Modified items found (recursively):No modified items found (also not in submodules)$";
+char* UnversionedAlsoInSubmodules = "$WCUNVERFULL?Unversioned items found (recursively):No unversioned items found (also not in submodules)$";
+
+#if $WCMODSFULL?1:0$
+#error Source is modified
+#endif
+
+// End of file
+</pre><p>
+			After running <code class="literal">GitWCRev.exe path\to\workingcopy testfile.tmpl testfile.txt</code>,
+			the output file <code class="literal">testfile.txt</code> would looks like this:
+		</p><pre class="programlisting">
+// Test file for GitWCRev
+
+char* Revision                    = "c16403bd41ba502935dee309fac137df0807f31e";
+char* RevisionShort               = "c16403b";
+char* Modified                    = "Modified";
+char* Unversioned                 = "Unversioned items found";
+char* Date                        = "2017/01/19 15:33:51";
+char* DateUTC                     = "2017/01/19 14:33:51";
+char* CustDate                    = "Thu, 19 January 2017";
+char* CustDateEmpty               = "";
+char* CustDateInval               = "Thu, 01/19/17 15:33:51 January 2017";
+char* CustDateUTC                 = "Thu, 19 January 2017";
+char* TimeNow                     = "2017/01/19 15:35:36";
+char* TimeNowUTC                  = "2017/01/19 14:35:36";
+char* IsTagged                    = "Not tagged";
+char* IsInGit                     = "versioned";
+char* ModifiedFiles               = "Not modified";
+char* HasSubmodule                = "Working tree has at least one submodule";
+char* SubmodulesUp2Date           = "At least one submodule is not up2date (checked HEAD differs)";
+char* SubmoduleHasModifications   = "No submodule has uncommitted items";
+char* SubmoduleHasUnversioned     = "At least one submodule has unversioned files";
+char* ModifiedAlsoInSubmodules    = "Modified items found (recursively)";
+char* UnversionedAlsoInSubmodules = "Unversioned items found (recursively)";
+
+#if 1
+#error Source is modified
+#endif
+
+// End of file
+</pre><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				A file like this will be included in the build so you would expect it
+				to be versioned. Be sure to version the template file, not the
+				generated file, otherwise each time you regenerate the version file
+				you need to commit the change, which in turn means the version file
+				needs to be updated.
+			</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-gitwcrev-keywords.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-gitwcrev.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-gitwcrev-com-interface.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Keyword Substitution </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> COM interface</td></tr></table></div></body></html>

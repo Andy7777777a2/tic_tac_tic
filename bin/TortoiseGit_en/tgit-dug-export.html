@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Exporting a Git Working Tree</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-blame.html" title="Who Changed Which Line?"><link rel="next" href="tgit-dug-bugtracker.html" title="Integration with Bug Tracking Systems / Issue Trackers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Exporting a Git Working Tree</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-blame.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-bugtracker.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Exporting a Git Working Tree"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-export"></a>Exporting a Git Working Tree</h2></div></div></div><a class="indexterm" name="id794840"></a><a class="indexterm" name="id794885"></a><p>
+		Sometimes you may want a snapshot of a specific revision/commit, e.g. to create a zipped
+		tarball of your source, or to export to a web server. for this TortoiseGit offers the command
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Export...</span>.
+	</p><p>
+		</p><div class="figure"><a name="tgit-dug-export-dia-1"></a><p class="title"><b>Figure 2.71. The Export Dialog</b></p><div class="figure-contents"><div><img src="images/ExportURL.png" alt="The Export Dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		<span class="guilabel">Zip File</span> zip file of export
+	</p><p>
+		</p><div class="variablelist"><dl><dt><span class="term"><span class="guilabel">HEAD</span></span></dt><dd><p>
+				Current commit checked out.
+			</p></dd><dt><span class="term"><span class="guilabel">Branch</span></span></dt><dd><p>
+				The latest commit of chosen branch.
+			</p></dd><dt><span class="term"><span class="guilabel">Tag</span></span></dt><dd><p>
+				The commit of chosen tag.
+			</p></dd><dt><span class="term"><span class="guilabel">Commit</span></span></dt><dd><p>
+				Any commit, you click <span class="guibutton">...</span> to launch log
+				dialog to choose commit. You also can input commit hash, or
+				friendly commit name, such as <code class="literal">HEAD~4</code>.
+			</p></dd></dl></div><p>
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-archive(1)" title="git-archive(1)">the section called “git-archive(1)”</a>.
+	</p><div class="tip" title="Exporting single files" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Exporting single files</h3><p>
+			The export dialog does not allow exporting single files.
+		</p><p>
+			To export single files with TortoiseGit, you have to use
+			the repository browser (cf. <a class="xref" href="tgit-dug-repobrowser.html" title="The Repository Browser">the section called “The Repository Browser”</a>) or log dialog (cf. <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a>).
+			Simply drag the file(s) you want to export from the repository
+			browser to where you want them in the explorer, or use the
+			context menu in the repository browser to export the files.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-blame.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-bugtracker.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Who Changed Which Line? </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Integration with Bug Tracking Systems / Issue Trackers</td></tr></table></div></body></html>

@@ -1,0 +1,95 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>The IBugTraqProvider interface</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-ibugtraqprovider.html" title="Appendix B. IBugTraqProvider interface"><link rel="prev" href="tgit-ibugtraqprovider.html" title="Appendix B. IBugTraqProvider interface"><link rel="next" href="tgit-ibugtraqprovider-2.html" title="The IBugTraqProvider2 interface"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">The IBugTraqProvider interface</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider.html">Prev</a> </td><th width="60%" align="center">Appendix B. IBugTraqProvider interface</th><td width="20%" align="right"> <a accesskey="n" href="tgit-ibugtraqprovider-2.html">Next</a></td></tr></table><hr></div><div class="sect1" title="The IBugTraqProvider interface"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-ibugtraqprovider-1"></a>The IBugTraqProvider interface</h2></div></div></div><p>
+			TortoiseGit 1.2.1 and later can use plugins which implement the IBugTraqProvider
+			interface. The interface provides a few methods which plugins can
+			use to interact with the issue tracker.
+		</p><pre class="programlisting">
+HRESULT ValidateParameters (
+  // Parent window for any UI that needs to be
+  // displayed during validation.
+  [in] HWND hParentWnd,
+
+  // The parameter string that needs to be validated.
+  [in] BSTR parameters,
+
+  // Is the string valid?
+  [out, retval] VARIANT_BOOL *valid
+);
+</pre><p>
+			This method is called from the settings dialog where the user can
+			add and configure the plugin. The <code class="literal">parameters</code> string
+			can be used by a plugin to get additional required information, e.g., the URL
+			to the issue tracker, login information, etc.
+			The plugin should verify the <code class="literal">parameters</code> string and
+			show an error dialog if the string is not valid. The <code class="literal">hParentWnd</code>
+			parameter should be used for any dialog the plugin shows as the parent window.
+			The plugin must return TRUE if the validation of the <code class="literal">parameters</code>
+			string is successful. If the plugin returns FALSE, the settings dialog won't
+			allow the user to add the plugin to a working copy path.
+		</p><pre class="programlisting">
+HRESULT GetLinkText (
+  // Parent window for any (error) UI that needs to be displayed.
+  [in] HWND hParentWnd,
+
+  // The parameter string, just in case you need to talk to your
+  // web service (e.g.) to find out what the correct text is.
+  [in] BSTR parameters,
+
+  // What text do you want to display?
+  // Use the current thread locale.
+  [out, retval] BSTR *linkText
+);
+</pre><p>
+			The plugin can provide a string here which is used in the TortoiseGit
+			commit dialog for the button which invokes the plugin, e.g., "Choose issue"
+			or "Select ticket". Make sure the string is not too long, otherwise it
+			might not fit into the button.
+			If the method returns an error (e.g., <code class="literal">E_NOTIMPL</code>), a default
+			text is used for the button.
+		</p><pre class="programlisting">
+HRESULT GetCommitMessage (
+  // Parent window for your provider's UI.
+  [in] HWND hParentWnd,
+
+  // Parameters for your provider.
+  [in] BSTR parameters,
+  [in] BSTR commonRoot,
+  [in] SAFEARRAY(BSTR) pathList,
+
+  // The text already present in the commit message.
+  // Your provider should include this text in the new message,
+  // where appropriate.
+  [in] BSTR originalMessage,
+
+  // The new text for the commit message.
+  // This replaces the original message.
+  [out, retval] BSTR *newMessage
+);
+</pre><p>
+			This is the main method of the plugin. This method is called from
+			the TortoiseGit commit dialog when the user clicks on the plugin
+			button.
+		</p><p>
+			The <code class="literal">parameters</code> string is the string the
+			user has to enter in the settings dialog when he configures
+			the plugin. Usually a plugin would use this to find the URL
+			of the issue tracker and/or login information or more.
+		</p><p>
+			The <code class="literal">commonRoot</code> string contains the parent path
+			of all items selected to bring up the commit dialog. Note that this
+			is <span class="emphasis"><em>not</em></span> the root path of all items which the user has selected in
+			the commit dialog.
+			For the branch/tag dialog, this is the path which is to be copied.
+		</p><p>
+			The <code class="literal">pathList</code> parameter contains an array of paths
+			(as strings) which the user has selected for the commit.
+		</p><p>
+			The <code class="literal">originalMessage</code> parameter contains the text
+			entered in the log message box in the commit dialog. If the user
+			has not yet entered any text, this string will be empty.
+		</p><p>
+			The <code class="literal">newMessage</code> return string is copied into
+			the log message edit box in the commit dialog, replacing whatever
+			is already there. If a plugin does not modify the <code class="literal">originalMessage</code>
+			string, it must return the same string again here, otherwise
+			any text the user has entered will be lost.
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-ibugtraqprovider.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-ibugtraqprovider-2.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix B. IBugTraqProvider interface </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> The IBugTraqProvider2 interface</td></tr></table></div></body></html>

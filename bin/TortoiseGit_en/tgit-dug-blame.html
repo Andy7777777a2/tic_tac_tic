@@ -1,0 +1,70 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Who Changed Which Line?</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-patch.html" title="Creating and Applying Patches and Pull Requests"><link rel="next" href="tgit-dug-export.html" title="Exporting a Git Working Tree"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Who Changed Which Line?</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-patch.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-export.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Who Changed Which Line?"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-blame"></a>Who Changed Which Line?</h2></div></div></div><a class="indexterm" name="id796074"></a><a class="indexterm" name="id796079"></a><a class="indexterm" name="id796052"></a><p>
+		Sometimes you need to know not only what lines have changed, but also
+		who exactly changed specific lines in a file. That's when the
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Blame...</span>
+		command, sometimes also referred to as <em class="firstterm">annotate</em>
+		command comes in handy.
+	</p><p>
+		This command lists, for every line in a file, the author and the revision
+		the line was changed.
+	</p><div class="sect2" title="Blame for Files"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-blame-simple"></a>Blame for Files</h3></div></div></div><p>
+			By default the blame file is viewed using <em class="firstterm">TortoiseGitBlame</em>,
+			which highlights the different revisions to make it easier to read.
+		</p><p>
+			</p><div class="figure"><a name="tgit-dug-blame-dia-2"></a><p class="title"><b>Figure 2.70. TortoiseGitBlame</b></p><div class="figure-contents"><div><img src="images/TortoiseBlame.png" alt="TortoiseGitBlame"></div></div></div><p><br class="figure-break">
+			TortoiseGitBlame, which is included with TortoiseGit.
+			When you hover the mouse over a line in the blame info
+			column, all lines with the same revision are shown with a darker
+			background. Lines from other revisions which were changed by the same author
+			are shown with a light background.
+			The coloring may not work as clearly if you have your display set to
+			256 color mode.
+		</p><p>
+			If you <span class="action">left click</span>
+			on a line (on the blame info column on the left), all lines with the same revision are highlighted, and lines from
+			other revisions by the same author are highlighted in a lighter color.
+			This highlighting is sticky, allowing you to move the mouse without losing
+			the highlights. Click on that revision again to turn off highlighting.
+		</p><p>
+			The revision comments (log message) are shown in a hint box whenever
+			the mouse hovers over the blame info column. If you want to copy the
+			log message for that revision, use the context menu which appears when
+			you right click on the blame info column.
+		</p><p>
+			If you need a better visual indicator of where the oldest and newest
+			changes are, select
+			<span class="guimenu">View</span> → <span class="guimenuitem">Colorize by age, continuous</span>.
+			Then the background color intensity of the lines is related to its age.
+			This will use a color gradient to show newer lines in yellow and older lines
+			in white. The default coloring is quite light, but you can change it using the TortoiseGitBlame settings.
+		</p><p>
+			Please also check out the <span class="guimenuitem">View</span> menu. There you can toggle the <span class="guimenuitem">Ignore whitespace</span> and also toggle the detection of moved/copied lines from other files and <span class="guimenuitem">Follow renames</span>.
+		</p><p>
+			You can search within the Blame report using
+			<span class="guimenu">Edit</span> → <span class="guimenuitem">Find...</span>.
+			This allows you to search for revision numbers, authors and the content of
+			the file itself. Log messages are not included in the search - you should
+			use the Log Dialog to search those.
+		</p><p>
+			You can also jump to a specific line number using
+			<span class="guimenu">Edit</span> → <span class="guimenuitem">Go To Line...</span>.
+		</p><p>
+			When the mouse is over the blame info columns, a context menu is
+			available which helps with comparing revisions and examining history,
+			using the commit of the line under the mouse as a reference.
+			<span class="guimenu">Context menu</span> → <span class="guimenuitem">Blame previous revision</span> generates a blame report for the same file, but using
+			the previous revision as the upper limit. This gives you the blame
+			report for the state of the file just before the line you are looking
+			at was last changed.
+			<span class="guimenu">Context menu</span> → <span class="guimenuitem">Show changes</span> starts your diff viewer, showing you what changed in
+			the referenced revision of the file. Please note, however, that these two options are only available if this line is not there since the initial commit of the file.
+			<span class="guimenu">Context menu</span> → <span class="guimenuitem">Show log</span> displays the revision log dialog starting with the
+			referenced revision.
+		</p><p>
+			The settings for TortoiseGitBlame can be accessed using
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Settings...</span>
+			on the TortoiseGitBlame tab. Refer to
+			<a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-tortoiseblame" title="TortoiseGitBlame Settings">the section called “TortoiseGitBlame Settings”</a>.
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-blame(1)" title="git-blame(1)">the section called “git-blame(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-patch.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-export.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Creating and Applying Patches and Pull Requests </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Exporting a Git Working Tree</td></tr></table></div></body></html>

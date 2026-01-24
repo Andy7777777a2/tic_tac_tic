@@ -1,0 +1,23 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Working with worktrees</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-settings.html" title="TortoiseGit's Settings"><link rel="next" href="tgit-dug-svn-dcommit.html" title="git svn dcommit"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Working with worktrees</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-settings.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-svn-dcommit.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Working with worktrees"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-worktrees"></a>Working with worktrees</h2></div></div></div><a class="indexterm" name="id774607"></a><p>
+		A worktree can be seen as an additional checkout of a Git repository (cf. <a class="xref" href="apg.html#user-manual_def_working_tree">[def_working_tree]</a>).
+	</p><p>
+		Use the
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Worktrees</span>
+		option to manage worktrees.
+		When selecting this option, a dialog pops up where all current worktrees are listed.
+
+		The first entry is the main repository. It cannot be deleted because it contains the <code class="filename">.git</code>-folder with branches.
+		All other worktrees use that <code class="filename">.git</code>-folder for book keeping.
+
+		To remove/lock/unlock a worktree, <span class="action">right-click</span> it and select the desired action.
+	</p><div class="sect2" title="Creating a worktree"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-worktree-create"></a>Creating a worktree</h3></div></div></div><p>
+			To create a new worktree, specify a folder. By default for the path the main repo path is selected.
+			Modify that to your liking. For example from <code class="filename">C:\Users\jdoe\TortoiseGit</code> to <code class="filename">C:\Users\jdoe\another-worktree</code>.
+
+			To specify which revision is checked out, select <span class="guilabel">HEAD</span>, a branch, tag, or a concrete commit.
+
+			A branch can only be checked out at a single worktree.
+			Alternatively use <span class="guilabel">Force</span> to check out the branch twice, but this is not recommended.
+		</p><p>
+			Check <a class="xref" href="git-command.html#git-worktree(1)" title="git-worktree(1)">the section called “git-worktree(1)”</a> for further details.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-settings.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-svn-dcommit.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">TortoiseGit's Settings </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> git svn dcommit</td></tr></table></div></body></html>

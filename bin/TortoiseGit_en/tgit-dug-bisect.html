@@ -1,0 +1,32 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Bisect</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-stash.html" title="Stash Changes"><link rel="next" href="tgit-dug-branchtag.html" title="Branching/Tagging"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Bisect</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-stash.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-branchtag.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Bisect"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-bisect"></a>Bisect</h2></div></div></div><a class="indexterm" name="id816984"></a><p>
+		If you want to find out which revision introduced a bug, you can use the bisect functionality.
+		<span class="action">Right click</span> on a folder to pop up the context menu and then select
+		the command
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Bisect start</span>.
+		A dialog will pop up:
+		</p><div class="figure"><a name="tgit-dug-bisect-dia-1"></a><p class="title"><b>Figure 2.55. Bisect start</b></p><div class="figure-contents"><div><img src="images/bisect.png" alt="Bisect start"></div></div></div><p><br class="figure-break">
+		Enter the last known good revision and the first or one known bad (this is normally HEAD).
+	</p><p>
+		After hitting <span class="guibutton">OK</span>, Git will perform a binary search for the first faulty revision: Git
+		switches to a revision in the middle. Now you can test this revision.
+	</p><p>
+		TortoiseGit now provides three new options in the context menu:
+		</p><div class="figure"><a name="tgit-dug-bisect-dia-2"></a><p class="title"><b>Figure 2.56. Bisect options</b></p><div class="figure-contents"><div><img src="images/ContextMenuBisect.png" alt="Bisect options"></div></div></div><p><br class="figure-break">
+		If this revision is OK, hit
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Bisect good</span>
+		, otherwise hit
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Bisect bad</span>
+		To skip this revision hit
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Bisect skip</span>
+		Git will proceed with the binary search and switches to the "next" revision, so that you can test it.
+		This goes on until the faulty revision is found or you abort this operation by clicking on
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Bisect reset</span>
+		(this will reset the bisect process and switch out your previous branch/HEAD).
+	</p><div class="tip" title="Selecting revisions" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Selecting revisions</h3><p>
+			If a revision cannot be tested, or you want to go on with a different one, you can easily go to the log and
+			(hard) reset the current HEAD to a revision you like.
+		</p></div><div class="important" title="Submodules" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Submodules</h3><p>
+			If you use submodule you might need to make sure that those are updated after each bisect step so that all dependencies are up to date.
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-bisect(1)" title="git-bisect(1)">the section called “git-bisect(1)”</a>
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-stash.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-branchtag.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Stash Changes </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Branching/Tagging</td></tr></table></div></body></html>

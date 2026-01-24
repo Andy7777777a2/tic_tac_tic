@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Submodules</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-browse-ref.html" title="Browse All Refs"><link rel="next" href="tgit-dug-changelists.html" title="Change Lists"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Submodules</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-browse-ref.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-changelists.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Submodules"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-submodules"></a>Submodules</h2></div></div></div><p>
+		When you want to embed foreign repositories into a working tree/git repository, this is called a submodule.
+		Here using the
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Submodules Add</span>
+		option a foreign repository can be embedded into a dedicated sub directory of the source tree.
+		When selecting this option, a dialog pops up:
+		</p><div class="figure"><a name="tgit-dug-submodules-dia-1"></a><p class="title"><b>Figure 2.22. The add submodule dialog</b></p><div class="figure-contents"><div><img src="images/GitSubModuleAdd.png" alt="The add submodule dialog"></div></div></div><p><br class="figure-break">
+		Here you can enter the location/URL of the <span class="guilabel">Repository</span> you want to embed
+		into the directory <span class="guilabel">Path</span>. <span class="guilabel">Path</span> can be entered as a relative
+		path within the active source tree, but can also be an absolute path (pointing to the active source tree).
+		The folder should be empty or non existent.
+		If you don't want to integrate the HEAD of the <span class="guilabel">Repository</span>, you can enter a different
+		<span class="guilabel">Branch</span>.
+		By pressing <span class="guibutton">OK</span>, the entered <span class="guilabel">Repository</span> is cloned and integrated
+		into the current source tree.
+	</p><p>
+		If a working tree contains submodules, two new context menu entries are available:
+		</p><div class="figure"><a name="tgit-dug-submodules-dia-2"></a><p class="title"><b>Figure 2.23. Submodule context menu entries</b></p><div class="figure-contents"><div><img src="images/ContextMenuSubmodules.png" alt="Submodule context menu entries"></div></div></div><p><br class="figure-break">
+	</p><p>
+		<span class="guimenuitem">Submodule Update</span>:
+		</p><div class="figure"><a name="tgit-dug-submodules-update"></a><p class="title"><b>Figure 2.24. The update submodule dialog</b></p><div class="figure-contents"><div><img src="images/SubmoduleUpdate.png" alt="The update submodule dialog"></div></div></div><p><br class="figure-break">
+		Initialize the submodules and/or update the registered submodules, i.e. clone missing submodules and checkout the commit specified in the index of the containing repository.
+	</p><p>
+		<span class="guimenuitem">Submodule Sync</span>: Synchronizes submodules' remote URL configuration setting to the value specified in <code class="filename">.gitmodules</code>. This is useful when submodule URLs change upstream and you need to update your local repositories accordingly.
+	</p><p>
+		Also if a working tree contains submodules, <a class="xref" href="tgit-dug-checkout.html" title="Checking Out A Working Tree (Switch to commit)">the section called “Checking Out A Working Tree (Switch to commit)”</a> and <a class="xref" href="tgit-dug-reset.html" title="Reset">the section called “Reset”</a> contain a button for updating submodules:
+		</p><div class="figure"><a name="tgit-dug-submodules-dia-3"></a><p class="title"><b>Figure 2.25. Button for updating submodules in progress dialog</b></p><div class="figure-contents"><div><img src="images/CheckoutSubmodules.png" alt="Button for updating submodules in progress dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-submodule(1)" title="git-submodule(1)">the section called “git-submodule(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-browse-ref.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-changelists.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Browse All Refs </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Change Lists</td></tr></table></div></body></html>

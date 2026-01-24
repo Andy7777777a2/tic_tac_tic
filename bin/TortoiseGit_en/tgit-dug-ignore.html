@@ -1,0 +1,79 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Ignoring Files And Directories</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-add.html" title="Adding New Files"><link rel="next" href="tgit-dug-delete-copy-move.html" title="Deleting, Copying, Moving and Renaming Files and Folders"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Ignoring Files And Directories</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-add.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-delete-copy-move.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Ignoring Files And Directories"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-ignore"></a>Ignoring Files And Directories</h2></div></div></div><a class="indexterm" name="id712062"></a><a class="indexterm" name="id712081"></a><p>
+		</p><div class="figure"><a name="tgit-dug-ignoring-dia-1"></a><p class="title"><b>Figure 2.45. Explorer context menu for unversioned files</b></p><div class="figure-contents"><div><img src="images/ContextMenuFileIgnore.png" alt="Explorer context menu for unversioned files"></div></div></div><p><br class="figure-break">
+		In most projects you will have files and folders that should not be subject
+		to version control. These might include files created by the compiler,
+		<code class="filename">*.obj, *.lst</code>, maybe an output folder used to store
+		the executable, <code class="filename">bin/, obj/</code>.
+		More examples include user-specific workspace settings <code class="filename">*.suo, *.user</code> (Visual Studio),
+		backup files <code class="filename">*.bak, Backup*/</code>,
+		Shell metadata files <code class="filename">Thumbs.db, Desktop.ini, .DS_Store/</code>.
+		Whenever you commit changes, TortoiseGit shows your unversioned
+		files, which fills up the file list in the commit dialog. Of course you
+		can turn off this display, but then you might forget to add a new source
+		file.
+	</p><p>
+		The best way to avoid these problems is to add the derived files
+		to the project's ignore list. That way they will never show up in
+		the commit dialog, but genuine unversioned source files will still
+		be flagged up.
+	</p><p>
+		If you <span class="action">right click</span> on one or more unversioned files,
+		and select the command
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Add to Ignore List</span>
+		from the context menu, a submenu appears allowing you to select ignore by names or by extensions.
+		Ignore dialog shows that allows you to select ignore type and ignore file.
+		</p><div class="figure"><a name="tgit-dug-ignoring-dia-2"></a><p class="title"><b>Figure 2.46. Ignore dialog</b></p><div class="figure-contents"><div><img src="images/IgnoreDialog.png" alt="Ignore dialog"></div></div></div><p><br class="figure-break">
+
+		Ignore Type
+		</p><div class="variablelist"><dl><dt><span class="term">Ignore item(s) only in containing folder(s)</span></dt><dd><p>
+						Only ignore the selected pattern(s) within that folder(s).
+					</p></dd><dt><span class="term">Ignore item(s) recursively</span></dt><dd><p>
+						Ignore items with the selected pattern(s) in that folder(s) and child folder(s).
+					</p></dd></dl></div><p>
+
+		Ignore File
+		</p><div class="variablelist"><dl><dt><span class="term">.gitignore in the repository root</span></dt><dd><p>
+						Write the ignore entries in .gitignore in the repository root.
+						This allows you to synchronize the ignore list with remote repository.
+					</p></dd><dt><span class="term">.gitignore in the containing directories of the items</span></dt><dd><p>
+						Write the ignore entries in .gitignore in the containing directories of the items.
+						This allows you to synchronize the ignore list with remote repository.
+					</p></dd><dt><span class="term">.git/info/exclude</span></dt><dd><p>
+						Write the ignore entries in .git/info/exclude in repository metadata.
+						This allows you to store the ignore list locally, but cannot synchronize with remote repository.
+					</p></dd></dl></div><p>
+	</p><p>
+		If you want to remove one or more items from the ignore list,
+		in current version of TortoiseGit, you have to manually edit the ignore list file using a text editor that can handle Unix EOL.
+		That allows you to specify more general
+		patterns using filename globbing, described in the section below.
+		Read <a class="xref" href="git-misc.html#gitignore(5)" title="gitignore(5)">the section called “gitignore(5)”</a> for more information.
+		Please be aware that each ignore pattern
+		has to be placed on a separate line. Separating them by spaces does not work.
+	</p><div class="sect2" title="Pattern Matching in Ignore Lists"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-ignore-glob"></a>Pattern Matching in Ignore Lists</h3></div></div></div><a class="indexterm" name="id712265"></a><a class="indexterm" name="id712255"></a><p>
+			Git's ignore patterns make use of filename globbing,
+			a technique originally used in Unix to specify files using
+			meta-characters as wildcards. The following characters have
+			special meaning:
+			</p><div class="variablelist"><dl><dt><span class="term">*</span></dt><dd><p>
+							Matches any string of characters, including
+							the empty string (no characters).
+						</p></dd><dt><span class="term">?</span></dt><dd><p>
+							Matches any single character.
+						</p></dd><dt><span class="term">[...]</span></dt><dd><p>
+							Matches any one of the characters enclosed in the
+							square brackets. Within the brackets, a pair of
+							characters separated by <span class="quote">“<span class="quote">-</span>”</span>
+							matches any character lexically between the two.
+							For example <code class="literal">[AGm-p]</code> matches
+							any one of <code class="literal">A</code>, <code class="literal">G</code>,
+							<code class="literal">m</code>, <code class="literal">n</code>,
+							<code class="literal">o</code> or <code class="literal">p</code>.
+						</p></dd></dl></div><p>
+		</p><p>
+			Pattern matching is case sensitive, which can cause problems
+			on Windows. You can force case insensitivity the hard way
+			by pairing characters, e.g. to ignore <code class="literal">*.tmp</code>
+			regardless of case, you could use a pattern like
+			<code class="literal">*.[Tt][Mm][Pp]</code>.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-add.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-delete-copy-move.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Adding New Files </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Deleting, Copying, Moving and Renaming Files and Folders</td></tr></table></div></body></html>

@@ -1,0 +1,172 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Getting Status Information</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-commit.html" title="Committing Your Changes To The Repository"><link rel="next" href="tgit-dug-pull.html" title="Pull and Fetch change"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Getting Status Information</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-commit.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-pull.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Getting Status Information"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-wcstatus"></a>Getting Status Information</h2></div></div></div><a class="indexterm" name="id763250"></a><a class="indexterm" name="id753425"></a><a class="indexterm" name="id753437"></a><p>
+		While you are working on your working tree you often need to know
+		which files you have changed/added/removed or renamed, or even which
+		files got changed and committed by others.
+	</p><div class="sect2" title="Icon Overlays"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-wcstatus-1"></a>Icon Overlays</h3></div></div></div><a class="indexterm" name="id753408"></a><a class="indexterm" name="id753466"></a><p>
+			</p><div class="figure"><a name="tgit-dug-wcstatus-dia-1"></a><p class="title"><b>Figure 2.12. Explorer showing icon overlays</b></p><div class="figure-contents"><div><img src="images/Overlays.png" alt="Explorer showing icon overlays"></div></div></div><p><br class="figure-break">
+		</p><p>
+			Now that you have checked out a working tree
+			you can see your files in the windows explorer with
+			changed icons. This is one of the reasons why TortoiseGit is so
+			popular. TortoiseGit adds a so called overlay icon to each
+			file icon which overlaps the original file icon. Depending on
+			the Git status of the file the overlay icon is different.
+		</p><p>
+			</p><div><img src="images/InGitIcon.png"></div><p>
+			A fresh checked out working tree has a green checkmark as overlay.
+			That means the Git status is <span class="emphasis"><em>normal</em></span>.
+		</p><p>
+			</p><div><img src="images/ModifiedIcon.png"></div><p>
+			As soon as you start editing a file,
+			the status changes to <span class="emphasis"><em>modified</em></span>
+			and the icon overlay then changes to a red exclamation
+			mark. That way you can easily see which files were changed
+			since you last updated your working tree and need to be committed.
+		</p><p>
+			</p><div><img src="images/ConflictIcon.png"></div><p>
+			If during an update a <span class="emphasis"><em>conflict</em></span> occurs then
+			the icon changes to a yellow exclamation mark.
+		</p><p>
+			</p><div><img src="images/ReadOnlyIcon.png"></div><p>
+			This tells you that this file is marked as "assume-valid".
+			This overlay is optional.
+		</p><p>
+			</p><div><img src="images/LockedIcon.png"></div><p>
+			This tells you that this file is marked as "skip-worktree".
+			This overlay is optional.
+		</p><p>
+			</p><div><img src="images/DeletedIcon.png"></div><p>
+			This icon shows you that some files or folders inside the current folder
+			have been scheduled to be <span class="emphasis"><em>deleted</em></span> from version control.
+		</p><p>
+			</p><div><img src="images/AddedIcon.png"></div><p>
+			The plus sign tells you that a file has been scheduled to be
+			<span class="emphasis"><em>added</em></span> to version control.
+		</p><p>
+			</p><div><img src="images/IgnoredIcon.png"></div><p>
+			The bar sign tells you that a file or folder is
+			<span class="emphasis"><em>ignored</em></span> for version control purposes.
+			This overlay is optional.
+		</p><p>
+			</p><div><img src="images/UnversionedIcon.png"></div><p>
+			This icon shows files and folders which are not under version control,
+			but have not been ignored.
+			This overlay is optional.
+		</p><p>
+			In fact, you may find that not all of these icons are used on your system.
+			This is because the number of overlays allowed by Windows is very limited
+			and if you are also using an old version of TortoiseCVS or tools with overlay handlers such as SkyDrive, DropBox or GoogleDrive, then there are
+			not enough overlay slots available.
+			TortoiseGit tries to be a <span class="quote">“<span class="quote">Good Citizen (TM)</span>”</span>
+			and limits its use of overlays to give other apps a chance too.
+		</p><p>
+			If you have problems with overlays, please see the online
+			<a class="ulink" href="https://tortoisegit.org/support/faq/#ovlnotshowing" target="_blank"><em class="citetitle">FAQ</em></a>.
+		</p><p>
+			For a description of how icon overlays correspond to Git
+			status and other technical details, read
+			<a class="xref" href="tgit-app-internals.html#tgit-app-internals-overlays" title="Icon Overlays">the section called “Icon Overlays”</a>.
+		</p></div><div class="sect2" title="Explorer Properties"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-wcstatus-winprops"></a>Explorer Properties</h3></div></div></div><a class="indexterm" name="id753586"></a><p>
+			</p><div class="figure"><a name="tgit-dug-propertypage-dia-1"></a><p class="title"><b>Figure 2.13. Explorer property page, Git tab</b></p><div class="figure-contents"><div><img src="images/Properties.png" alt="Explorer property page, Git tab"></div></div></div><p><br class="figure-break">
+			TortoiseGit provides a property page in Windows Explorer for files/folders under Git version control.
+			There you can see all relevant information about the selected file/directory.
+			Just select a file or directory and select
+			<span class="guimenu">Windows Menu</span> → <span class="guimenuitem">properties</span>
+			in the context menu (note: this is the normal properties menu entry
+			the explorer provides, not the one in the TortoiseGit submenu!).
+		</p></div><div class="sect2" title="Status"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-wcstatus-2"></a>Status</h3></div></div></div><a class="indexterm" name="id753667"></a><a class="indexterm" name="id753668"></a><p>
+			</p><div class="figure"><a name="tgit-dug-wcstatus-dia-2"></a><p class="title"><b>Figure 2.14. Check for Modifications</b></p><div class="figure-contents"><div><img src="images/RepoStatus.png" alt="Check for Modifications"></div></div></div><p><br class="figure-break">
+			It's often very useful to know which files you have
+			changed and also which files got changed and
+			committed by others. That's where the command
+			<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Check For Modifications...</span>
+			comes in handy.
+			This dialog will show you every file that has changed in any
+			way in your working tree, as well as any unversioned files
+			you may have.
+		</p><p>
+			The dialog uses color coding to highlight the status.
+			</p><div class="variablelist"><dl><dt><span class="term">Blue</span></dt><dd><p>
+						Locally modified items.
+						</p></dd><dt><span class="term">Purple</span></dt><dd><p>
+						Added items.
+						Items which have been added with history have a
+						<code class="literal">+</code> sign in the
+						<span class="guilabel">Text status</span> column,
+						and a tooltip shows where the item was copied from.
+						</p></dd><dt><span class="term">Dark red</span></dt><dd><p>
+						Deleted or missing items.
+						</p></dd><dt><span class="term">Green</span></dt><dd><p>
+						Items modified locally and in the repository.
+						The changes will be merged on update.
+						These <span class="emphasis"><em>may</em></span> produce conflicts on update.
+						</p></dd><dt><span class="term">Bright red</span></dt><dd><p>
+						Items modified locally and deleted in repository,
+						or modified in repository and deleted locally.
+						These <span class="emphasis"><em>will</em></span> produce conflicts on update.
+						</p></dd><dt><span class="term">Black</span></dt><dd><p>
+						Unchanged and unversioned items.
+						</p></dd></dl></div><p>
+		</p><p>
+			This is the default color scheme, but you can customise those colors
+			using the settings dialog.
+			Read <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-colours" title="TortoiseGit color Settings">the section called “TortoiseGit color Settings”</a> for more information.
+		</p><p>
+			From the context menu of the dialog you can show a diff of the
+			changes. Check the local changes <span class="emphasis"><em>you</em></span> made using
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Compare with Base</span>.
+			Check the changes in the repository made by others using
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Show Differences as Unified Diff</span>.
+		</p><p>
+			You can also revert changes in individual files. If you have deleted
+			a file accidentally, it will show up as <span class="emphasis"><em>Missing</em></span>
+			and you can use <span class="emphasis"><em>Revert</em></span> to recover it.
+		</p><p>
+			Unversioned and ignored files can be sent to the recycle bin from here using
+			<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Delete</span>.
+			If you want to delete files permanently (bypassing the recycle bin) hold
+			the <span class="keycap"><strong>Shift</strong></span> key while clicking on <span class="guilabel">Delete</span>.
+		</p><p>
+			If you want to examine a file in detail, you can drag it from here
+			into another application such as a text editor or IDE.
+		</p><p>
+			The columns are customizable. If you
+			<span class="action">right click</span> on any column header you will see a
+			context menu allowing you to select which columns are displayed.
+			You can also change column width by using the drag handle which
+			appears when you move the mouse over a column boundary. These
+			customizations are preserved, so you will see the same headings
+			next time.
+		</p><p>
+			If you are working on several unrelated tasks at once, you can also
+			group files together into changelists.
+			Read <a class="xref" href="tgit-dug-commit.html#tgit-dug-commit-changelists" title="Change Lists">the section called “Change Lists”</a> for more information.
+		</p><p>
+			At the bottom of the dialog you have several options to select which entries to show (such as ignored or untracked/unversioned files).
+			It is also possible to view all files which were marked as "Assume valid" or "Skip worktree" here (using <span class="guilabel">Show ignore local changes flagged files</span>).
+			Resetting those flags (it's also possible to edit this flag using file properties in explorer on the <span class="guilabel">Git</span> tab).
+		</p><p>
+			<span class="guilabel">Save unified diff</span>: Generates an unified patch containing the uncommitted changes and opens it with the configured diff viewer. If you want to pass your changes to other people, consider <a class="xref" href="tgit-dug-patch.html" title="Creating and Applying Patches and Pull Requests">the section called “Creating and Applying Patches and Pull Requests”</a>.
+		</p><p>
+			<span class="guilabel">Stash</span>: Is a drop-down menu for quick access to Git stash (cf. <a class="xref" href="tgit-dug-stash.html" title="Stash Changes">the section called “Stash Changes”</a>). This feature allows you to put aside uncommitted changes in order to work on an unrelated issue and get the changes back afterwards easily.
+		</p><p>
+			<span class="guilabel">Commit</span>: Opens the commit dialog (cf. <a class="xref" href="tgit-dug-commit.html" title="Committing Your Changes To The Repository">the section called “Committing Your Changes To The Repository”</a>) with the very same folder/files the current dialog was opened on. If you want to pre-populate the commit dialog with only a subset of files, select the files and choose <span class="guimenuitem">Commit...</span> in the context menu.
+		</p></div><div class="sect2" title="Viewing Diffs"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-dug-diffing"></a>Viewing Diffs</h3></div></div></div><a class="indexterm" name="id753948"></a><p>
+			Often you want to look inside your files, to have a look at what
+			you've changed. You can accomplish this by selecting a file which
+			has changed, and selecting <span class="guimenuitem">Diff</span> from
+			TortoiseGit's context menu. This starts the external
+			diff-viewer, which will then compare the current file with the
+			pristine copy (<code class="literal">BASE</code> revision), which was stored
+			after the last checkout or update.
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				Even when not inside a working tree or when you have multiple
+				versions of the file lying around, you can still display diffs:
+			</p><p>
+				Select the two files you want to compare in explorer
+				(e.g. using <span class="keycap"><strong>Ctrl</strong></span> and the mouse) and
+				choose <span class="guimenuitem">Diff</span> from TortoiseGit's
+				context menu. The file clicked last (the one with the focus,
+				i.e. the dotted rectangle) will be regarded as the later
+				one.
+			</p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-commit.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-pull.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Committing Your Changes To The Repository </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Pull and Fetch change</td></tr></table></div></body></html>

@@ -1,0 +1,42 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Pull and Fetch change</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-wcstatus.html" title="Getting Status Information"><link rel="next" href="tgit-dug-push.html" title="Push"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Pull and Fetch change</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-wcstatus.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-push.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Pull and Fetch change"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-pull"></a>Pull and Fetch change</h2></div></div></div><a class="indexterm" name="id751764"></a><a class="indexterm" name="id751814"></a><p>
+		This section talks about how to fetch or pull (i.e., download) changes from another
+		repository. The difference between pull and fetch is:
+	</p><p>
+		Fetch just downloads the objects and refs from a remote repository and normally updates the remote tracking branches.
+		Pull, however, will not only download the changes, but also merges them - it is the combination of fetch and merge (cf. <a class="xref" href="tgit-dug-merge.html" title="Merging">the section called “Merging”</a>). The configured remote tracking branch is selected automatically.
+	</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+			Whenever you merge, it is possible the a file was changed in both branches and that the changes cannot be merged automatically: This is called a "conflict" and needs to be manually resolved. See <a class="xref" href="tgit-dug-conflicts.html" title="Resolving Conflicts">the section called “Resolving Conflicts”</a> for more information.
+		</p></div><p>
+		A pull/fetch can be initiated by using
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Pull...</span>
+		or
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Fetch...</span>.
+		Fetching and pulling changes is also possible using the Sync dialog (cf. <a class="xref" href="tgit-dug-sync.html" title="Sync">the section called “Sync”</a>), however, there you have less options, but the sync dialog allows you to initiate other operations such as pushing and to see diffs and changes.
+	</p><p>
+		The fetch and pull dialog will open.
+
+		</p><div class="figure"><a name="tgit-dug-pull-dia-pulldialog"></a><p class="title"><b>Figure 2.15. Pull dialog</b></p><div class="figure-contents"><div><img src="images/GitPull.png" alt="Pull dialog"></div></div></div><p><br class="figure-break">
+		</p><div class="figure"><a name="tgit-dug-pull-dia-fetchdialog"></a><p class="title"><b>Figure 2.16. Fetch dialog</b></p><div class="figure-contents"><div><img src="images/Fetch.png" alt="Fetch dialog"></div></div></div><p><br class="figure-break">
+	</p><p>
+		<span class="guilabel">Remote</span> Choose a configured remote repository (these can be changes using the <span class="guilabel">Manage Remotes</span> label). Instead of the configured repositories, you can also put the URL of another repository into the <span class="guilabel">Arbitrary URL</span> textbox.
+	</p><p>
+		If the current active branch has a remote tracked branch set, the remote branch and remote repository are automatically selected. A remote tracked branch can be set using the reference browser (cf. <a class="xref" href="tgit-dug-browse-ref.html" title="Browse All Refs">the section called “Browse All Refs”</a>) or using the push dialog (cf. <a class="xref" href="tgit-dug-push.html" title="Push">the section called “Push”</a>).
+	</p><p>
+		<span class="guilabel">Other:</span> Input Other URL or local directory.
+		You can click <span class="guibutton">...</span> to browse directory.
+	</p><p>
+		If you check the <span class="guilabel">Autoload Putty Key</span> checkbox, a configured Putty key
+		will be automatically loaded using Pageant.
+	</p><p>
+		<span class="guilabel">Tags</span> has three states (git 1.9 and later): <code class="option">Checked</code>: All tags as well as branches are downloaded (<code class="literal">--tags</code> is passed to git), <code class="option">unchecked</code>: No tags are downloaded (<code class="literal">--no-tags</code> is passed to git), and third state: use default behavior (based on <code class="literal">remote.&lt;name&gt;.tagopt</code> setting).
+		<span class="guilabel">Tags</span> has three states (prior to git 1.9): <code class="option">Checked</code>: Only all tags are downloaded but no branches are downloaded (<code class="literal">--tags</code> is passed to git), <code class="option">unchecked</code>: No tags are downloaded (<code class="literal">--no-tags</code> is passed to git), and third state: use default behavior (based on <code class="literal">remote.&lt;name&gt;.tagopt</code> setting).
+	</p><p>
+		<span class="guilabel">Prune</span> has three states: <code class="option">True</code> to remove remote-tracking branches which no longer exist on the remote, <code class="option">false</code>: not to remove, and third state: use default behavior (based on <code class="literal">remote.&lt;name&gt;.prune</code> or <code class="literal">fetch.prune</code> git setting which can be set on <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-remote" title="Remote">the section called “Remote”</a>).
+	</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>You can find more information about PuTTY and using SSH keys at <a class="xref" href="tgit-ssh-howto.html" title="Appendix F. Tips and tricks for SSH/PuTTY">Appendix F, <i>Tips and tricks for SSH/PuTTY</i></a>. There is also explained how you can use several accounts at the same time for a remote.</p></div><div class="important" title="Conflicts" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Conflicts</h3><p>
+			Although major merge work is done by git automatically while pulling, a conflict may happen during cherry-picking (i.e., a file was modified in your current branch and also in the branch you are pulling),
+			please see <a class="xref" href="tgit-dug-conflicts.html" title="Resolving Conflicts">the section called “Resolving Conflicts”</a> on how to resolve conflicts.
+		</p><p>
+			Please note, that "REMOTE"/"theirs" in the conflict editor refers to the changes your on the branch you selected for pulling/merging and "LOCAL"/"mine" to your HEAD version in your working tree.
+		</p></div><p>
+		You can find more information at <a class="xref" href="git-command.html#git-fetch(1)" title="git-fetch(1)">the section called “git-fetch(1)”</a> and <a class="xref" href="git-command.html#git-pull(1)" title="git-pull(1)">the section called “git-pull(1)”</a>.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-wcstatus.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-push.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Getting Status Information </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Push</td></tr></table></div></body></html>

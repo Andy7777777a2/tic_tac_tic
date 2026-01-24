@@ -1,0 +1,111 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Keyword Substitution</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-gitwcrev.html" title="Chapter 3. The GitWCRev Program"><link rel="prev" href="tgit-gitwcrev.html" title="Chapter 3. The GitWCRev Program"><link rel="next" href="tgit-gitwcrev-example.html" title="Keyword Example"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Keyword Substitution</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-gitwcrev.html">Prev</a> </td><th width="60%" align="center">Chapter 3. The GitWCRev Program</th><td width="20%" align="right"> <a accesskey="n" href="tgit-gitwcrev-example.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Keyword Substitution"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-gitwcrev-keywords"></a>Keyword Substitution</h2></div></div></div><p>
+			If a source and destination files are supplied, GitWCRev copies
+			source to destination, performing keyword substitution as follows:
+			</p><div class="table"><a name="tgit-gitwcrev-switch-table2"></a><p class="title"><b>Table 3.3. List of available keywords</b></p><div class="table-contents"><table summary="List of available keywords" border="1"><colgroup><col><col></colgroup><thead><tr><th>Keyword</th><th>Description</th></tr></thead><tbody><tr><td>$WCREV$</td><td>
+								Replaced with the HEAD commit revision
+								of the working tree.
+							</td></tr><tr><td>$WCREV=n$</td><td>
+								Replaced with the HEAD commit revision
+								of the working tree, trimmed to <code class="literal">n</code> chars. For example:
+								<code class="literal">$WCREV=7$</code>
+							</td></tr><tr><td>$WCBRANCH$</td><td>
+								Replaced with the name of the current branch (or SHA-1 if HEAD is detached) of the working tree.
+							</td></tr><tr><td>$WCLOGCOUNT$, $WCLOGCOUNT&amp;$, $WCLOGCOUNT+$, $WCLOGCOUNT-$</td><td>
+								Replaced with the number of first-parent commits from HEAD back to the first commit.
+								This number is guaranteed to increase with every commit on the very same branch as long no
+								history is rewritten and can be used as part of a version number (see
+								<a class="ulink" href="https://gcc.gnu.org/ml/gcc/2015-08/msg00148.html" target="_blank">
+										<em class="citetitle">https://gcc.gnu.org/ml/gcc/2015-08/msg00148.html</em>
+								</a>
+								and
+								<a class="ulink" href="https://gitlab.com/tortoisegit/tortoisegit/merge_requests/1" target="_blank">
+										<em class="citetitle">https://gitlab.com/tortoisegit/tortoisegit/merge_requests/1</em>
+								</a> for more details).
+								The <code class="literal">$WCLOGCOUNT&amp;$</code>, <code class="literal">$WCLOGCOUNT+$</code> and
+								<code class="literal">$WCLOGCOUNT-$</code> can be used to <code class="literal">AND</code>, add or subtract
+								a predefined number from/to the number of commits. For example
+								<code class="literal">$WCLOGCOUNT&amp;65535$</code> will ensure the number is not exceeding 16 bit.
+							</td></tr><tr><td>$WCDATE$, $WCDATEUTC$</td><td>
+								Replaced with the commit date/time of the
+								highest commit revision. By default,
+								international format is used:
+								<code class="literal">yyyy-mm-dd hh:mm:ss</code>.
+								Alternatively, you can specify a custom format which
+								will be used with <code class="literal">strftime()</code>,
+								for example:
+								<code class="literal">$WCDATE=%a %b %d %I:%M:%S %p$</code>.
+								For a list of available formatting characters, look at the
+								<a class="ulink" href="https://msdn.microsoft.com/en-us/library/fe06s4ak.aspx" target="_blank">
+									<em class="citetitle">online reference</em>
+								</a>.
+							</td></tr><tr><td>$WCNOW$, $WCNOWUTC$</td><td>
+								Replaced with the current system date/time.
+								This can be used to indicate the build time.
+								Time formatting can be used as described for
+								<code class="literal">$WCDATE$</code>.
+							</td></tr><tr><td>$WCMODS$</td><td>
+								<code class="literal">$WCMODS?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if there are local
+								modifications in the passed path, or <code class="literal">FText</code> if not.
+								This will also evaluate to <code class="literal">true</code> if a submodule is checked out at a different commit (requires submodules not to be ignored).
+							</td></tr><tr><td>$WCFILEMODS$</td><td>
+								<code class="literal">$WCFILEMODS?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if there are local
+								modifications in the passed path, or <code class="literal">FText</code> if not.
+								This does not check the checked out commit of submodules.
+							</td></tr><tr><td>$WCUNVER$</td><td>
+								<code class="literal">$WCUNVER?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if there are unversioned
+								items in the passed path, or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCISTAGGED$</td><td>
+								<code class="literal">$WCISTAGGED?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if the HEAD commit is tagged, or
+								<code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCINGIT$</td><td>
+								<code class="literal">$WCINGIT?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if the entry is versioned,
+								or <code class="literal">FText</code> if not.
+								The result for directories is <code class="literal">false</code>, the only exception is the repository root.
+							</td></tr><tr><td>$WCSUBMODULE$</td><td>
+								<code class="literal">$WCSUBMODULE?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if the passed path contains a submodules,
+								or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCSUBMODULEUP2DATE$</td><td>
+								<code class="literal">$WCSUBMODULEUP2DATE?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if all submodules are checked out at the version specified in the index of the parent working tree,
+								or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCMODSINSUBMODULE$</td><td>
+								<code class="literal">$WCMODSINSUBMODULE?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if a submodule contains uncommitted changes,
+								or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCUNVERINSUBMODULE$</td><td>
+								<code class="literal">$WCUNVERINSUBMODULE?TText:FText$</code> is
+								replaced with <code class="literal">TText</code> if a submodule contains unversioned items,
+								or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCMODSFULL$</td><td>
+								<code class="literal">$WCMODSFULL?TText:FText$</code> combines is <code class="literal">$WCMODS$</code> and <code class="literal">$WCMODSINSUBMODULE$</code> and can be seen as a recursive check.
+								replaced with <code class="literal">TText</code> if the passed path or any submodule under the passed path contains uncommitted changes,
+								or <code class="literal">FText</code> if not.
+							</td></tr><tr><td>$WCUNVERFULL$</td><td>
+								<code class="literal">$WCUNVERFULL?TText:FText$</code> combines is <code class="literal">$WCUNVER$</code> and <code class="literal">$WCUNVERINSUBMODULE$</code> and can be seen as a recursive check.
+								replaced with <code class="literal">TText</code> if the passed path or any submodule under the passed path contains unversioned items,
+								or <code class="literal">FText</code> if not.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			GitWCRev does not directly support nesting of expressions, so for example
+			you cannot use an expression like:
+			</p><pre class="screen">
+#define SVN_REVISION    "$WCUNVER?$WCNOW$:$WCDATE$$"
+			</pre><p>
+			But you can usually work around it by other means, for example:
+			</p><pre class="screen">
+#define DATE_NOW       $WCNOW$
+#define DATE_COMMIT    $WCDATE$
+#define DATE           "$WCUNVER?DATE_NOW:DATE_COMMIT$"
+			</pre><p>
+		</p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				Some of these keywords apply to single files rather than to
+				an entire working tree, so it only makes sense to use these
+				when GitWCRev is called to scan a single file. This applies to
+				<code class="literal">$WCINGIT$</code>.
+			</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-gitwcrev.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-gitwcrev.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-gitwcrev-example.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 3. The GitWCRev Program </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Keyword Example</td></tr></table></div></body></html>

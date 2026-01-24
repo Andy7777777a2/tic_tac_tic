@@ -1,0 +1,115 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix B. Automating TortoiseGitMerge</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGitMerge"><link rel="up" href="index.html" title="TortoiseGitMerge"><link rel="prev" href="tme-keyboard.html" title="Appendix A. Keyboard Shortcuts"><link rel="next" href="tgit-glossary.html" title="Glossary"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix B. Automating TortoiseGitMerge</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tme-keyboard.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-glossary.html">Next</a></td></tr></table><hr></div><div class="appendix" title="Appendix B. Automating TortoiseGitMerge"><div class="titlepage"><div><div><h2 class="title"><a name="tme-automation"></a>Appendix B. Automating TortoiseGitMerge</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tme-automation.html#tme-automation-basics">TortoiseGitMerge Command Line Switches</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+			TortoiseGitMerge can be started with command line parameters to avoid having
+			to go through the <span class="guilabel">Open</span> dialog to select the files
+			yourself. This is useful also if you want to use TortoiseGitMerge from
+			another application.
+		</p></div><div class="sect1" title="TortoiseGitMerge Command Line Switches"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tme-automation-basics"></a>TortoiseGitMerge Command Line Switches</h2></div></div></div><a class="indexterm" name="id654891"></a><a class="indexterm" name="id654905"></a><p>
+			Most switches require additional information like a path or some
+			other string. In those cases, append an ':' to the switch and put
+			the string/path after it. Example:
+</p><pre class="screen">
+/base:"c:\folder\my base file.txt"
+</pre><p>
+		</p><p>
+			</p><div class="table"><a name="tme-automation-1-table"></a><p class="title"><b>Table B.1. List of available command line options</b></p><div class="table-contents"><table summary="List of available command line options" border="1"><colgroup><col><col></colgroup><thead><tr><th>Command</th><th>Description</th></tr></thead><tbody><tr><td>/?</td><td>
+								Shows a dialog box with the most important command line
+								switches.
+							</td></tr><tr><td>/help</td><td>
+								The same as <code class="option">?</code>.
+							</td></tr><tr><td>/base</td><td>
+								Specifies the <span class="emphasis"><em>base</em></span> file used
+								in three way diffs. This is the common ancestor
+								of the files being diffed, although it is not
+								shown in a separate window.
+								For two way diffs, this is the left file.
+							</td></tr><tr><td>/basename</td><td>
+								The name of the base file.
+								This is shown in the view title instead of the file path.
+								For three way diffs it is shown in a tooltip for the
+								view title.
+							</td></tr><tr><td>/basereflectedname</td><td>
+								The name to use for EditorConfig templates.
+							</td></tr><tr><td>/theirs</td><td>
+								Specifies the <span class="emphasis"><em>theirs</em></span> file used
+								in three way diffs, displayed in the left pane.
+							</td></tr><tr><td>/theirsname</td><td>
+								The name of the theirs file. This is shown in the
+								view title instead of the file path.
+							</td></tr><tr><td>/theirsreflectedname</td><td>
+								The name to use for EditorConfig templates.
+							</td></tr><tr><td>/mine</td><td>
+								Specifies the <span class="emphasis"><em>mine</em></span> file used
+								in three way diffs, displayed in the right pane.
+								For two way diffs, this is the right file.
+							</td></tr><tr><td>/minename</td><td>
+								The name of the mine file. This is shown in the
+								view title instead of the file path.
+							</td></tr><tr><td>/minereflectedname</td><td>
+								The name to use for EditorConfig templates.
+							</td></tr><tr><td>/merged</td><td>
+								Specifies the resulting <span class="emphasis"><em>merged</em></span> file used
+								in three way diffs. This is the file path where the result of
+								the merge/conflict resolving is saved.
+								If this is not set, then TortoiseGitMerge will ask the user where
+								to save the result.
+							</td></tr><tr><td>/mergedname</td><td>
+								The name of the merged file. This is shown in the
+								view title instead of the file path.
+							</td></tr><tr><td>/mergedreflectedname</td><td>
+								The name to use for EditorConfig templates.
+							</td></tr><tr><td>/patchpath</td><td>
+								The path where a patch should be applied to. If you don't
+								set this path, then TortoiseGitMerge will try to find the path
+								itself to match the paths in the patch file, but that can take
+								<span class="emphasis"><em>very long</em></span>.
+							</td></tr><tr><td>/saverequired</td><td>
+								If specified, forces TortoiseGitMerge to ask to save the file
+								before exiting, even if the user does not modify the files.
+							</td></tr><tr><td>/saverequiredonconflicts</td><td>
+								If specified, forces TortoiseGitMerge to ask to save the file
+								before exiting if there are conflicts found, even if the user
+								does not modify the files.
+							</td></tr><tr><td>/patchoriginal</td><td>
+								The name of the original file to patch. Used for the view
+								title.
+							</td></tr><tr><td>/patchpatched</td><td>
+								The name of the resulting patched file. Used for the view
+								title.
+							</td></tr><tr><td>/diff</td><td>
+								The path to the patch/diff file to apply to a directory.
+							</td></tr><tr><td>/oneway</td><td>
+								Forces TortoiseGitMerge to start with the one-way view
+								instead of the view the user specified in the settings.
+							</td></tr><tr><td>/reversedpatch</td><td>
+								Switches the left and right view of the specified
+								two files to diff.
+							</td></tr><tr><td>/createunifieddiff</td><td>
+								Creates a unified diff file (patch file) of two files
+								specified with
+								<code class="literal">/origfile:"path_to_original_file"</code> and
+								<code class="literal">/modifiedfile:"path_to_modified_file"</code>.
+								The target path is set with
+								<code class="literal">/outfile:"path_to_resulting_patchfile"</code>.
+								If <code class="literal">/outfile</code> is not set, a file save dialog
+								is shown so the user can choose the location to save the
+								patch file.
+								Note: If <code class="literal">/createunifieddiff</code> is set,
+								all other parameters are ignored.
+							</td></tr><tr><td>/line</td><td>
+								Specifies a line number to jump to after loading
+								the files.
+							</td></tr><tr><td>/readonly</td><td>
+								Prevents the file from being edited. That means
+								the editing capabilities of TortoiseGitMerge are
+								disabled.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			You can also supply simple filenames on the command line for compatibility
+			with other diff programs. In this simplified form the command line is
+</p><pre class="screen">
+TortoiseGitMerge BaseFilePath MyFilePath [ TheirFilePath ]
+</pre><p>
+			If two files are given they will be compared with each other.
+			If three files are given, the first is taken as the BASE file,
+			and the other two are compared with it in a three-way diff.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tme-keyboard.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-glossary.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix A. Keyboard Shortcuts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Glossary</td></tr></table></div></body></html>

@@ -1,0 +1,133 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 3. The GitWCRev Program</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-dug-donate.html" title="Final Step"><link rel="next" href="tgit-gitwcrev-keywords.html" title="Keyword Substitution"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 3. The GitWCRev Program</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-donate.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-gitwcrev-keywords.html">Next</a></td></tr></table><hr></div><div class="chapter" title="Chapter 3. The GitWCRev Program"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-gitwcrev"></a>Chapter 3. The GitWCRev Program</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-gitwcrev.html#tgit-gitwcrev-cli">The GitWCRev Command Line</a></span></dt><dt><span class="sect1"><a href="tgit-gitwcrev-keywords.html">Keyword Substitution</a></span></dt><dt><span class="sect1"><a href="tgit-gitwcrev-example.html">Keyword Example</a></span></dt><dt><span class="sect1"><a href="tgit-gitwcrev-com-interface.html">COM interface</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><a class="indexterm" name="id748474"></a><a class="indexterm" name="id748495"></a><a class="indexterm" name="id748543"></a><a class="indexterm" name="id748506"></a><a class="indexterm" name="id748539"></a><p>
+			GitWCRev is Windows console program which can be used to read
+			the status of a Git working tree or specific files inside a working tree and optionally perform
+			keyword substitution in a template file - another alternative could be git filters (cf. <a class="xref" href="git-misc.html#gitattributes(5)" title="gitattributes(5)">the section called “gitattributes(5)”</a>).
+			This is often used as part of the build process as a means of
+			incorporating working tree information into the object you
+			are building. Typically it might be used to include the
+			revision number in an <span class="quote">“<span class="quote">About</span>”</span> box.
+		</p></div><div class="sect1" title="The GitWCRev Command Line"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-gitwcrev-cli"></a>The GitWCRev Command Line</h2></div></div></div><p>
+			GitWCRev reads the Git status of all files in a working
+			tree OR a directory/file inside a working tree including submodules.
+			It records the HEAD commit revision and the commit timestamp,
+			it also records whether there are local modifications in the passed path.
+			The status revision and modification status are displayed on stdout.
+		</p><p>
+			GitWCRev.exe is called from the command line or a script, and
+			is controlled using the command line parameters.
+			</p><pre class="screen">
+GitWCRev WorkingTreePath [SrcVersionFile DstVersionFile] [-mMuUsdq]
+			</pre><p>
+		</p><p>
+			<code class="literal">WorkingTreePath</code> is the path to the working
+			tree OR a directory/file inside a working tree to check.
+			The path may be absolute or relative to the current working directory.
+		</p><p>
+			If you want GitWCRev to perform keyword substitution, so that
+			fields like repository revision is saved to a text
+			file, you need to supply a template file
+			<code class="literal">SrcVersionFile</code>
+			and an output file
+			<code class="literal">DstVersionFile</code>
+			which contains the substituted version of the template.
+		</p><p>
+			You can specify ignore patterns for GitWCRev to prevent specific files
+			and paths from being considered. The patterns are read from a file
+			named <code class="filename">.gitwcrevignore</code>. The file is read  from the working tree root.
+			If the file does not exist, no files or paths are ignored.
+			The <code class="filename">.gitwcrevignore</code> file can contain multiple
+			patterns, separated by newlines. The patterns are matched against
+			the paths relative to the repository root . For example, to ignore all
+			files in the <code class="filename">/doc</code> folder of the TortoiseGit working tree,
+			the <code class="filename">.gitwcrevignore</code> would contain the following
+			lines:
+</p><pre class="screen">
+/doc
+/doc/*
+</pre><p>
+
+		</p><p>
+			To ignore all images, the ignore patterns could be set like this:
+</p><pre class="screen">
+*.png
+*.jpg
+*.ico
+*.bmp
+</pre><p>
+		</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+				The ignore patterns are case-sensitive, just like Git is.
+			</p></div><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3><p>
+				To create a file with a starting dot in the Windows explorer,
+				enter <code class="filename">.gitwcrevignore.</code>. Note the trailing dot.
+			</p></div><p>
+			There are a number of optional switches which affect the way
+			GitWCRev works. If you use more than one, they must be specified
+			as a single group, e.g.
+			<code class="literal">-sU</code>, not
+			<code class="literal">-s -U</code>.
+			</p><div class="table"><a name="tgit-gitwcrev-switch-table"></a><p class="title"><b>Table 3.1. List of available command line switches</b></p><div class="table-contents"><table summary="List of available command line switches" border="1"><colgroup><col><col></colgroup><thead><tr><th>Switch</th><th>Description</th></tr></thead><tbody><tr><td>-m</td><td>
+								If this switch is given, GitWCRev will exit with
+								<code class="literal">ERRORLEVEL 7</code> if the passed path
+								contains local modifications. This may be used to
+								prevent building with uncommitted changes present.
+							</td></tr><tr><td>-M</td><td>
+								Same as above, but includes the status of submodules.
+							</td></tr><tr><td>-u</td><td>
+								If this switch is given, GitWCRev will exit with
+								<code class="literal">ERRORLEVEL 11</code> if the passed path
+								contains unversioned items that are not ignored.
+							</td></tr><tr><td>-U</td><td>
+								Same as above, but includes the status of submodules.
+							</td></tr><tr><td>-d</td><td>
+								If this switch is given, GitWCRev will exit with
+								<code class="literal">ERRORLEVEL 9</code> if the destination file
+								already exists.
+							</td></tr><tr><td>-s</td><td>
+								If this switch is given, GitWCRev will exclude submodules.
+								The default behavior is to also check submodules.
+							</td></tr><tr><td>-F</td><td>
+								If this switch is given, GitWCRev will ignore any
+								<code class="filename">.gitwcrevignore</code> files and
+								include all files.
+							</td></tr><tr><td>-q</td><td>
+								If this switch is given, GitWCRev will perform the
+								keyword substitution without showing working tree
+								status on stdout.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			If there is no error, GitWCRev returns zero. But in case
+			an error occurs, the error message is written to stderr
+			and shown in the console. And the returned error codes are:
+			</p><div class="table"><a name="tgit-gitwcrev-error-table"></a><p class="title"><b>Table 3.2. List of GitWCRev error codes</b></p><div class="table-contents"><table summary="List of GitWCRev error codes" border="1"><colgroup><col><col></colgroup><thead><tr><th>Error Code</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td>
+								Syntax error. One or more command line
+								parameters are invalid.
+							</td></tr><tr><td>2</td><td>
+								The file or folder specified on the
+								command line was not found.
+							</td></tr><tr><td>3</td><td>
+								The input file could not be opened, or
+								the target file could not be created.
+							</td></tr><tr><td>4</td><td>
+								Could not allocate memory. This could
+								happen if e.g. the source file is too
+								big.
+							</td></tr><tr><td>5</td><td>
+								The source file can not be scanned properly.
+							</td></tr><tr><td>6</td><td>
+								Git error: libgit2 returned with
+								an error when GitWCRev tried to find
+								the information from the working tree.
+							</td></tr><tr><td>7</td><td>
+								The working tree has local modifications.
+								This requires the <code class="literal">-m</code> or <code class="literal">-M</code> switch.
+							</td></tr><tr><td>9</td><td>
+								The output file already exists.
+								This requires the <code class="literal">-d</code> switch.
+							</td></tr><tr><td>10</td><td>
+								The specified path is neither a working tree, a bare repository nor
+								part of one.
+							</td></tr><tr><td>11</td><td>
+								The passed path has unversioned files or folders in it.
+								This requires the <code class="literal">-u</code> or <code class="literal">-U</code> switch.
+							</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-donate.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-gitwcrev-keywords.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Final Step </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Keyword Substitution</td></tr></table></div></body></html>

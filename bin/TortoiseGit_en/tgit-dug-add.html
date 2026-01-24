@@ -1,0 +1,57 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Adding New Files</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-diff.html" title="Viewing Differences"><link rel="next" href="tgit-dug-ignore.html" title="Ignoring Files And Directories"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Adding New Files</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-diff.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-ignore.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Adding New Files"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-add"></a>Adding New Files</h2></div></div></div><a class="indexterm" name="id711858"></a><a class="indexterm" name="id711848"></a><p>
+		</p><div class="figure"><a name="tgit-dug-adding-dia-1"></a><p class="title"><b>Figure 2.43. Explorer context menu for unversioned files</b></p><div class="figure-contents"><div><img src="images/ContextMenuFileNoControl.png" alt="Explorer context menu for unversioned files"></div></div></div><p><br class="figure-break">
+		If you created new files during
+		your development process then you need to add them
+		to source control too. Select the file(s) and/or NOT empty directory
+		and use
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Add</span>.
+	</p><p>
+		After you added the files to source control
+		the file appears with a <code class="literal">added</code> icon overlay which means you
+		first have to commit (and push) your working tree to make those
+		files available to other developers.
+		Just adding a file does <span class="emphasis"><em>not</em></span> affect any remote
+		repository!
+	</p><div class="tip" title="Many Adds" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Many Adds</h3><p>
+			You can also use the Add command on
+			folders. In that case, the add dialog will show you all
+			unversioned files inside that versioned folder.
+			This helps if you have many new files and need to add
+			them all at once.
+		</p></div><div class="tip" title="Empty directories" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Empty directories</h3><p>
+			Git only tracks content and, thus, cannot version (empty) directories. If you
+			need a directory to be automatically created on checkout, make sure at least one
+			versioned file is in it (e.g. a placeholder file such as <code class="filename">.gitkeep</code> or <code class="filename">.gitignore</code>).
+		</p></div><p>
+		To add files from outside your working tree you can use
+		the drag-and-drop handler:
+		</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+					select the files you want to add
+				</p></li><li class="listitem"><p>
+					<span class="action">right-drag</span> them
+					to the new location inside the working tree
+				</p></li><li class="listitem"><p>
+					release the right mouse button
+				</p></li><li class="listitem"><p>
+					select
+					<span class="guimenu">Context Menu</span> → <span class="guimenuitem">Git copy and add files to this WC</span>.
+					The files will then be copied to the working tree and
+					added to version control.
+				</p></li></ol></div><p>
+	</p><p>
+		You can also add files within a working tree simply by (left-)dragging and
+		dropping them onto the commit dialog.
+	</p><p>
+		If you add a file by mistake, you can undo the addition
+		before you commit using
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Delete (keep local)...</span>
+		or <span class="guimenuitem">Revert</span>.
+	</p><p>
+		</p><div class="figure"><a name="tgit-dug-addfinish-1"></a><p class="title"><b>Figure 2.44. Add finished</b></p><div class="figure-contents"><div><img src="images/AddFinish.png" alt="Add finished"></div></div></div><p><br class="figure-break">
+		After adding the files, you may commit by clicking the shortcut menu button.
+		Additionally, there are options to mark the newly added files as executable / symlink.
+		Remember to mark executable bit for files such as Unix shell script.
+		This is to facilitate sharing repository with Linux / MacOS environment.
+	</p><p>
+		You can find more information at <a class="xref" href="git-command.html#git-add(1)" title="git-add(1)">the section called “git-add(1)”</a>
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-diff.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-ignore.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Viewing Differences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Ignoring Files And Directories</td></tr></table></div></body></html>

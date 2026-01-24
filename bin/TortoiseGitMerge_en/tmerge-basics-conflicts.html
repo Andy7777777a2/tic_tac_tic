@@ -1,0 +1,22 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Editing Conflicts</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGitMerge"><link rel="up" href="tmerge-basics.html" title="Chapter 2. Basic Concepts"><link rel="prev" href="tmerge-basics.html" title="Chapter 2. Basic Concepts"><link rel="next" href="tmerge-basics-patch.html" title="Applying Patches"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Editing Conflicts</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tmerge-basics.html">Prev</a> </td><th width="60%" align="center">Chapter 2. Basic Concepts</th><td width="20%" align="right"> <a accesskey="n" href="tmerge-basics-patch.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Editing Conflicts"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tmerge-basics-conflicts"></a>Editing Conflicts</h2></div></div></div><p>
+			This is sometimes referred to as a three-way merge, and is shown in three panes.
+			However there are actually four files involved. The file which is not shown is
+			the common base file, the last common ancestor of the two files which are now
+			in conflict. The relationships between the three files are explained in
+			the diagram below:
+		</p><div class="figure"><a name="tmerge-dug-dia-conflict"></a><p class="title"><b>Figure 2.1. File Conflict</b></p><div class="figure-contents"><div><img src="images/mergeprinciple.png" alt="File Conflict"></div></div></div><br class="figure-break"><p>
+			The base file represents the oldest version of a file, from
+			where <span class="emphasis"><em>You</em></span> and <span class="emphasis"><em>They</em></span> start
+			making changes. <span class="emphasis"><em>Mine</em></span> represents
+			the base file with all the changes <span class="emphasis"><em>you</em></span> made,
+			and <span class="emphasis"><em>Theirs</em></span> is the file with all the changes
+			<span class="emphasis"><em>someone else</em></span> made to the file.
+			The left pane shows the changes in <span class="emphasis"><em>Theirs</em></span>
+			relative to the base file and the right pane shows the changes in
+			<span class="emphasis"><em>Mine</em></span> relative to the base file. The bottom pane is the
+			output file which is where you are trying to resolve the conflicts.
+		</p><p>
+			In conflict resolution view, you can choose to use blocks from
+			<span class="emphasis"><em>Mine</em></span> or <span class="emphasis"><em>Theirs</em></span> or both.
+			But in this case, the changes are shown in the bottom pane.
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tmerge-basics.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tmerge-basics.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tmerge-basics-patch.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 2. Basic Concepts </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Applying Patches</td></tr></table></div></body></html>

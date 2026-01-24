@@ -1,0 +1,48 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>The Repository Browser</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"><link rel="prev" href="tgit-dug-reflog.html" title="Reference Log"><link rel="next" href="tgit-dug-diff.html" title="Viewing Differences"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">The Repository Browser</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-dug-reflog.html">Prev</a> </td><th width="60%" align="center">Chapter 2. TortoiseGit Daily Use Guide</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug-diff.html">Next</a></td></tr></table><hr></div><div class="sect1" title="The Repository Browser"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-dug-repobrowser"></a>The Repository Browser</h2></div></div></div><a class="indexterm" name="id720671"></a><p>
+		Sometimes you need to see all contents/files of a repository, without having
+		a working tree (e.g. a bare repository) or you want to see all files of a revision without switching to it.
+		That's what the <em class="firstterm">Repository Browser</em>
+		is for. You can open it using
+		<span class="guimenu">TortoiseGit</span> → <span class="guimenuitem">Repo-browser</span> or from the log dialog (cf. <a class="xref" href="tgit-dug-showlog.html" title="Log Dialog">the section called “Log Dialog”</a>) using the context menu of a commit.
+		</p><div class="figure"><a name="tgit-dug-repobrowser-dia-1"></a><p class="title"><b>Figure 2.39. The Repository Browser</b></p><div class="figure-contents"><div><img src="images/RepoBrowser.png" alt="The Repository Browser"></div></div></div><p><br class="figure-break">
+	</p><p>
+		The repository browser looks very similar to the Windows explorer,
+		except that it is showing the content of the repository at a particular
+		revision rather than files on your computer. In the left pane you
+		can see a directory tree, and in the right pane are the contents
+		of the selected directory.
+		At the top of the Repository Browser Window you can see the path within the repository
+		and the revision you want to browse.
+	</p><p>
+		Just like Windows explorer, you can click on the column headings in
+		the right pane if you want to set the sort order. And as in explorer
+		there are context menus available in both panes.
+	</p><p>
+		In order to get an older version of a file you can click on a file and select <span class="guimenuitem">Save revision to</span>, but it is also possible to just drag one or more files into a Windows explorer window.
+	</p><p>
+		The context menu for a file allows you to:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+					Open the selected file, either with the default viewer for
+					that file type, or with a program you choose.
+				</p></li><li class="listitem"><p>
+					Show the revision log for that file so you can see the history of it.
+				</p></li><li class="listitem"><p>
+					Compare the file at the selected revision with the same file in your working tree.
+				</p></li><li class="listitem"><p>
+					Blame the file, to see who changed which line and when.
+				</p></li><li class="listitem"><p>
+					Save an unversioned copy of the file to your hard drive or revert this file in your working copy (i.e. saves the file to it's old path in the working tree).
+				</p></li><li class="listitem"><p>
+					Copy the filename with full path shown in the address bar to the clipboard.
+				</p></li></ul></div><p>
+	</p><p>
+		The context menu for a folder allows you to:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+					Show the revision log for that folder.
+				</p></li><li class="listitem"><p>
+					Copy the full path to the clipboard.
+				</p></li></ul></div><p>
+	</p><p>
+		You can use <span class="keycap"><strong>F5</strong></span> to refresh the view as usual. This will
+		refresh everything which is currently displayed.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-dug-reflog.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-dug.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug-diff.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Reference Log </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Viewing Differences</td></tr></table></div></body></html>

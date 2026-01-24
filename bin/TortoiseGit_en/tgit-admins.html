@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Appendix C. Useful Tips For Administrators</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="index.html" title="TortoiseGit"><link rel="prev" href="tgit-ibugtraqprovider-2.html" title="The IBugTraqProvider2 interface"><link rel="next" href="tgit-admins-upgradecheck.html" title="Redirect the upgrade check"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Appendix C. Useful Tips For Administrators</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider-2.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="tgit-admins-upgradecheck.html">Next</a></td></tr></table><hr></div><div class="appendix" title="Appendix C. Useful Tips For Administrators"><div class="titlepage"><div><div><h2 class="title"><a name="tgit-admins"></a>Appendix C. Useful Tips For Administrators</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="tgit-admins.html#tgit-admins-grouppolicies">Deploy TortoiseGit via group policies</a></span></dt><dt><span class="sect1"><a href="tgit-admins-upgradecheck.html">Redirect the upgrade check</a></span></dt><dt><span class="sect1"><a href="tgit-admins-disablemenus.html">Disable context menu entries</a></span></dt></dl></div><div class="simplesect"><div class="titlepage"></div><p>
+			This appendix contains solutions to problems/questions you might
+			have when you are responsible for deploying TortoiseGit to multiple
+			client computers.
+		</p></div><div class="sect1" title="Deploy TortoiseGit via group policies"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-admins-grouppolicies"></a>Deploy TortoiseGit via group policies</h2></div></div></div><a class="indexterm" name="id707375"></a><a class="indexterm" name="id707403"></a><a class="indexterm" name="id707404"></a><a class="indexterm" name="id707380"></a><a class="indexterm" name="id707424"></a><p>
+			The TortoiseGit installer comes as an MSI file, which means you
+			should have no problems adding that MSI file to the group policies
+			of your domain controller.
+		</p><p>
+			A good walk-through on how to do that can be found from Microsoft:
+			<a class="ulink" href="https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/use-group-policy-to-install-software" target="_blank">
+				<em class="citetitle">https://learn.microsoft.com/en-us/troubleshoot/windows-server/group-policy/use-group-policy-to-install-software</em>
+			</a>.
+		</p><p>
+			Versions 0.3.0 and later of TortoiseGit must be installed under
+			<span class="emphasis"><em>Computer Configuration</em></span> and not under
+			<span class="emphasis"><em>User Configuration</em></span>. This is because those versions
+			need the new CRT and MFC DLLs, which can only be deployed <span class="emphasis"><em>per
+			computer</em></span> and not <span class="emphasis"><em>per user</em></span>.
+			If you really must install TortoiseGit on a per user basis, then you must
+			first install the MFC and CRT package version 11 from Microsoft on each
+			computer you want to install TortoiseGit as per user.
+		</p><p>
+			You can provide a default setting for the SSH client in
+			<code class="filename">HKLM\TortoiseGit\SSH</code>.
+		</p><p>
+			TortoiseGit automatically finds <code class="filename">git.exe</code> if a normal msysGit/Git for Windows installation is on the computer
+			or <code class="filename">git.exe</code> is on the <code class="literal">PATH</code> (and is runnable in a normal <code class="filename">cmd.exe</code> session - you might need to also put the <code class="filename">[MSYSGIT INSTALLDIR]\mingw\bin</code> on the <code class="literal">PATH</code> if you use the msysGit development package).
+		</p><p>
+			For completely disabling automatic update checking see <code class="literal">VersionCheck</code> in <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-registry" title="Advanced Settings">the section called “Advanced Settings”</a>.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-ibugtraqprovider-2.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="tgit-admins-upgradecheck.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">The IBugTraqProvider2 interface </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Redirect the upgrade check</td></tr></table></div></body></html>

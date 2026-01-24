@@ -1,0 +1,38 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Disable context menu entries</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-admins.html" title="Appendix C. Useful Tips For Administrators"><link rel="prev" href="tgit-admins-upgradecheck.html" title="Redirect the upgrade check"><link rel="next" href="tgit-automation.html" title="Appendix D. Automating TortoiseGit"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Disable context menu entries</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-admins-upgradecheck.html">Prev</a> </td><th width="60%" align="center">Appendix C. Useful Tips For Administrators</th><td width="20%" align="right"> <a accesskey="n" href="tgit-automation.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Disable context menu entries"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-admins-disablemenus"></a>Disable context menu entries</h2></div></div></div><a class="indexterm" name="id707765"></a><a class="indexterm" name="id707785"></a><a class="indexterm" name="id707830"></a><p>
+			TortoiseGit allows you to disable (actually, hide)
+			context menu entries. Since this is a feature which should not be used lightly
+			but only if there is a compelling reason, there is no GUI for this and it has
+			to be done directly in the registry.
+			This can be used to disable certain commands for users who should not use them.
+			But please note that only the context menu entries in the <span class="emphasis"><em>explorer</em></span>
+			are hidden, and the commands are still available through other means, e.g. the
+			command line or even other dialogs in TortoiseGit itself!
+		</p><p>
+			The registry keys which hold the information on which context menus to show are
+			<code class="filename">HKEY_CURRENT_USER\Software\TortoiseGit\ContextMenuEntriesMaskLow</code>
+			and <code class="filename">HKEY_CURRENT_USER\Software\TortoiseGit\ContextMenuEntriesMaskHigh</code>.
+		</p><p>
+			Each of these registry entries is a <code class="literal">DWORD</code> value, with each
+			bit corresponding to a specific menu entry. A set bit means the corresponding
+			menu entry is deactivated.
+		</p><p>
+			</p><div class="table"><a name="tgit-admins-disablemenus-1-table"></a><p class="title"><b>Table C.1. Menu entries and their values</b></p><div class="table-contents"><table summary="Menu entries and their values" border="1"><colgroup><col><col></colgroup><thead><tr><th>Value</th><th>Menu entry</th></tr></thead><tbody><tr><td>0x0000000000000002</td><td>Sync</td></tr><tr><td>0x0000000000000004</td><td>Commit</td></tr><tr><td>0x0000000000000008</td><td>Add</td></tr><tr><td>0x0000000000000010</td><td>Revert</td></tr><tr><td>0x0000000000000020</td><td>Cleanup</td></tr><tr><td>0x0000000000000040</td><td>Resolve</td></tr><tr><td>0x0000000000000080</td><td>Switch/Checkout</td></tr><tr><td>0x0000000000000100</td><td>Sendmail</td></tr><tr><td>0x0000000000000200</td><td>Export</td></tr><tr><td>0x0000000000000400</td><td>Create Repository here</td></tr><tr><td>0x0000000000000800</td><td>Branch/Tag</td></tr><tr><td>0x0000000000001000</td><td>Merge</td></tr><tr><td>0x0000000000002000</td><td>Delete</td></tr><tr><td>0x0000000000004000</td><td>Rename</td></tr><tr><td>0x0000000000008000</td><td>Submodule Update</td></tr><tr><td>0x0000000000010000</td><td>Diff</td></tr><tr><td>0x0000000000020000</td><td>Show Log</td></tr><tr><td>0x0000000000040000</td><td>Edit Conflicts</td></tr><tr><td>0x0000000000080000</td><td>Reference Browser</td></tr><tr><td>0x0000000000100000</td><td>Check for modifications</td></tr><tr><td>0x0000000000200000</td><td>Ignore</td></tr><tr><td>0x0000000000400000</td><td>RefLog</td></tr><tr><td>0x0000000000800000</td><td>Blame</td></tr><tr><td>0x0000000001000000</td><td>Repository Browser</td></tr><tr><td>0x0000000002000000</td><td>Apply Patch</td></tr><tr><td>0x0000000004000000</td><td>Delete (keep local)</td></tr><tr><td>0x0000000008000000</td><td>SVN Rebase</td></tr><tr><td>0x0000000010000000</td><td>SVN DCommit</td></tr><tr><td>0x0000000040000000</td><td>SVN Ignore</td></tr><tr><td>0x0000000100000000</td><td>Log of Submodule folder</td></tr><tr><td>0x0000000200000000</td><td>Rev Diff</td></tr><tr><td>0x0000000800000000</td><td>Pull</td></tr><tr><td>0x0000001000000000</td><td>Push</td></tr><tr><td>0x0000002000000000</td><td>Clone</td></tr><tr><td>0x0000004000000000</td><td>Tag</td></tr><tr><td>0x0000008000000000</td><td>Format Patch</td></tr><tr><td>0x0000010000000000</td><td>Import Patch</td></tr><tr><td>0x0000040000000000</td><td>Fetch</td></tr><tr><td>0x0000080000000000</td><td>Rebase</td></tr><tr><td>0x0000100000000000</td><td>Stash Save</td></tr><tr><td>0x0000200000000000</td><td>Stash Apply</td></tr><tr><td>0x0000400000000000</td><td>Stash List</td></tr><tr><td>0x0000800000000000</td><td>Submodule Add</td></tr><tr><td>0x0001000000000000</td><td>Submodule Sync</td></tr><tr><td>0x0002000000000000</td><td>Stash Pop</td></tr><tr><td>0x0004000000000000</td><td>Diff two files</td></tr><tr><td>0x0008000000000000</td><td>Bisect</td></tr><tr><td>0x0080000000000000</td><td>SVN Fetch</td></tr><tr><td>0x0100000000000000</td><td>Revision graph</td></tr><tr><td>0x0200000000000000</td><td>Daemon</td></tr><tr><td>0x2000000000000000</td><td>Settings</td></tr><tr><td>0x4000000000000000</td><td>Help</td></tr><tr><td>0x8000000000000000</td><td>About</td></tr></tbody></table></div></div><p><br class="table-break">
+		</p><p>
+			Example: to disable the <code class="literal">Sendmail</code>, the
+			<code class="literal">Rebase</code>
+			and the <code class="literal">Settings</code> menu entries, add the values assigned
+			to the entries like this:
+</p><pre class="screen">
+  0x0000000000000100
++ 0x0000080000000000
++ 0x2000000000000000
+= 0x2000080000000100
+</pre><p>
+			The lower <code class="literal">DWORD</code> value (<code class="literal">0x00000100</code>)
+			must then be stored in
+			<code class="filename">HKEY_CURRENT_USER\Software\TortoiseGit\ContextMenuEntriesMaskLow</code>,
+			the higher <code class="literal">DWORD</code> value (<code class="literal">0x20000800</code>) in
+			<code class="filename">HKEY_CURRENT_USER\Software\TortoiseGit\ContextMenuEntriesMaskHigh</code>.
+		</p><p>
+			To enable the menu entries again, simply delete the two registry keys.
+		</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-admins-upgradecheck.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-admins.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-automation.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Redirect the upgrade check </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Appendix D. Automating TortoiseGit</td></tr></table></div></body></html>

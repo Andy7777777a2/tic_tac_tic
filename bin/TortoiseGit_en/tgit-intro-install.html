@@ -1,0 +1,114 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Installing TortoiseGit</title><link rel="stylesheet" href="styles_html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><link rel="home" href="index.html" title="TortoiseGit"><link rel="up" href="tgit-introduction.html" title="Chapter 1. Introduction"><link rel="prev" href="tgit-intro-features.html" title="TortoiseGit's Features"><link rel="next" href="tgit-dug.html" title="Chapter 2. TortoiseGit Daily Use Guide"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Installing TortoiseGit</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="tgit-intro-features.html">Prev</a> </td><th width="60%" align="center">Chapter 1. Introduction</th><td width="20%" align="right"> <a accesskey="n" href="tgit-dug.html">Next</a></td></tr></table><hr></div><div class="sect1" title="Installing TortoiseGit"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="tgit-intro-install"></a>Installing TortoiseGit</h2></div></div></div><div class="sect2" title="System requirements"><div class="titlepage"><div><div><h3 class="title"><a name="id706902"></a>System requirements</h3></div></div></div><p>
+				TortoiseGit runs on Windows 10 or higher.
+				Windows 98, Windows ME, Windows NT4, Windows 2000, Windows XP, Windows Vista, Windows 7, Windows 8 and Windows 8.1 are no longer supported.
+				If you are running such an old system, you can still use older, however unsupported, releases of TortoiseGit.
+				Those can be found on the <a class="ulink" href="https://download.tortoisegit.org/" target="_blank">download server</a> (TortoiseGit 1.7 dropped support for Windows 2000; TortoiseGit 1.9 dropped support for Windows XP, TortoiseGit 2.5 dropped support for Windows Vista, TortoiseGit 2.18.0 dropped support for Windows 7, Windows 8, and Windows 8.1).
+			</p><p>
+				TortoiseGit requires the latest "Microsoft Visual C++ Redistributable 2015–2022" to be installed on your computer. See the following <a class="xref" href="tgit-intro-install.html#tgit-vcredist-table" title='Table 1.1. Download links for the latest "Microsoft Visual C++ Redistributable 2015–2022"'>Table 1.1, “Download links for the latest "Microsoft Visual C++ Redistributable 2015–2022"”</a> for download links.
+				</p><div class="table"><a name="tgit-vcredist-table"></a><p class="title"><b>Table 1.1. Download links for the latest "Microsoft Visual C++ Redistributable 2015–2022"</b></p><div class="table-contents"><table summary='Download links for the latest "Microsoft Visual C++ Redistributable 2015–2022"' border="1"><colgroup><col><col><col></colgroup><thead><tr><th>Architecture</th><th>Link</th><th>Notes</th></tr></thead><tbody><tr><td>x64</td><td><a class="ulink" href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">https://aka.ms/vs/17/release/vc_redist.x64.exe</a></td><td> </td></tr><tr><td>ARM64</td><td><a class="ulink" href="https://aka.ms/vs/17/release/vc_redist.arm64.exe" target="_blank">https://aka.ms/vs/17/release/vc_redist.arm64.exe</a></td><td> </td></tr><tr><td>x86</td><td><a class="ulink" href="https://aka.ms/vs/17/release/vc_redist.x86.exe" target="_blank">https://aka.ms/vs/17/release/vc_redist.x86.exe</a></td><td>also needed on x64 for context menu in x86 applications</td></tr></tbody></table></div></div><p><br class="table-break">
+			</p><p>
+				TortoiseGit requires a (command line) Git client which provides a <code class="filename">git.exe</code>.
+				<a class="ulink" href="https://gitforwindows.org/" target="_blank">Git for Windows</a> is recommended (Cygwin and MSYS2 Git also work, see <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-main" title="General Settings">the section called “General Settings”</a> for configuration. Please note that Cygwin and MSYS2 Git are not officially supported by TortoiseGit as the developers only use Git for Windows. Bug reports, however, are welcome).
+				Installation of Git for Windows can be done with preselected options, however, no need to install the "Windows Explorer integration".
+				If you know about CRLF and LF line endings and you have editors coping with that, you should select "Checkout as-is, commit as-is" in order to prevent automatic translations.
+			</p><p>
+				You need Administrator privileges to install TortoiseGit.
+			</p><p>
+				If you encounter any problems during or after installing
+				TortoiseGit please refer to
+				<a class="xref" href="tgit-faq.html" title="Appendix A. Frequently Asked Questions (FAQ)">Appendix A, <i>Frequently Asked Questions (FAQ)</i></a>
+				first.
+			</p></div><div class="sect2" title="Installation"><div class="titlepage"><div><div><h3 class="title"><a name="id707005"></a>Installation</h3></div></div></div><a class="indexterm" name="id707039"></a><p>
+				First, check the system prerequisites which are listed above (<a class="xref" href="tgit-intro-install.html" title="Installing TortoiseGit">the section called “Installing TortoiseGit”</a>).
+			</p><p>
+				TortoiseGit comes with an easy to use installer. Double click on
+				the installer file and follow the instructions. The installer
+				will take care of the rest.
+			</p><p>
+				As a command-line Git client is required for using TortoiseGit, you have to install both. The recommended order is to install TortoiseGit first.
+			</p><div class="important" title="Important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+					You need Administrator privileges to install TortoiseGit.
+				</p></div></div><div class="sect2" title="Language Packs"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-intro-install-lang"></a>Language Packs</h3></div></div></div><a class="indexterm" name="id707089"></a><a class="indexterm" name="id707074"></a><p>
+				The TortoiseGit user interface has been translated into many
+				different languages, so you may be able to download a language
+				pack to suit your needs.
+				You can find the language packs on our
+				<a class="ulink" href="https://tortoisegit.org/download" target="_blank">
+					<em class="citetitle">translation status page</em>
+				</a>.
+				And if there is no language pack available yet, why not join
+				the team and <a class="ulink" href="https://tortoisegit.org/translate" target="_blank">submit your own translation</a> ;-)
+			</p><p>
+				Each language pack is packaged as a <code class="filename">.msi</code> installer.
+				Just run the install program after the installation of the main TortoiseGit package and follow the instructions.
+				After the installation finishes, the translation will be available and can be selected in settings dialog (cf. <a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-main" title="General Settings">the section called “General Settings”</a>).
+			</p></div><div class="sect2" title="Spell checker"><div class="titlepage"><div><div><h3 class="title"><a name="tgit-intro-instalsl-spell"></a>Spell checker</h3></div></div></div><a class="indexterm" name="id707109"></a><a class="indexterm" name="id707116"></a><p>
+				TortoiseGit includes a spell checker which allows you to check your
+				commit log messages. This is especially useful if the project language
+				is not your native language.
+				By default the spell checker uses the same dictionary files as
+				<a class="ulink" href="https://www.libreoffice.org/" target="_blank">
+					<em class="citetitle">LibreOffice</em>
+				</a>,
+				<a class="ulink" href="https://www.openoffice.org/" target="_blank">
+					<em class="citetitle">OpenOffice.org</em>
+				</a>
+				and
+				<a class="ulink" href="https://mozilla.org" target="_blank">
+					<em class="citetitle">Mozilla</em>
+				</a>.
+				TortoiseGit can also use the spell checker shipped with Windows 8+. However, this needs to be enabled manually in advanced settings (key <code class="literal">Win8SpellChecker</code>) at the moment.
+			</p><p>
+				The installer by default automatically adds the US English dictionary.
+				If you want other languages, the easiest option is simply to
+				install one of TortoiseGit's language packs (see <a class="xref" href="tgit-intro-install.html#tgit-intro-install-lang" title="Language Packs">the section called “Language Packs”</a>). This will install
+				the appropriate dictionary files as well as the TortoiseGit local
+				user interface.
+				After the installation finishes, the translation will be available.
+				When using the Windows spell checker, you need to install the dictionary in Windows first.
+			</p><p>
+				Or you can install the dictionaries yourself. If you have OpenOffice.org, LibreOffice or
+				Mozilla installed, you can copy those dictionaries, which are located
+				in the installation folders for those applications.
+				Otherwise, you need to download the required dictionary files from
+				<a class="ulink" href="https://cgit.freedesktop.org/libreoffice/dictionaries/" target="_blank">
+					<em class="citetitle">https://cgit.freedesktop.org/libreoffice/dictionaries/</em>
+				</a>.
+			</p><p>
+				Once you have got the dictionary files, you
+				probably need to rename them so that the filenames only have
+				the locale chars in it.
+				Example:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+							<code class="filename">en_US.aff</code>
+						</p></li><li class="listitem"><p>
+							<code class="filename">en_US.dic</code>
+						</p></li></ul></div><p>
+				Then just copy them into the <code class="filename">%APPDATA%\TortoiseGit\dic</code> folder. If that folder isn't
+				there, you have to create it first.
+				TortoiseGit will also search the <code class="filename">Languages</code> sub-folder of
+				the TortoiseGit installation folder (normally this will be <code class="filename">C:\Program Files\TortoiseGit\Languages</code>);
+				this is the place where the language packs put their files.
+				However, the <code class="filename">%APPDATA%</code>-folder doesn't require administrator privileges and, thus, has higher priority.
+				The next time you start TortoiseGit, the spell checker will be available.
+			</p><p>
+				If you install multiple dictionaries, TortoiseGit uses these rules
+				to select which one to use.
+				</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+						Check the <code class="literal">tgit.projectlanguage</code> setting. This setting can be set using TortoiseGit Settings <span class="guilabel">Dialogs 3</span> page (<a class="xref" href="tgit-dug-settings.html#tgit-dug-settings-dialogs3" title="TortoiseGit Dialog Settings 3">the section called “TortoiseGit Dialog Settings 3”</a>).
+						Refer to <a class="xref" href="git-command.html#git-config(1)" title="git-config(1)">the section called “git-config(1)”</a> for information
+						about setting properties (use the <code class="literal">LCID Dec</code> value as <a class="ulink" href="https://docs.microsoft.com/openspecs/windows_protocols/ms-lcid/a9eac961-e77d-41a6-90a5-ce1a8b0cdb9c" target="_blank">assigned by Microsoft</a>).
+						</p></li><li class="listitem"><p>
+						If no project language is set, or that language is not
+						installed, try the language corresponding to the Windows locale.
+						</p></li><li class="listitem"><p>
+						If the exact Windows locale doesn't work, try the
+						<span class="quote">“<span class="quote">Base</span>”</span> language, e.g.
+						<code class="literal">de_CH</code> (Swiss-German) falls back to
+						<code class="literal">de_DE</code> (German).
+						</p></li><li class="listitem"><p>
+						If none of the above works, then the default language
+						is English, which is included by default with the standard installation.
+						</p></li></ol></div><p>
+				When using the Windows spell checker, this is tried first. If no Windows dictionary, based on these fallback-rules, could be found then the "old" spell checker is used as a fallback.
+			</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="tgit-intro-features.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="tgit-introduction.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="tgit-dug.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">TortoiseGit's Features </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 2. TortoiseGit Daily Use Guide</td></tr></table></div></body></html>
