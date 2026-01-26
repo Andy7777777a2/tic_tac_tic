@@ -1,0 +1,17 @@
+{
+    "editor.inlineSuggest.edits.showCollapsed": true,
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.nextEditSuggestions.fixes": false,
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "never"
+    },
+    "editor.formatOnSave": false,
+    "notebook.codeActionsOnSave": {
+        "source.organizeImports" : "never",
+        "source.fixAll.eslint" : "never"
+    },
+    "diffEditor.maxFileSize": 0,
+    "workbench.localHistory.maxFileSize": 1e+308,
+    "workbench.localHistory.maxFileEntries": 1e+308
+}
