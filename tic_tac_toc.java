@@ -1090,7 +1090,7 @@ public class tic_tac_toc {
             } */
         }
         void show_exception(Exception e,Frame owner){
-            logger_in_game.log("log",e.getMessage());
+            logger_in_game.log("error",e.getMessage());
             Dialog d = new Dialog(owner,e.getMessage(),true);
             d.add(new Label(e.getMessage()));
             d.addWindowListener(new WindowAdapter() {
