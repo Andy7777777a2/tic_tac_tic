@@ -1077,6 +1077,23 @@ public class tic_tac_toc {
             public boolean exist_key(Map<String,Integer> map, int value){
                 return get_key(map, value).length != 0;
             }
+            @SuppressWarnings("unchecked")
+            public <K, V> K[] get_key(Map<K, V> map, V value, Class<K> clazz) {
+                return map.entrySet().stream()
+                                     .filter(entry -> entry.getValue().equals(value))
+                                     .map(Map.Entry::getKey)
+                                     .toArray(size -> (K[]) java.lang.reflect.Array.newInstance(clazz, size));
+            }
+            @SuppressWarnings("unused")
+            public <K, V> K get_unique_key(Map<K,V> map, V value, Class<K> clazz) throws Exception{
+                if(get_key(map, value, clazz).length > 1){throw new Exception("n -> 1");}
+                if(get_key(map, value, clazz).length == 0){return null;}
+                return get_key(map, value, clazz)[0];
+            }
+            @SuppressWarnings("unused")
+            public <K, V> boolean exist_key(Map<K, V> map, V value, Class<K> clazz){
+                return get_key(map, value, clazz).length != 0;
+            }
             @SuppressWarnings("unused")
             public /* static  */<K,T>java.util.List<K> get_key_with_list(Map<K,T> map, T value){
                 return map.entrySet().stream()
