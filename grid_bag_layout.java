@@ -2,5 +2,5 @@
 import java.awt.GridBagLayout;
 
 public class grid_bag_layout {
-    Frame f = new Fe(new GridBagLayout());
+    Frame f = new F(new GridBagLayout());
 }
